@@ -15,7 +15,7 @@ class CreateBookingDetails extends Migration
     {
         Schema::create('bookingDetails', function (Blueprint $table) {
             $table->bigInteger('bookingId')->unsigned()->index();
-            $table->bigInteger('ticketClass')->unsigned()->index();
+            $table->bigInteger('ticketClassId')->unsigned()->index();
             $table->string('ticketCode');
             $table->timestamps();
             $table->primary('ticketCode');

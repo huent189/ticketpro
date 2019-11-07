@@ -15,19 +15,20 @@ class CreateRelationships extends Migration
     {
         Schema::table('events', function (Blueprint $table)
         {
-            $table->foreign('category')->references('id')->on('categories');
-            $table->foreign('location')->references('id')->on('locations');
-            $table->foreign('organizer')->references('id')->on('organizers');
+            $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('locationId')->references('id')->on('locations')->onDelete('set null');
+            $table->foreign('organizerId')->references('id')->on('organizers')->onDelete('cascade');
         });
         Schema::table('ticketClasses', function (Blueprint $table) {
-            $table->foreign('event')->references('id')->on('events');
+            $table->foreign('eventId')->references('id')->on('events')->onDelete('cascade');
         });
         Schema::table('booking', function (Blueprint $table) {
-            $table->foreign('customerId')->references('id')->on('customers');
+            $table->foreign('customerId')->references('id')->on('customers')->onDelete('cascade');
+            // $table->foreign('eventId')->references('id')->on('events')->onDelete('cascade');
         });
         Schema::table('bookingDetails', function (Blueprint $table) {
-            $table->foreign('bookingId')->references('id')->on('booking');
-            $table->foreign('ticketClass')->references('id')->on('ticketClasses');
+            $table->foreign('bookingId')->references('id')->on('booking')->onDelete('cascade');
+            $table->foreign('ticketClassId')->references('id')->on('ticketClasses')->onDelete('cascade');
         });
     }
 

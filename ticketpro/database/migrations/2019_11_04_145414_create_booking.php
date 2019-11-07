@@ -16,7 +16,9 @@ class CreateBooking extends Migration
         Schema::create('booking', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('customerId')->unsigned()->index();
-            $table->enum('status', ['pending, waiting_for_payment, paid, sent, canceled']);
+            // $table->bigInteger('eventId')->unsigned()->index();
+            // $table->enum('status', ['draft','holding','waiting_for_payment', 'paid', 'finished', 'canceled']);
+            $table->tinyInteger('status')->default('0');
             $table->timestamps();
             $table->integer('totalPrice');
             $table->integer('discountPrice');
