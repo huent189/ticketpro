@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Organizer::class, 15)->create()->each(function($organizer){
             factory(App\Event::class)->create([
                 'organizerId' => $organizer->id,
+                'image' => 'uploads/eventcovers/20191109_aaa_vietnam.jpg'
             ])->each(function ($e){
                 $e->ticketClasses()->saveMany(factory(App\TicketClass::class, 3)->make());
                 $e->location()->associate(factory(App\Location::class)->create());
