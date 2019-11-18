@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-@section('pageTitle', 'BKSTORE:Home')
+@section('pageTitle', 'TICKERPRO:Home')
 @section('content')
 <div class="main">
             <div class="container">
@@ -39,8 +39,9 @@
                     <div class="title">SPORT</div>
                     <div class="dash"></div>
                     <div class="content">
-                        <div class="component-ticket">
-                            <div class="img item-1"></div> 
+                    @foreach($sportListEvent as $event)
+                    <div class="component-ticket">
+                            <div class="img item-1"><img src={{$event->image}} alt=""></div> 
                             <div class="text">
                                 <div class="price">
                                     <div class="card">
@@ -50,7 +51,7 @@
                                                     <div class="table-cell event-title">
                                                         <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
                                                             title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
-                                                            Pocari Sweat Run 2019
+                                                            {{$event->name}}
                                                         </a>
                                                     </div>
                                                     <div class="table-cell card-right-block">
@@ -59,11 +60,11 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> 100,000 VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->price}} VNĐ</strong>
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">Hồ Chí Minh</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->place}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,49 +75,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="component-ticket">
-                            <div class="img item-2"></div> 
-                            <div class="text">
-                                <div class="price">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="padding-10">
-                                                <div class="table w-100 margin-bottom-0">
-                                                    <div class="table-cell event-title">
-                                                        <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
-                                                            title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
-                                                            ABL 10 - Saigon Heat - Season Ticket	
-                                                        </a>
-                                                    </div>
-                                                    <div class="table-cell card-right-block">
-                                                    </div>
-                                                </div>
-                                                <div class="table w-100 margin-bottom-0">
-                                                    <div class="table-cell">
-                                                        <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> 637,000 VNĐ</strong>
-                                                        </div>
-                                                        <div class="event-tags w-100">
-                                                            <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">Hồ Chí Minh</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    @endforeach                                              
                     </div>
+                    <div class="row">{{$sportListEvent->links()}}</div>
                 </div>
                 <div class="category">
                     <div class="title">MUSIC</div>
                     <div class="dash"></div>
                     <div class="content">
-                        <div class="component-ticket">
-                            <div class="img item-3"></div> 
+                    @foreach($musicListEvent as $event)
+                    <div class="component-ticket">
+                            <div class="img item-3"><img src={{$event->image}} alt=""></div> 
                             <div class="text">
                                 <div class="price">
                                     <div class="card">
@@ -126,7 +95,7 @@
                                                     <div class="table-cell event-title">
                                                         <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
                                                             title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
-                                                            Hòa nhạc “Bản Giao hưởng Bi thương” - The Dramatic Pathétique
+                                                            {{$event->name}}
                                                         </a>
                                                     </div>
                                                     <div class="table-cell card-right-block">
@@ -135,11 +104,11 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> 300,000 VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->price}} VNĐ</strong>
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">Hà Nội</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->place}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -150,50 +119,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="component-ticket">
-                            <div class="img item-4"></div> 
-                            <div class="text">
-                                <div class="price">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="padding-10">
-                                                <div class="table w-100 margin-bottom-0">
-                                                    <div class="table-cell event-title">
-                                                        <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
-                                                            title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
-                                                            Đêm nhạc: Gã lang thang ngồi hát tình tang
-                                                        </a>
-                                                    </div>
-                                                    <div class="table-cell card-right-block">
-                                                    </div>
-                                                </div>
-                                                <div class="table w-100 margin-bottom-0">
-                                                    <div class="table-cell">
-                                                        <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> 169,000 VNĐ</strong>
-                                                        </div>
-                                                        <div class="event-tags w-100">
-                                                            <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">Hồ Chí Minh</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       
+                    @endforeach                                
                     </div>
+                    <div class="row">{{$musicListEvent->links()}}</div>
                 </div>
                 <div class="category">
                     <div class="title">CONFERENCE</div>
                     <div class="dash"></div>
                     <div class="content">
-                        <div class="component-ticket">
-                            <div class="img item-5"></div> 
+                    @foreach($conferenceListEvent as $event)
+                    <div class="component-ticket">
+                            <div class="img item-5"><img src={{$event->image}} alt=""></div> 
                             <div class="text">
                                 <div class="price">
                                     <div class="card">
@@ -203,7 +139,7 @@
                                                     <div class="table-cell event-title">
                                                         <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
                                                             title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
-                                                            AFFILIATE MARKETING & SOCIAL COMMERCE: TỪ CÔNG THỨC ĐẾN THỰC THI - HỒ CHÍ MINH
+                                                            {{$event->name}}
                                                         </a>
                                                     </div>
                                                     <div class="table-cell card-right-block">
@@ -212,11 +148,11 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> 99,000 VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->price}} VNĐ</strong>
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">Hồ Chí Minh</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->place}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -227,43 +163,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="component-ticket">
-                            <div class="img item-6"></div> 
-                            <div class="text">
-                                <div class="price">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="padding-10">
-                                                <div class="table w-100 margin-bottom-0">
-                                                    <div class="table-cell event-title">
-                                                        <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
-                                                            title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
-                                                            VietAI summit 2019
-                                                        </a>
-                                                    </div>
-                                                    <div class="table-cell card-right-block">
-                                                    </div>
-                                                </div>
-                                                <div class="table w-100 margin-bottom-0">
-                                                    <div class="table-cell">
-                                                        <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> 300,000 VNĐ</strong>
-                                                        </div>
-                                                        <div class="event-tags w-100">
-                                                            <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans uppercase">Hồ Chí Minh</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       
+                    @endforeach
+
                     </div>
+                    <div class="row">{{$conferenceListEvent->links()}}</div>
                 </div>
             </div>
         </div>

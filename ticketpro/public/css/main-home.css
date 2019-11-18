@@ -43,11 +43,11 @@
     background-size: cover;
     height: 200px;
     width: 520px;
-    background-image: url("/Image/Ticket/44175F.jpg");
+    background-image: url({{$event->image}});
   }
   
   .main .container .category .content .component-ticket .img.item-1 {
-    background-image: url("/Image/Ticket/649E3A.jpg");
+    background-image: url({{$event->image}});
   }
   
   .main .container .category .content .component-ticket .img.item-2 {
@@ -101,3 +101,10 @@
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 14px;
+    padding-top: -33px;
+}
