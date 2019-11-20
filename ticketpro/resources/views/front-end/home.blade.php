@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-@section('pageTitle', 'TICKERPRO:Home')
+@section('pageTitle', 'TICKETPRO:Home')
 @section('content')
 <div class="main">
             <div class="container">
@@ -12,18 +12,25 @@
                               <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                             </ol>
                             <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img class="d-block " src="./Image/Ticket/542AB8.jpg" width="1100" height="300" alt="First slide">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="d-block " src="/Image/Ticket/8D0882.jpg" width="1100" height="300" alt="Second slide">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="d-block " src="/Image/Ticket/AA0610.jpg" width="1100" height="300" alt="Third slide">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="d-block " src="/Image/Ticket/E84534.jpg" width="1100" height="300" alt="Third slide">
-                              </div>
+                                @foreach($slide as $event)
+                                    <div class="carousel-item active">
+                                        <img class="d-block " src={{$event->image }} width="1100" height="300" alt="First slide">
+                                    </div>
+
+
+                                @endforeach
+{{--                              <div class="carousel-item active">--}}
+{{--                                <img class="d-block " src="./Image/Ticket/542AB8.jpg" width="1100" height="300" alt="First slide">--}}
+{{--                              </div>--}}
+{{--                              <div class="carousel-item">--}}
+{{--                                <img class="d-block " src="/Image/Ticket/8D0882.jpg" width="1100" height="300" alt="Second slide">--}}
+{{--                              </div>--}}
+{{--                              <div class="carousel-item">--}}
+{{--                                <img class="d-block " src="/Image/Ticket/AA0610.jpg" width="1100" height="300" alt="Third slide">--}}
+{{--                              </div>--}}
+{{--                              <div class="carousel-item">--}}
+{{--                                <img class="d-block " src="/Image/Ticket/E84534.jpg" width="1100" height="300" alt="Third slide">--}}
+{{--                              </div>--}}
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -36,12 +43,12 @@
                           </div>
                 </div>
                 <div class="category">
-                    <div class="title">SPORT</div>
+                    <div  class="title"><a href={{url('sport')}}>SPORT</a></div>
                     <div class="dash"></div>
                     <div class="content">
                     @foreach($sportListEvent as $event)
                     <div class="component-ticket">
-                            <div class="img item-1"><img src={{$event->image}} alt=""></div> 
+                            <div class="img item-1"><img src={{$event->image}} alt=""></div>
                             <div class="text">
                                 <div class="price">
                                     <div class="card">
@@ -60,11 +67,11 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> {{$event->price}} VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->ticketClasses->first()->price}} VNĐ</strong>
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->place}}</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->place}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -75,17 +82,16 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach                                              
+                    @endforeach
                     </div>
-                    <div class="row">{{$sportListEvent->links()}}</div>
                 </div>
                 <div class="category">
-                    <div class="title">MUSIC</div>
+                    <div class="title"><a href={{url('conference')}}>MUSIC</a></div>
                     <div class="dash"></div>
                     <div class="content">
                     @foreach($musicListEvent as $event)
                     <div class="component-ticket">
-                            <div class="img item-3"><img src={{$event->image}} alt=""></div> 
+                            <div class="img item-3"><img src={{$event->image}} alt=""></div>
                             <div class="text">
                                 <div class="price">
                                     <div class="card">
@@ -119,17 +125,17 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach                                
+                    @endforeach
                     </div>
-                    <div class="row">{{$musicListEvent->links()}}</div>
+{{--                    <div class="row">{{$musicListEvent->links()}}</div>--}}
                 </div>
                 <div class="category">
-                    <div class="title">CONFERENCE</div>
+                    <div class="title"><a href={{url('conference')}}>CONFERENCE</a></div>
                     <div class="dash"></div>
                     <div class="content">
                     @foreach($conferenceListEvent as $event)
                     <div class="component-ticket">
-                            <div class="img item-5"><img src={{$event->image}} alt=""></div> 
+                            <div class="img item-5"><img src={{$event->image}} alt=""></div>
                             <div class="text">
                                 <div class="price">
                                     <div class="card">
@@ -166,7 +172,7 @@
                     @endforeach
 
                     </div>
-                    <div class="row">{{$conferenceListEvent->links()}}</div>
+{{--                    <div class="row">{{$conferenceListEvent->links()}}</div>--}}
                 </div>
             </div>
         </div>

@@ -17,10 +17,17 @@
                     <input type="text" placeholder="Search..">
                     <div class="icon-search"></div>
                 </div>
-                <div class="sign-up-in">
-                    <a href="footer.blade.php">SIGN UP</a>
-                    <a href="#">SIGN IN</a>
-                </div>
+                @if(Auth::check())
+                    <div class="sign-up-in">
+                        <a href="footer.blade.php">{{Auth::user()->name}}</a>
+                    </div>
+                @else
+                    <div class="sign-up-in">
+                        <a href="footer.blade.php">SIGN UP</a>
+                        <a href="#">SIGN IN</a>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>

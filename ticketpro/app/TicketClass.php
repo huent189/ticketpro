@@ -52,4 +52,5 @@ class TicketClass extends Model
     {
         return $this->hasMany('App\BookingDetail', 'ticketClassId');
     }
+
 }
