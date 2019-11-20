@@ -1,0 +1,68 @@
+.main.main-sign-in {
+  background-color: #f3f3f3;
+}
+
+.main.main-sign-in form {
+  margin-top: 50px;
+  margin-left: 170px;
+  margin-right: 170px;
+  background-color: #f3f3f3;
+  margin-bottom: 50px;
+}
+
+.main.main-sign-in form button {
+  position: absolute;
+  background-color: #e55b00;
+  border: none;
+  width: 90px;
+  height: 90px;
+  right: 250px;
+  top: 110px;
+}
+
+.main.main-sign-in form input {
+  width: 600px;
+}
+
+.main.main-sign-in form .title {
+  margin-bottom: 10px;
+}
+
+.main.main-sign-in form .title h1 {
+  color: #e55b00;
+  font-weight: 700;
+}
+
+.main.main-sign-in form .title h3 {
+  color: #e55b00;
+  font-weight: 700;
+}
+
+.main.main-sign-in form .login-f-g {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 17%;
+}
+
+.main.main-sign-in form .login-f-g .facebook {
+  background-image: url("/Image/icon/fb_login.png");
+  height: 70px;
+  width: 300px;
+  background-size: 90%;
+  background-repeat: no-repeat;
+}
+
+.main.main-sign-in form .login-f-g .google {
+  background-image: url("/Image/icon/images.png");
+  height: 70px;
+  width: 300px;
+  background-size: 90%;
+  background-repeat: no-repeat;
+}
+/*# sourceMappingURL=style-sign-in.css.map */

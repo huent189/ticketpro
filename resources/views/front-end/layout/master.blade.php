@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/main-home.css">
+    <link rel="stylesheet" href="/css/style-sign-up.css">
+    <link rel="stylesheet" href="/css/style-sign-in.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link href="/css/prettyPhoto.css" rel="stylesheet">
     <link href="/css/price-range.css" rel="stylesheet">
