@@ -10,7 +10,7 @@
                     <div class="content">
                     @foreach($eventList as $event)
                     <div class="component-ticket">
-                            <div class="img item-1"></div> 
+                            <div class="img item-1"><img src="{{$event->image}}" alt=""></div>
                             <div class="text">
                                 <div class="price">
                                     <div class="card">
@@ -29,11 +29,11 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> {{$event->price}} VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->ticketClasses->first()->price}} VNĐ</strong>
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location}}</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->place}} - {{$event->location->city}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -49,5 +49,5 @@
                 </div>
     </div>
 </div>
-    
+
   @endsection('content')

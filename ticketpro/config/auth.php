@@ -56,6 +56,17 @@ return [
             'provider' => 'admins',
             'hash' => false,
         ],
+
+        'organizer' => [
+            'driver' => 'session',
+            'provider' => 'organizers',
+        ],
+
+        'organizer-api' => [
+            'driver' => 'token',
+            'provider' => 'organizers',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -84,6 +95,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Model\AdminModel::class,
+        ],
+
+        'organizers' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\OrganizerAuthModel::class,
         ],
 
         // 'users' => [

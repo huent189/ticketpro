@@ -23,12 +23,17 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.dashboard');
                 }
                 break;
-            default:
+            case 'organizer':
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('guest.home');
+                    return redirect()->route('organizer.dashboard');
                 }
                 break;
-                
+            default:
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('home');
+                }
+                break;
+
         }
         return $next($request);
     }

@@ -52,35 +52,39 @@ class HomeController extends Controller
 
     public function getSportEvent()
     {
-        $eventList = Category::join('events','events.categoryId','=','categories.id')
-        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-        ->join('locations','events.locationId','=','locations.id')
-        ->select('events.name','events.image','locations.place','ticketClasses.price')
-        ->where('categories.id','1')
-        ->get();
+        $eventList = Category::where('name', 'sport')->first()->events;
+
+//            Category::join('events','events.categoryId','=','categories.id')
+//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
+//        ->join('locations','events.locationId','=','locations.id')
+//        ->select('events.name','events.image','locations.place','ticketClasses.price')
+//        ->where('categories.id','1')
+//        ->get();
 
         return view('front-end.modules.sport',compact('eventList'));
     }
     public function getMusicEvent()
     {
-        $eventList = Category::join('events','events.categoryId','=','categories.id')
-        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-        ->join('locations','events.locationId','=','locations.id')
-        ->select('events.name','events.image','locations.place','ticketClasses.price')
-        ->where('categories.id','2')
-        ->get();
+        $eventList = Category::where('name', 'music')->first()->events;
+//            Category::join('events','events.categoryId','=','categories.id')
+//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
+//        ->join('locations','events.locationId','=','locations.id')
+//        ->select('events.name','events.image','locations.place','ticketClasses.price')
+//        ->where('categories.id','2')
+//        ->get();
 
         return view('front-end.modules.sport',compact('eventList'));
     }
 
     public function getConferenceEvent()
     {
-        $eventList = Category::join('events','events.categoryId','=','categories.id')
-        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-        ->join('locations','events.locationId','=','locations.id')
-        ->select('events.name','events.image','locations.place','ticketClasses.price')
-        ->where('categories.id','3')
-        ->get();
+        $eventList = Category::where('name', 'conference')->first()->events;
+//            Category::join('events','events.categoryId','=','categories.id')
+//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
+//        ->join('locations','events.locationId','=','locations.id')
+//        ->select('events.name','events.image','locations.place','ticketClasses.price')
+//        ->where('categories.id','3')
+//        ->get();
 
         return view('front-end.modules.sport',compact('eventList'));
     }

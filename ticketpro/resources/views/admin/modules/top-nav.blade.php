@@ -17,12 +17,15 @@
                             @endif <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="{{ url('admin/nhanvien') }}"><i class="fa fa-btn fa-sign-out"></i>Thông tin</a></li>
-                            <li><a href="{{ url('admin/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li><form action="{{ route('admin.auth.logout') }}" method="post"><i class="fa fa-btn fa-sign-out"></i>
+                                    <input type="submit" value="Đăng Xuất">
+                                    @csrf
+                                </form></li>
 						</ul>
 					</li>
 				</ul>
 			</div>
-							
+
 		</div><!-- /.container-fluid -->
 	</nav>
 <!-- /menu top  - menu phia tren cung-->

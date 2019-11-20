@@ -8,13 +8,13 @@ hr{
 }
 .title{
 	overflow: hidden;
-	border-bottom: 2px solid yellow;
+	border-bottom: 2px solid #e55b00;
 }
 .title > div{
 	padding: 0;
 }
 .title > div > p {
-	background-color: yellow;
+	background-color: #e55b00;
 	height: 40px;
 	line-height: 40px;
 	text-align: center;

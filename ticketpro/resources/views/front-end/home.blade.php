@@ -71,7 +71,7 @@
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->place}}</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->city}}</span>
                                                             </div>
                                                         </div>
                                                     </div>

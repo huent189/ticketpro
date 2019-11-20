@@ -51,6 +51,12 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
 
+    /**
+     * Phương thức sẽ chuyển hướng khi người dùng không xác thực.
+     * @param \Illuminate\Http\Request $request
+     * @param AuthenticationException $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if($request ->expectsJson())
@@ -63,6 +69,9 @@ class Handler extends ExceptionHandler
         {
             case 'admin':
                 $login = 'admin.auth.login';
+                break;
+            case 'organizer':
+                $login = 'organizer.auth.login';
                 break;
             default:
                 $login = 'login';

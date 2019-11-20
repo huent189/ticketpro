@@ -13,7 +13,7 @@
   }
 
   .main .container .category .title {
-      background-color: #fff;
+      background-color: #f3f3f3;
       position: sticky;
       color: #e55b00;
       font-size: 30px;
@@ -21,7 +21,6 @@
       cursor: pointer;
       top: 0px;
       z-index: 100;
-      border: none;
   }
 
   .main .container .category .dash {
