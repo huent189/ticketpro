@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="/css/main-home.css">
     <link rel="stylesheet" href="/css/style-sign-up.css">
     <link rel="stylesheet" href="/css/style-sign-in.css">
+    <link rel="stylesheet" href="/css/chooseTickets.css">
+    <link rel="stylesheet" href="/css/complete.css">
+    <link rel="stylesheet" href="/css/payment.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link href="/css/prettyPhoto.css" rel="stylesheet">
     <link href="/css/price-range.css" rel="stylesheet">
