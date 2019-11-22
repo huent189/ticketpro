@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -34,11 +33,6 @@
     <link rel="stylesheet" href="/css/complete.css">
     <link rel="stylesheet" href="/css/payment.css">
     <link rel="stylesheet" href="/css/responsive.css">
-    <link href="/css/prettyPhoto.css" rel="stylesheet">
-    <link href="/css/price-range.css" rel="stylesheet">
-    <link href="/css/animate.css" rel="stylesheet">
-	<link href="/css/main.css" rel="stylesheet">
-	<link href="/css/responsive.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}} rel="stylesheet">

@@ -1,22 +1,5 @@
 <div class="footer-top-area">
     <div class="zigzag-bottom"></div>
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-about-us">
-                    <h2>TicketPro</h2>
-                    <p>Ticket Pro Là sản phẩm của một nhóm sinh viên khoa Việt Nhật đại học Công nghệ - VNU.
-                        Nhóm rất mong được sự góp ý của mọi người </p>
-                    <div class="footer-social">
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#"_blank"><i class="fa fa-youtube"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                </div>            
-            </div>
-        </div>
-    </div> -->
     <div class="footer">
             <div class="logo-footer"></div>
             <div class="community">

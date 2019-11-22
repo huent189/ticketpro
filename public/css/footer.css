@@ -1,4 +1,5 @@
 .footer {
+  min-width: 1170px;
     position: relative;
     height: 300px;
     margin-top: 30px;
