@@ -12,25 +12,14 @@
                               <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                             </ol>
                             <div class="carousel-inner">
-                                @foreach($slide as $event)
-                                    <div class="carousel-item active">
-                                        <img class="d-block " src={{$event->image }} width="1100" height="300" alt="First slide">
-                                    </div>
-
-
-                                @endforeach
-{{--                              <div class="carousel-item active">--}}
-{{--                                <img class="d-block " src="./Image/Ticket/542AB8.jpg" width="1100" height="300" alt="First slide">--}}
-{{--                              </div>--}}
-{{--                              <div class="carousel-item">--}}
-{{--                                <img class="d-block " src="/Image/Ticket/8D0882.jpg" width="1100" height="300" alt="Second slide">--}}
-{{--                              </div>--}}
-{{--                              <div class="carousel-item">--}}
-{{--                                <img class="d-block " src="/Image/Ticket/AA0610.jpg" width="1100" height="300" alt="Third slide">--}}
-{{--                              </div>--}}
-{{--                              <div class="carousel-item">--}}
-{{--                                <img class="d-block " src="/Image/Ticket/E84534.jpg" width="1100" height="300" alt="Third slide">--}}
-{{--                              </div>--}}
+                                <div class="carousel-item active">
+                                    <img class="d-block " src={{$slide[0]->image }} width="1100" height="300" alt="First slide">
+                                </div>
+                                @for($i=1;$i<sizeof($slide);$i++)
+                                <div class="carousel-item ">
+                                    <img class="d-block " src={{$slide[$i]->image }} width="1100" height="300" alt="First slide">
+                                </div>
+                                @endfor
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
