@@ -24,7 +24,7 @@
                 @else
                     <div class="sign-up-in">
                         <a href="footer.blade.php">SIGN UP</a>
-                        <a href="#">SIGN IN</a>
+                        <a href="{{ url('/auth/redirect/google') }}">SIGN IN</a>
                     </div>
                 @endif
 

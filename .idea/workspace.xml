@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d91867df-83b1-44db-b436-0c8fed398854" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/public/css/main-home.css" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/public/css/main-home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/conference.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/conference.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/music.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/music.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/sport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/sport.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ticketpro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ticketpro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/ticketpro/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -124,12 +128,20 @@
       <path value="$PROJECT_DIR$/ticketpro/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/ticketpro/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/ticketpro/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/league/oauth1-client" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/laravel/socialite" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/ralouphie/getallheaders" />
     </include_path>
   </component>
   <component name="ProjectId" id="1U4WIWW55AC9p2GoAO4dm0SwTK3" />
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laravel-6-Login-with-Google" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -153,7 +165,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574616269494</updated>
-      <workItem from="1574616273017" duration="1913000" />
+      <workItem from="1574616273017" duration="6746000" />
+      <workItem from="1574623084497" duration="626000" />
+      <workItem from="1574648313809" duration="936000" />
     </task>
     <servers />
   </component>
@@ -165,7 +179,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -23,6 +23,9 @@
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/fideloper/proxy" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/filp/whoops" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/fzaninotto/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/hanneskod/classtools" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/jakub-onderka/php-console-color" />
@@ -30,9 +33,11 @@
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/krlove/code-generator" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/krlove/eloquent-model-generator" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/laravel/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/laravel/socialite" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/laravel/ui" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/league/oauth1-client" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/mpociot/laravel-test-factory-helper" />
@@ -57,9 +62,11 @@
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/phpunit/php-token-stream" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/phpunit/phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/psy/psysh" />
+      <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/ramsey/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/scrivo/highlight.php" />
       <excludeFolder url="file://$MODULE_DIR$/ticketpro/vendor/sebastian/code-unit-reverse-lookup" />

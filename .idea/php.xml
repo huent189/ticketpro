@@ -100,7 +100,19 @@
       <path value="$PROJECT_DIR$/ticketpro/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/ticketpro/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/ticketpro/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/league/oauth1-client" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/laravel/socialite" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/ticketpro/vendor/ralouphie/getallheaders" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/ticketpro/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
 </project>
