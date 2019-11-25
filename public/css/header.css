@@ -47,6 +47,17 @@
     right: 11px;
     top: 4px;
   }
+  .header .container-header .search-form .dropdown {
+    position: absolute;
+    top: 0px;
+    right: -40px;
+  }
+  
+  .header .container-header .search-form .dropdown .dropdown-menu a:hover {
+    background-color: #e55b00;
+    color: white !important;
+  }
+  
   
   .site-branding-area .container .sign-up-in {
     position: absolute;

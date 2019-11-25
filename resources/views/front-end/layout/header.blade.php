@@ -16,6 +16,16 @@
                 <div class="search-form">
                     <input type="text" placeholder="Search..">
                     <div class="icon-search"></div>
+                    <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" style = "background-color: rgb(229, 91, 0); border: none;"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 150px;">
+                              <a class="dropdown-item" href="#">Quản lý trang</a>
+                              <a class="dropdown-item" href="#">Nhật ký hoạt động</a>
+                              <a class="dropdown-item" href="#">Cài đặt</a>
+                              <a class="dropdown-item" href="#">Đăng xuất</a>
+                            </div>
+                    </div>     
                 </div>
                 <div class="sign-up-in">
                     <a href="footer.blade.php">SIGN UP</a>
