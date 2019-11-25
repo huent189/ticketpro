@@ -19,12 +19,21 @@
                 </div>
                 @if(Auth::check())
                     <div class="sign-up-in">
-                        <a href="footer.blade.php">{{Auth::user()->name}}</a>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle text-bold" style = "background-color: rgb(229, 91, 0); border: none;"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{Auth::user()->name}}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 150px;">
+                                <a class="dropdown-item" href="#">Quản lý trang</a>
+                                <a class="dropdown-item" href="#">Nhật ký hoạt động</a>
+                                <a class="dropdown-item" href="#">Cài đặt</a>
+                                <a class="dropdown-item" href="{{route('logout')}}">Đăng xuất</a>
+                            </div>
+                        </div>
                     </div>
                 @else
                     <div class="sign-up-in">
-                        <a href="footer.blade.php">SIGN UP</a>
-                        <a href="{{ url('/auth/redirect/google') }}">SIGN IN</a>
+                        <a class="text-bold" href="{{ url('/auth/redirect/google') }}">GOOGLE SIGN IN</a>
                     </div>
                 @endif
 

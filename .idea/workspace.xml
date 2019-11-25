@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d91867df-83b1-44db-b436-0c8fed398854" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ticketpro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ticketpro.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/SocialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/SocialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/public/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/public/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticketpro/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/routes/web.php" afterDir="false" />
     </list>
@@ -167,7 +162,8 @@
       <updated>1574616269494</updated>
       <workItem from="1574616273017" duration="6746000" />
       <workItem from="1574623084497" duration="626000" />
-      <workItem from="1574648313809" duration="936000" />
+      <workItem from="1574648313809" duration="1398000" />
+      <workItem from="1574663382626" duration="6220000" />
     </task>
     <servers />
   </component>

@@ -39,4 +39,9 @@ class SocialController extends Controller
         }
         return $user;
     }
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('home');
+    }
 }
