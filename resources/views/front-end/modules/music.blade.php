@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-@section('pageTitle', 'BKSTORE:Shop')
+@section('pageTitle', 'TicketPro: Music')
 @section('content')
 <div class="main">
     <div class="container">
@@ -93,6 +93,5 @@
                         </table>
                     </div>
                 </div>
-    </div>
 </div>
 @endsection('content')

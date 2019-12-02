@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-@section('pageTitle','BKSTORE:sport')
+@section('pageTitle','TicketPro:sport')
 @section('content')
 
 <div class="main">
@@ -94,7 +94,6 @@
                         </table>
                     </div>
                 </div>
-    </div>
 </div>
 
   @endsection('content')
