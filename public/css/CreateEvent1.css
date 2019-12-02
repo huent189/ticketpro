@@ -116,10 +116,15 @@
   cursor: pointer;
 }
 
+.wrapper .side-right .info-event .information-Event {
+  margin-top: 5%;
+  margin-left: 4%;
+}
+
 .wrapper .side-right .info-event .event-name {
   margin-top: 4%;
   margin-left: 5%;
-  margin-right: 5%;
+  margin-right: 20%;
 }
 
 .wrapper .side-right .info-event .event-name .space {
