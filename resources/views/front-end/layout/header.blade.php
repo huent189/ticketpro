@@ -12,6 +12,7 @@
                     <div class="component-toolbar"><a href="/sport">SPORT</a></div>
                     <div class="component-toolbar"><a href="/music">MUSIC</a></div>
                     <div class="component-toolbar"><a href="/conference">CONFERENCE</a></div>
+                    <div class="component-toolbar"><a href="#">CREATE EVENT</a></div>
                 </div>
                 <div class="search-form">
                     <input type="text" placeholder="Search..">
@@ -36,7 +37,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 150px;">
                                 <a class="dropdown-item" href="#">Quản lý trang</a>
                                 <a class="dropdown-item" href="#">Nhật ký hoạt động</a>
-                                <a class="dropdown-item" href="#">Cài đặt</a>
+                                <a class="dropdown-item" href="{{route('create-event')}}">Tạo sự kiện mới</a>
                                 <a class="dropdown-item" href="{{route('logout')}}">Đăng xuất</a>
                             </div>
                         </div>
