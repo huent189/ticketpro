@@ -1,0 +1,159 @@
+@media only screen and (max-width: 768px) {
+  .header .container-header {
+    min-width: 1170px;
+    position: relative;
+    background-color: #e55b00;
+    top: 2px;
+    left: 5px;
+    margin-right: 10px;
+    height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .header .container-header .logo {
+    background-image: url("/Image/icon/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    width: 100px;
+    left: 5px;
+    position: absolute;
+    top: -5px;
+    left: 2%;
+  }
+  .header .container-header .toolbar {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 500px;
+    left: 250px;
+    top: 24px;
+  }
+  .header .container-header .toolbar .component-toolbar {
+    display: none;
+  }
+  .header .container-header .toolbar .component-toolbar a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+  }
+  .header .container-header .toolbar .component-toolbar a:hover {
+    padding: 5px 10px;
+    background-color: #8d2b08;
+  }
+  .header .container-header .search-form {
+    display: none;
+    position: absolute;
+    right: 50px;
+    top: 24px;
+  }
+  .header .container-header .search-form input {
+    height: 32px;
+    width: 280px;
+  }
+  .header .container-header .search-form .icon-search {
+    background-image: url("/Image/icon/loupe.svg");
+    background-repeat: no-repeat;
+    height: 21px;
+    width: 21px;
+    position: absolute;
+    right: 11px;
+    top: 4px;
+  }
+  .header .container-header .sign-up-in {
+    display: none;
+    position: absolute;
+    right: 100px;
+    top: 55px;
+  }
+  .header .container-header .sign-up-in a {
+    padding: 3px 3px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .header .container-header .sign-up-in a:hover {
+    background-color: #8d2b08;
+  }
+  .footer {
+    position: relative;
+    height: 300px;
+    margin-top: 30px;
+    background-color: #050549;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .footer .logo-footer {
+    position: absolute;
+    background-image: url("/Image/icon/logo.png");
+    height: 200px;
+    width: 300px;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    background-size: cover;
+    top: 0;
+  }
+  .footer .community {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+  .footer .community .columns-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: absolute;
+    right: 10%;
+    top: 90px;
+  }
+  .footer .community .columns-icon .rows-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .footer .community .columns-icon .rows-icon .icons {
+    margin: 5px 5px;
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-1 {
+    background-image: url("/Image/icon/facebook-icon.png");
+    height: 49px;
+    width: 49px;
+    border-radius: 10px;
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-2 {
+    background-image: url("/Image/icon/ig-logo-email.png");
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-3 {
+    background-image: url("/Image/icon/Web-Youtube-alt-2-Metro-icon.png");
+    border-radius: 7px;
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-4 {
+    background-image: url("/Image/icon/twitter_PNG32.png");
+  }
+  .footer .contact {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 30px;
+  }
+  .footer .contact .content h5 {
+    color: white;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */

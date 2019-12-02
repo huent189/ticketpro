@@ -1,0 +1,92 @@
+.wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+}
+
+.wrapper .title {
+  margin-left: 9%;
+  margin-right: 9%;
+  margin-top: 2%;
+}
+
+.wrapper .toolbars {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wrapper .toolbars .component-toolbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: 65px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.wrapper .toolbars .component-toolbar.hoan-tat {
+  color: #e55b00;
+  background-color: gainsboro;
+}
+
+.wrapper .toolbars .component-toolbar.chon-ve, .wrapper .toolbars .component-toolbar.thanh-toan {
+  background-color: #e55b00;
+  color: white;
+  border-left: 1px solid  gainsboro;
+}
+
+.wrapper .complete-content {
+  margin-top: 3%;
+}
+
+.wrapper .complete-content .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .complete-content .card .title {
+  margin-bottom: 3%;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.wrapper .complete-content .card .img-ticket {
+  background-image: url("/Image/Ticket/4424A0.jpg");
+  height: 400px;
+  width: 1000px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 4%;
+}
+
+.wrapper .complete-content .card .info {
+  width: 800px;
+  margin-top: 3%;
+}
+
+.wrapper .complete-content .back-home {
+  margin-left: 38%;
+}
+
+.title, .toolbars {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+}
+/*# sourceMappingURL=finish.css.map */
