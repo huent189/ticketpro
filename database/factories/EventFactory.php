@@ -19,5 +19,6 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'startSellingTime' => $startSellingTime,
         'endSellingTime' => $endSellingTime,
         'status' => EventStatus::Draft,
+        'isPopular' => rand(0,1),
     ];
 });

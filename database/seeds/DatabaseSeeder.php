@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Category;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -41,5 +41,17 @@ class DatabaseSeeder extends Seeder
         //     $e->location()->save(factory(App\Location::class)->make());
         // });
         factory(App\Customer::class, 20)->create();
+        Category::where('name', 'music')->first()->events->each(function($e){
+            $e->name = "Music ".$e->name;
+            $e->save();
+        });
+        Category::where('name', 'sport')->first()->events->each(function($e){
+            $e->name = "Sport ".$e->name;
+            $e->save();
+        });
+        Category::where('name', 'conference')->first()->events->each(function($e){
+            $e->name = "Conference ".$e->name;
+            $e->save();
+        });
     }
 }
