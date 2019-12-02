@@ -84,4 +84,11 @@ class HomeController extends Controller
 
         return view('front-end.modules.sport',compact('eventList'));
     }
+
+
+    public function getTicketDetail($eventId)
+    {
+        $event = Event::where('id',$eventId)->get();
+        return view('front-end.ticket.ticket-detail',compact('event'));
+    }
 }

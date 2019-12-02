@@ -12,7 +12,7 @@
 */
 
 Route::get('/','HomeController@getIndex')->name('home');
-
+Route::get('/ticket-detail/{eventId}','HomeController@getTicketDetail')->name('ticket-detail');
 
 //TODO::group router
 Route::get('/sport','HomeController@getSportEvent')->name('sport');
@@ -97,6 +97,11 @@ Route::prefix('organizer')->group(function(){
 });
 
 
+
+
+/**
+ * Route cho phần đăng nhập bằng google
+ */
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
 Route::get('/logout','SocialController@logout')->name('logout');

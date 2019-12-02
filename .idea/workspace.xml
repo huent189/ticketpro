@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d91867df-83b1-44db-b436-0c8fed398854" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/SocialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/SocialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/public/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/public/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/.env" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/conference.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/conference.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/music.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/music.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/sport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/modules/sport.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticketpro/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -163,7 +167,13 @@
       <workItem from="1574616273017" duration="6746000" />
       <workItem from="1574623084497" duration="626000" />
       <workItem from="1574648313809" duration="1398000" />
-      <workItem from="1574663382626" duration="6220000" />
+      <workItem from="1574663382626" duration="8124000" />
+      <workItem from="1574753903963" duration="90000" />
+      <workItem from="1574760694776" duration="2411000" />
+      <workItem from="1574788758508" duration="1218000" />
+      <workItem from="1574932784773" duration="791000" />
+      <workItem from="1574933921660" duration="2797000" />
+      <workItem from="1575184186009" duration="617000" />
     </task>
     <servers />
   </component>

@@ -45,8 +45,8 @@
                                             <div class="padding-10">
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell event-title">
-                                                        <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
-                                                            title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
+                                                        <a href="{{url('ticket-detail/'.$event->id)}}"
+                                                            title="{{$event->name}}" target="_blank">
                                                             {{$event->name}}
                                                         </a>
                                                     </div>
@@ -88,8 +88,8 @@
                                             <div class="padding-10">
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell event-title">
-                                                        <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
-                                                            title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
+                                                        <a href="{{url('ticket-detail/'.$event->id)}}"
+                                                            title="{{$event->name}}" target="_blank">
                                                             {{$event->name}}
                                                         </a>
                                                     </div>
@@ -132,8 +132,8 @@
                                             <div class="padding-10">
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell event-title">
-                                                        <a href="https://ticketbox.vn/event/chay-vi-trai-tim-run-for-the-heart-2019-77019?source=home_hot_1"
-                                                            title="CHẠY VÌ TRÁI TIM / RUN FOR THE HEART 2019" target="_blank">
+                                                        <a href="{{url('ticket-detail/'.$event->id)}}"
+                                                            title="{{$event->name}}" target="_blank">
                                                             {{$event->name}}
                                                         </a>
                                                     </div>
