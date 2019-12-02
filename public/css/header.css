@@ -10,8 +10,8 @@
     display: flex;
     -ms-flex-pack: distribute;
         justify-content: space-around;
-    width: 500px;
-    left: 60px;
+    width: 700px;
+    left: 10px;
     top: 29px;
   }
   

@@ -1,0 +1,158 @@
+.wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
+}
+
+.wrapper .side-left {
+  background-color: #414141;
+}
+
+.wrapper .side-left .side-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid white;
+}
+
+.wrapper .side-left .side-top .logo {
+  background-image: url("/Image/icon/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 80px;
+  width: 80px;
+  margin-top: -2%;
+}
+
+.wrapper .side-left .side-top .acc {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: -3%;
+  margin-right: 4%;
+}
+
+.wrapper .side-left .side-top .acc .text {
+  color: white;
+  margin-right: 2%;
+}
+
+.wrapper .side-left .side-top .acc .avatar {
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.wrapper .side-left .toolbar .list {
+  margin-left: -40px;
+}
+
+.wrapper .side-left .toolbar .list .list-group {
+  height: 70px;
+  color: white;
+  margin-bottom: 3px;
+  padding-left: 15%;
+  padding-top: 7%;
+  border-right: 1px solid #414141;
+}
+
+.wrapper .side-left .toolbar .list .list-group:hover {
+  background-color: white;
+  padding-left: 20px;
+  color: #414141;
+  padding-left: 15%;
+  padding-top: 7%;
+  border-right: 1px solid #414141;
+}
+
+.wrapper .side-right {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  height: 635px;
+  overflow: scroll;
+}
+
+.wrapper .side-right .banner-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-image: url("/Image/icon/cover-event.jpg");
+  height: 350px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .side-right .banner-right a {
+  text-decoration: none;
+}
+
+.wrapper .side-right .banner-right a .noti {
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.wrapper .side-right .info-event .event-name {
+  margin-top: 4%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.wrapper .side-right .info-event .event-name .space {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  margin-bottom: 2%;
+}
+
+.wrapper .side-right .save-continue {
+  margin-top: 5%;
+  margin-left: 14%;
+  margin-bottom: 10%;
+}
+
+.wrapper .side-right .save-continue button {
+  width: 300px;
+  height: 50px;
+  margin-left: 1px;
+  border: 1px solid #e55b00;
+  background-color: #e55b00;
+  color: white;
+}
+
+.side-left {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+}
+
+.side-right {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2/4;
+}
+/*# sourceMappingURL=CreateEvent1.css.map */

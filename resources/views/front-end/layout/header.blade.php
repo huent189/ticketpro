@@ -12,6 +12,7 @@
                     <div class="component-toolbar"><a href="/sport">SPORT</a></div>
                     <div class="component-toolbar"><a href="/music">MUSIC</a></div>
                     <div class="component-toolbar"><a href="/conference">CONFERENCE</a></div>
+                    <div class="component-toolbar"><a href="#">CREATE EVENT</a></div>
                 </div>
                 <div class="search-form">
                     <input type="text" placeholder="Search..">
