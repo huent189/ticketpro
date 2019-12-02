@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/buyTicket.css">
+    <link rel="stylesheet" href="/css/CreateEvent1.css">
+    <link rel="stylesheet" href="/css/CreateEvent2.css">
+    <link rel="stylesheet" href="/css/CreateEvent3.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
