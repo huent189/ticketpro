@@ -19,7 +19,7 @@ Route::get('/sport','HomeController@getSportEvent')->name('sport');
 Route::get('/music','HomeController@getMusicEvent');
 Route::get('/conference','HomeController@getConferenceEvent');
 
-
+Route::get('/event/{eventId}/ticket-booking/{userId}', 'BookingController@chooseTicket'); 
 
 //Auth
 /**
