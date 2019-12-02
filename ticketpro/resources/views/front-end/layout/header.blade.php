@@ -26,7 +26,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 150px;">
                                 <a class="dropdown-item" href="#">Quản lý trang</a>
                                 <a class="dropdown-item" href="#">Nhật ký hoạt động</a>
-                                <a class="dropdown-item" href="#">Cài đặt</a>
+                                <a class="dropdown-item" href="{{route('create-event')}}">Tạo sự kiện mới</a>
                                 <a class="dropdown-item" href="{{route('logout')}}">Đăng xuất</a>
                             </div>
                         </div>
