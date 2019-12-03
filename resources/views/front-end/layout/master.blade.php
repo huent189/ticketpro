@@ -7,15 +7,15 @@
     <title>@yield('pageTitle')</title>
 
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='ticketpro\public\fonts\Titillium.css' rel='stylesheet' type='text/css'>
+    <link href='ticketpro\public\fonts\Roboto.css' rel='stylesheet' type='text/css'>
+    <link href='ticketpro\public\fonts\Titillium.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="ticketpro\public\css\w3.css">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="ticketpro\public\bootstrap\css\bootstrap.min.css">
+    <script src="ticketpro\public\jquery\jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="ticketpro\public\bootstrap\css\bootstrap.min.css"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

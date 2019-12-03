@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d91867df-83b1-44db-b436-0c8fed398854" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/resources/views/front-end/layout/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketpro/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketpro/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-end/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/layout/master.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,10 +143,16 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Laravel-6-Login-with-Google" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/bootstrap/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ticketpro\public\bootstrap\css" />
+      <recent name="C:\xampp\htdocs\ticketpro\public\jquery" />
+      <recent name="C:\xampp\htdocs\ticketpro\public\css" />
+      <recent name="C:\xampp\htdocs\ticketpro\public\fonts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ticketpro\ticketpro\resources\views\front-end\layout" />
     </key>
@@ -183,6 +190,9 @@
       <workItem from="1574933921660" duration="2797000" />
       <workItem from="1575184186009" duration="617000" />
       <workItem from="1575300813734" duration="2845000" />
+      <workItem from="1575354065348" duration="14000" />
+      <workItem from="1575354091826" duration="951000" />
+      <workItem from="1575355949870" duration="2511000" />
     </task>
     <servers />
   </component>
