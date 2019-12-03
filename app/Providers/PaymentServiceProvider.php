@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Services\PaymentGateway\Payment;
+use App\Services\PaymentGateway\Payment;
 
 class PaymentServiceProvider extends ServiceProvider
 {

@@ -1,22 +1,25 @@
 <?php
 
-namespace Services\PaymentGateway;
+namespace App\Services\PaymentGateway;
+
+use Illuminate\Support\Facades\URL;
 
 class Payment
 {
     public function purchase($bookingId, $orderInfo, $amount, $clientIp)
     {
-        $vnp_HashSecret = env(VNP_CHECKSUM); //Chuỗi bí mật
-        $vnp_OrderType = 190003;
+        $vnp_HashSecret = env('VNP_CHECKSUM'); //Chuỗi bí mật
+        $vnp_OrderType = 'topup';
         $vnp_Amount = $amount * 100;
         $vnp_Locale = 'vn';
-        $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.htm";
+        $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         //TODO : edit this
-        $vnp_Returnurl = "http://localhost/vnpay_php/vnpay_return.php";
+        $vnp_Returnurl = URL::to('booking/complete');
         $inputData = array(
             "vnp_Version" => "2.0.0",
-            "vnp_TmnCode" => env(VNP_TMN_CODE),
+            "vnp_TmnCode" => env('VNP_TMN_CODE'),
             "vnp_Amount" => $vnp_Amount,
+            // "vnp_BankCode" => "NCB",
             "vnp_Command" => "pay",
             "vnp_CreateDate" => date('YmdHis'),
             "vnp_CurrCode" => "VND",
@@ -46,6 +49,8 @@ class Payment
             $vnpSecureHash = hash('sha256',$vnp_HashSecret . $hashdata);
             $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
         }
+        error_log($vnp_Url);
+        return  $vnp_Url;
     }
 
     public function receiveIPN()

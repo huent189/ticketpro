@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Services\PaymentGateway\Payment;
+use App\Services\PaymentGateway\Payment;
 
 class BookingController extends Controller
 {
@@ -23,7 +23,7 @@ class BookingController extends Controller
     }
     public function purchase(Request $request)
     {
-        $this->payment->purchase('111','test vn pay', 20000, Request::ip());
+        return redirect($this->payment->purchase('12345','test vn pay', 20000, $request->ip()));
     }
     public function completePayment(Request $request)
     {
