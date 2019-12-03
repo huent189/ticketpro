@@ -15,6 +15,7 @@ class HomeController extends Controller
 
     public function getIndex()
     {
+        error_log('someone call home');
         $slide = Event::where('isPopular','1')->take(4)->get();
 
         $sportListEvent = Category::where('name', 'sport')->first()->events->take(2);

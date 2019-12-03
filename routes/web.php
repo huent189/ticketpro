@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\BookingController;
+
 Route::get('/','HomeController@getIndex')->name('home');
 Route::get('/ticket-detail/{eventId}','HomeController@getTicketDetail')->name('ticket-detail');
 
@@ -111,3 +113,6 @@ Route::prefix('user')->group(function (){
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
 Route::get('/logout','SocialController@logout')->name('logout');
+Route::get('/VnPayIPN', 'BookingController@getIPN');
+Route::get('/booking/complete', 'BookingController@completePayment');
+Route::get('/booking/purchase', 'BookingController@purchase');
