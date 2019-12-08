@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@getIndex')->name('home');
-Route::get('/ticket-detail/{eventId}','HomeController@getTicketDetail')->name('ticket-detail');
+// Route::get('/ticket-detail/{eventId}','HomeController@getTicketDetail')->name('ticket-detail');
 
 //TODO::group router
 Route::get('/sport','HomeController@getSportEvent')->name('sport');

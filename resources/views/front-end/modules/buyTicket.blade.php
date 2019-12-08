@@ -3,48 +3,32 @@
 @section('content')
 <div class="main main-choose-tickets">
         <div class="wrapper">
-            <div class="banner"></div>
+            <div class="banner" style='background-image: url("{{asset($event->image)}}")'></div>
             <div class="title">
                 <div class="media">
-                    <img src="https://picsum.photos/200/200" style="height: 100px; width: 100px;"
+                    <img src="{{asset($event->organizer->profileImage)}}" style="height: 100px; width: 100px;"
                         class="align-self-start mr-3" alt="...">
                     <div class="media-body">
-                        <h5 class="mt-0">Show của Thế Anh</h5>
-                        <p>Thứ 7 Ngày 09 tháng 11 năm 2019 (08:00 PM - 11:00 PM)</p>
-                        <p>Đại học Công nghệ - Đại học Quốc gia Hà Nội</p>
-                        <p>144 Xuân Thủy,Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+                    <h5 class="mt-0">{{$event->name}}</h5>
+                        <p>{{$event->startTime->dayOfWeek === 0 ? "Chủ nhật" : "Thứ ". strval($event->startTime->dayOfWeek + 1)}} 
+                            Ngày {{$event->startTime->day}} tháng {{$event->startTime->month}} 
+                            năm {{$event->startTime->year}} ({{$event->startTime->hour}}h{{$event->startTime->minute}}p - {{$event->endTime->hour}}h{{$event->endTime->minute}}p)</p>
+                        <p>{{$event->location->place}}</p>
+                        <p>{{$event->location->fullAddress}}, {{$event->location->city}}</p>
                     </div>
                 </div>
+                @if ($event->status == 4)
                 <div class="btn-buyTicket">
-                        <button type="button" style="height: 60px; background-color:  #e55b00; border: 1px solid #e55b00 ; " class="btn btn-primary">BUY TICKET</button>
-                </div>
+                    <button type="button" style="height: 60px; background-color:  #e55b00; border: 1px solid #e55b00 ; " class="btn btn-primary">MUA VÉ</button>
+                </div> 
+                @endif
             </div>
             <div class="introduction">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mt-0">Giới thiệu</h3>
                         <div class="space"></div>
-                        Cras sit amet
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                        lacinia congue felis in faucibus.
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                        lacinia congue felis in faucibus.
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                        lacinia congue felis in faucibus.
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                        lacinia congue felis in faucibus.
-                        Cras sit amet nibh liberolum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                        vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        Cras sit amet nibh libero, in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                        lacinia congue felis in faucibus.
-                        nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                        vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-                        congue felis in faucibus.
+                        {{$event->description}}
                     </div>
                 </div>
             </div>
@@ -53,44 +37,28 @@
                     <div class="media-body">
                         <h3 class="mt-0">Thông tin vé</h3>
                         <div class="space"></div>
-                        <div class="img-location"></div>
+                        <div class="img-location" style="background-image: url({{asset($event->ticketMap)}})"></div>
                         <div class="ticket">
                                 <table class="table">
                                     <tbody>
+                                        @for ($i = 0; $i < count($event->ticketClasses); $i++)
                                         <tr>
-                                            <th scope="row">1</th>
+                                        <th scope="row">{{$i + 1}}</th>
                                             <td>
-                                                <h5>HOOK A:</h5>
-                                                <p>Vị trí: Khán đài A</p>
-                                                <p>Qùa tặng sẽ nhận tại sự kiện: nón</p>
+                                            <h5>{{$event->ticketClasses[$i]->type}}</h5>
+                                            @if ($event->ticketClasses[$i]->location)
+                                            <p>Vị trí: {{$event->ticketClasses[$i]->location}}</p>    
+                                            @endif
+                                            @if ($event->ticketClasses[$i]->benefit)
+                                            <p>Quyền lợi: {{$event->ticketClasses[$i]->benefit}}</p>
+                                            @endif
                                             </td>
                                             <td>
-                                                <h5>400000VND</h5>
+                                            <h5>{{$event->ticketClasses[$i]->price}}VND</h5>
                                             </td>
                                 
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>
-                                                <h5>HOOK A:</h5>
-                                                <p>Vị trí: Khán đài A</p>
-                                                <p>Qùa tặng sẽ nhận tại sự kiện: nón</p>
-                                            </td>
-                                            <td>
-                                                <h5>400000VND</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>
-                                                <h5>HOOK A:</h5>
-                                                <p>Vị trí: Khán đài A</p>
-                                                <p>Qùa tặng sẽ nhận tại sự kiện: nón</p>
-                                            </td>
-                                            <td>
-                                                <h5>400000VND</h5>
-                                            </td>
-                                        </tr>
+                                        </tr>    
+                                        @endfor
                                     </tbody>
                                 </table>
                         </div>

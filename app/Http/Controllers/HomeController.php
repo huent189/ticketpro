@@ -83,7 +83,11 @@ class HomeController extends Controller
 
     public function getTicketDetail($eventId)
     {
-        $event = Event::where('id',$eventId)->get();
-        return view('front-end.ticket.ticket-detail',compact('event'));
+        $event = Event::where('id',$eventId)->first();
+        // $event = Event::findOrFail($eventId);
+        if($event){
+            return view('front-end.modules.buyTicket', compact('event'));
+        }
+        return "Xin loi su kien nay khong ton tai";
     }
 }
