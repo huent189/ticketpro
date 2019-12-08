@@ -15,18 +15,14 @@ class HomeController extends Controller
 
     public function getIndex()
     {
-        error_log('someone call home');
         $slide = Event::where('isPopular','1')->take(4)->get();
-
         $sportListEvent = Category::where('name', 'sport')->first()->events->take(2);
-
         // Category::join('events','events.categoryId','=','categories.id')
         // ->join('ticketClasses','ticketClasses.eventId','=','events.id')
         // ->join('locations','events.locationId','=','locations.id')
         // ->select('events.name','events.image','locations.place','ticketClasses.price')
         // ->where('categories.id','1')
         // ->paginate(2);
-
         $musicListEvent = Category::where('name', 'music')->first()->events->take(2);
 //            Category::join('events','events.categoryId','=','categories.id')
 //        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
@@ -34,7 +30,6 @@ class HomeController extends Controller
 //        ->select('events.name','events.image','locations.place','ticketClasses.price')
 //        ->where('categories.id','2')
 //        ->paginate(2);
-
         $conferenceListEvent = Category::where('name', 'conference')->first()->events->take(2);
 //            Category::join('events','events.categoryId','=','categories.id')
 //        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
@@ -43,7 +38,6 @@ class HomeController extends Controller
 //        ->where('categories.id','3')
 //        ->paginate(2);
         // dd($sportListEvent);
-
         return view('front-end.home',compact('sportListEvent','musicListEvent','conferenceListEvent','slide'));
     }
 
