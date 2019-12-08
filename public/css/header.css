@@ -9,9 +9,10 @@
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
-    width: 700px;
-    left: 10px;
+    justify-content: space-around;
+    width: 455px;
+    min-width: 400px;
+    left: 15px;
     top: 29px;
   }
 
@@ -47,13 +48,15 @@
     right: 11px;
     top: 4px;
   }
-.header .container-header .search-form .dropdown {
+
+
+.site-branding-area .container .search-form .dropdown {
     position: absolute;
     top: 0px;
     right: -40px;
 }
 
-.header .container-header .search-form .dropdown .dropdown-menu a:hover {
+.site-branding-area .container .search-form .dropdown .dropdown-menu a:hover {
     background-color: #e55b00;
     color: #000000;
 }
@@ -85,52 +88,5 @@
       font-size: 18px!important;
   }
 
-/* @media only screen and (max-width: 700px) {
-   .site-branding-area .container .toolbar {
-    display: none;
-  }
 
-  .site-branding-area .container .toolbar .component-toolbar a {
-    text-decoration: none;
-    font-size: 22px;
-    font-weight: 700;
-    color: white;
-  }
-
-  .site-branding-area .container .search-form {
-   display:none;
-  }
-
-  .site-branding-area .container .search-form input {
-   display:none;
-  }
-
-  .site-branding-area .container .search-form .icon-search {
-    background-image: url("/Image/icon/loupe.svg");
-    background-repeat: no-repeat;
-    height: 21px;
-    width: 21px;
-    position: absolute;
-    right: 11px;
-    top: 4px;
-  }
-
-  .site-branding-area .container .sign-up-in {
-    position: absolute;
-    right: 100px;
-    top: 60px;
-  }
-
-  .site-branding-area .container .sign-up-in a {
-    padding: 3px 3px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    font-size: 14px;
-  }
-
-  .site-branding-area .container .sign-up-in a:hover {
-    background-color: #8d2b08;
-  }
-} */
  /*END HEADER */

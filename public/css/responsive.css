@@ -1,5 +1,11 @@
+
+@media only screen and (max-width: 1000px) {
+  .site-branding-area .container .toolbar .component-toolbar {
+    display: none;
+  }
+}
 @media only screen and (max-width: 768px) {
-  .header .container-header {
+  .site-branding-area .container {
     min-width: 1170px;
     position: relative;
     background-color: #e55b00;
@@ -11,7 +17,7 @@
     display: -ms-flexbox;
     display: flex;
   }
-  .header .container-header .logo {
+  .site-branding-area .container .logo {
     background-image: url("/Image/icon/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -22,7 +28,7 @@
     top: -5px;
     left: 2%;
   }
-  .header .container-header .toolbar {
+  .site-branding-area .container .toolbar {
     position: absolute;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -33,30 +39,30 @@
     left: 250px;
     top: 24px;
   }
-  .header .container-header .toolbar .component-toolbar {
+  .site-branding-area .container .toolbar .component-toolbar {
     display: none;
   }
-  .header .container-header .toolbar .component-toolbar a {
+  .site-branding-area .container .toolbar .component-toolbar a {
     text-decoration: none;
     font-size: 22px;
     font-weight: 700;
     color: white;
   }
-  .header .container-header .toolbar .component-toolbar a:hover {
+  .site-branding-area .container .toolbar .component-toolbar a:hover {
     padding: 5px 10px;
     background-color: #8d2b08;
   }
-  .header .container-header .search-form {
+  .site-branding-area .container .search-form {
     display: none;
     position: absolute;
     right: 50px;
     top: 24px;
   }
-  .header .container-header .search-form input {
+  .site-branding-area .container .search-form input {
     height: 32px;
     width: 280px;
   }
-  .header .container-header .search-form .icon-search {
+  .site-branding-area .container .search-form .icon-search {
     background-image: url("/Image/icon/loupe.svg");
     background-repeat: no-repeat;
     height: 21px;
@@ -65,20 +71,20 @@
     right: 11px;
     top: 4px;
   }
-  .header .container-header .sign-up-in {
+  .site-branding-area .container .sign-up-in {
     display: none;
     position: absolute;
     right: 100px;
     top: 55px;
   }
-  .header .container-header .sign-up-in a {
+  .site-branding-area .container .sign-up-in a {
     padding: 3px 3px;
     text-decoration: none;
     color: white;
     font-weight: 500;
     font-size: 14px;
   }
-  .header .container-header .sign-up-in a:hover {
+  .site-branding-area .container .sign-up-in a:hover {
     background-color: #8d2b08;
   }
   .footer {
