@@ -18,9 +18,10 @@
                     </div>
                 </div>
                 @if ($event->status == 4)
-                <div class="btn-buyTicket">
-                    <button type="button" style="height: 60px; background-color:  #e55b00; border: 1px solid #e55b00 ; " class="btn btn-primary">MUA VÉ</button>
-                </div> 
+            <form action='{{route('choose-ticket',['eventId' => $event->id])}}' class="btn-buyTicket">
+                    <button type="submit" style="height: 60px; background-color:  #e55b00; border: 1px solid #e55b00 ; " 
+                            class="btn btn-primary" h>MUA VÉ</button>
+                </form> 
                 @endif
             </div>
             <div class="introduction">
