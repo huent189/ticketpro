@@ -1,0 +1,77 @@
+@media only screen and (max-width: 1305px) {
+  .main.main-sign-in {
+    background-color: #f3f3f3;
+  }
+  .main.main-sign-in form {
+    margin-left: 20px;
+  }
+  .main.main-sign-in form button {
+    position: absolute;
+    right: 10%;
+    top: 23%;
+  }
+  .main.main-sign-in form input {
+    width: 450px;
+  }
+  .main.main-sign-in form .form-group .col-form-label {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .main.main-sign-in {
+    background-color: #f3f3f3;
+  }
+  .main.main-sign-in form {
+    margin-left: 20px;
+  }
+  .main.main-sign-in form button {
+    position: absolute;
+    right: 10%;
+    top: 21%;
+  }
+  .main.main-sign-in form input {
+    width: 400px;
+  }
+  .main.main-sign-in form .form-group .col-form-label {
+    width: 100px;
+  }
+  .main.main-sign-in form .title {
+    margin-bottom: 10px;
+  }
+  .main.main-sign-in form .title h1 {
+    font-size: 20px;
+    color: #e55b00;
+    font-weight: 700;
+  }
+  .main.main-sign-in form .title h3 {
+    color: #e55b00;
+    font-weight: 700;
+  }
+  .main.main-sign-in form .login-f-g {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 200px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-left: 22%;
+  }
+  .main.main-sign-in form .login-f-g .facebook {
+    background-image: url("/Image/icon/fb_login.png");
+    height: 70px;
+    width: 300px;
+    background-size: 80%;
+    background-repeat: no-repeat;
+  }
+  .main.main-sign-in form .login-f-g .google {
+    background-image: url("/Image/icon/images.png");
+    height: 70px;
+    width: 300px;
+    background-size: 80%;
+    background-repeat: no-repeat;
+  }
+}
+/*# sourceMappingURL=sign-in-res.css.map */
