@@ -34,8 +34,6 @@ class BookingController extends Controller
         }
         $tickets = $request->get("tickets");
         ReservedTicket::where('session_id', session()->getId())->delete();
-        // $validation_rules = [];
-        // $validation_messages = [];
         $order_total = 0;
         $quantity_available_validation_rules = [];
         $validator_fail = false;
@@ -133,8 +131,9 @@ class BookingController extends Controller
                 'redirectUrl' => route('event-detail', [
                     'eventId' => $eventId,
                 ])
-            ]);
+                ], 440);
         }
+        
     }   
     public function getIPN(Request $request)
     {
