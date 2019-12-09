@@ -71,6 +71,19 @@
           flex-grow: 7;
 }
 
+.wrapper .ticket-type .ticket-type-content button {
+  border: 1px solid #e55b00;
+  background-color: white;
+}
+
+.wrapper .ticket-type .ticket-type-content input {
+  border-bottom: 1px solid #e55b00;
+  border-top: 1px solid #e55b00;
+  border-left: none;
+  border-right: none;
+  width: 25px;
+}
+
 .wrapper .ticket-type .info-ticket {
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;

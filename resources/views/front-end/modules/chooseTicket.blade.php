@@ -40,7 +40,7 @@
                                     @if ($event->ticketClasses[$i]->is_sold_out)
                                     <td>Hết vé</td>
                                     @else
-                                    <td id="giatri"><input type="number" style="width:40px;"></td>
+                                    <td><button><i class="fas fa-minus"></i></button><input type="number"><button><i class="fas fa-plus"></i></button></td>
                                     @endif
                                   </tr>
                                   @endfor
