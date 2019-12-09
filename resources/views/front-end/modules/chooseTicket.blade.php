@@ -35,19 +35,19 @@
                                     <th scope="row">1</th>
                                     <td>Hook A</td>
                                     <td>400.000 VND</td>
-                                    <td>0</td>
+                                    <td><button><i class="fas fa-minus"></i></button><input type="number"><button><i class="fas fa-plus"></i></button></td>
                                   </tr>
                                   <tr>
                                     <th scope="row">2</th>
                                     <td>Hook B</td>
                                     <td>500.000 VND</td>
-                                    <td>1</td>
+                                    <td><button><i class="fas fa-minus"></i></button><input type="number"><button><i class="fas fa-plus"></i></button></td>
                                   </tr>
                                   <tr>
                                     <th scope="row">3</th>
                                     <td>Gold</td>
                                     <td>10.000.000 VND</td>
-                                    <td>1</td>
+                                    <td><button><i class="fas fa-minus"></i></button><input type="number"><button><i class="fas fa-plus"></i></button></td>
                                   </tr>
                                 </tbody>
                               </table>
