@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     function boot()
     {
         Schema::defaultStringLength(191);
+        Carbon::setLocale('vi_VN');
         Blade::directive('price_format', function ($money) {
             return "{{number_format($money, 0, '.', '.')}}";
         });

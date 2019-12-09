@@ -10,9 +10,7 @@
                         class="align-self-start mr-3" alt="...">
                     <div class="media-body">
                     <h5 class="mt-0">{{$event->name}}</h5>
-                        <p>{{$event->startTime->dayOfWeek === 0 ? "Chủ nhật" : "Thứ ". strval($event->startTime->dayOfWeek + 1)}} 
-                            Ngày {{$event->startTime->day}} tháng {{$event->startTime->month}} 
-                            năm {{$event->startTime->year}} ({{$event->startTime->hour}}h{{$event->startTime->minute}}p - {{$event->endTime->hour}}h{{$event->endTime->minute}}p)</p>
+                    <p>{{$event->startTime->isoFormat('dd, D-mm-YYYY')}} ({{$event->startTime->isoFormat('LT')}} - {{$event->endTime->isoFormat('LT')}})</p>
                         <p>{{$event->location->place}}</p>
                         <p>{{$event->location->fullAddress}}, {{$event->location->city}}</p>
                     </div>
