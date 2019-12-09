@@ -3,14 +3,17 @@
 @section('content')
 <div class="main main-choose-tickets">
            <div class="wrapper">
-               <div class="banner"></div>
+            <div class="banner" style='background-image: url("{{asset($event->image)}}")'></div>
                <div class="title"><div class="media">
-                <img src="https://picsum.photos/80/80" class="align-self-start mr-3" alt="...">
-                <div class="media-body">
-                  <h5 class="mt-0">Show của Thế Anh</h5>
-                  <p>Thứ 7 Ngày 09 tháng 11 năm 2019 (08:00 PM - 11:00 PM)</p>
-                  <p>Đại học Công nghệ - Đại học Quốc gia Hà Nội</p>
-                  <p>144 Xuân Thủy,Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+                <img src="{{asset($event->organizer->profileImage)}}" style="height: 100px; width: 100px;"
+                        class="align-self-start mr-3" alt="...">
+                    <div class="media-body">
+                      <h5 class="mt-0">{{$event->name}}</h5>
+                      <p>{{$event->startTime->dayOfWeek === 0 ? "Chủ nhật" : "Thứ ". strval($event->startTime->dayOfWeek + 1)}} 
+                          Ngày {{$event->startTime->day}} tháng {{$event->startTime->month}} 
+                          năm {{$event->startTime->year}} ({{$event->startTime->hour}}h{{$event->startTime->minute}}p - {{$event->endTime->hour}}h{{$event->endTime->minute}}p)</p>
+                      <p>{{$event->location->place}}</p>
+                      <p>{{$event->location->fullAddress}}, {{$event->location->city}}</p>
                 </div>
               </div>
             </div>
@@ -31,24 +34,18 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  @for ($i = 0; $i < count($event->ticketClasses); $i++)
                                   <tr>
-                                    <th scope="row">1</th>
-                                    <td>Hook A</td>
-                                    <td>400.000 VND</td>
+                                    <th scope="row">{{$i + 1}}</th>
+                                    <td>{{$event->ticketClasses[$i]->type}}</td>
+                                    <td>@price_format($event->ticketClasses[$i]->price) VND</td>
+                                    @if ($event->ticketClasses[$i]->is_sold_out)
+                                    <td>Hết vé</td>
+                                    @else
                                     <td>0</td>
+                                    @endif
                                   </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td>Hook B</td>
-                                    <td>500.000 VND</td>
-                                    <td>1</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">3</th>
-                                    <td>Gold</td>
-                                    <td>10.000.000 VND</td>
-                                    <td>1</td>
-                                  </tr>
+                                  @endfor
                                 </tbody>
                               </table>
                     </div>
@@ -66,23 +63,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <th scope="row">1</th>
                                         <td>Vé miễn phí</td>
                                         <td>2</td>
                                         <td>0 VND</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Vé Gold</td>
-                                        <td>1</td>
-                                        <td>10.000.000 VND</td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                             <div class="total">
                                 <div class="text">Tổng tiền</div>
-                                <div class="money">10.000.000 VND</div>
+                                <div class="money">0 VND</div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary btn-lg"

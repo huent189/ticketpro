@@ -25,7 +25,7 @@ class TicketClass extends Model
      * 
      * @var string
      */
-    protected $table = 'ticketClasses';
+    protected $table = 'ticketclasses';
 
     /**
      * The "type" of the auto-incrementing ID.
@@ -65,5 +65,8 @@ class TicketClass extends Model
     public function getQuantityRemainingAttribute()
     {
         return ($this->numberAvailable - $this->getQuantityReservedAttribute());
+    }
+    public function getIsSoldoutAttribute(){
+        return ($this->getQuantityRemainingAttribute() <= 0);   
     }
 }

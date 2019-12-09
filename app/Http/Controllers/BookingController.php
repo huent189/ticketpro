@@ -19,8 +19,11 @@ class BookingController extends Controller
     // }
     public function showSelectTicket($eventId)      
     {
-        return view('front-end.modules.chooseTicket');
-        
+        $event = Event::find($eventId)->first();
+        if($event){
+            return view('front-end.modules.chooseTicket', compact('event'));
+        }
+        return "Xin loi su kien nay khong ton tai";
     }
     public function validateTickets(Request $request, $eventId)
     {

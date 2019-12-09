@@ -55,7 +55,7 @@
                                             @endif
                                             </td>
                                             <td>
-                                            <h5>{{$event->ticketClasses[$i]->price}}VND</h5>
+                                            <h5>@price_format($event->ticketClasses[$i]->price) VND</h5>
                                             </td>
                                 
                                         </tr>    
