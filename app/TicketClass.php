@@ -69,4 +69,8 @@ class TicketClass extends Model
     public function getIsSoldoutAttribute(){
         return ($this->getQuantityRemainingAttribute() <= 0);   
     }
+    public function getMaxTicketAttribute()
+    {
+        return min($this->maxPerPerson, $this->getQuantityRemainingAttribute());
+    }
 }

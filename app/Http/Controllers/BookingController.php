@@ -52,7 +52,7 @@ class BookingController extends Controller
                     'message' => 'Selected invalid ticket class ',
                 ], 400);
             }
-            $max_per_person = min($ticket->maxPerPerson, $ticket->quantity_remaining);
+            $max_per_person = $ticket->max_ticket;
             $quantity_available_validation_rules[$ticket_ordered["ticket-class"]] = [
                 'numeric',
                 'min:'. $ticket->minPerPerson,

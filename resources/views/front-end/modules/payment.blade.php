@@ -104,3 +104,6 @@
     </div>
 
 @endsection('content')
+@section('scripts')
+<script src="{{asset("js/clock.js")}}"></script>
+@endsection

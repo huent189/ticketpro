@@ -36,11 +36,14 @@
                                   <tr>
                                     <th scope="row">{{$i + 1}}</th>
                                     <td>{{$event->ticketClasses[$i]->type}}</td>
-                                    <td>@price_format($event->ticketClasses[$i]->price) VND</td>
+                                    <td id="{{$event->ticketClasses[$i]->type."_price"}}">@price_format($event->ticketClasses[$i]->price) VND</td>
                                     @if ($event->ticketClasses[$i]->is_sold_out)
                                     <td>Hết vé</td>
                                     @else
-                                    <td><button><i class="fas fa-minus"></i></button><input type="number"><button><i class="fas fa-plus"></i></button></td>
+                                  <td><button><i class="fas fa-minus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', -1)"
+                                    ></i></button>
+                                    <input type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{$event->ticketClasses[$i]->type. "_val"}}" price="{{$event->ticketClasses[$i]->price}}">
+                                    <button><i class="fas fa-plus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', 1)"></i></button></td>
                                     @endif
                                   </tr>
                                   @endfor
@@ -60,18 +63,18 @@
                                         <th scope="col">Thành tiền</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="ticket_info">
                                     {{-- <tr>
                                         <th scope="row">1</th>
                                         <td>Vé miễn phí</td>
-                                        <td>2</td>
+                                        <td id="info_class">2</td>
                                         <td>0 VND</td>
                                     </tr> --}}
                                 </tbody>
                             </table>
                             <div class="total">
                                 <div class="text">Tổng tiền</div>
-                                <div class="money">0 VND</div>
+                                <div class="money" id="sumAll">0 VND</div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary btn-lg"
@@ -82,3 +85,6 @@
         </div>
 
 @endsection('content')
+@push('scripts')
+      <script type="text/javascript" src="{{asset("/js/ticket_booking.js")}}"></script>
+@endpush
