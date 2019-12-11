@@ -6,7 +6,7 @@
 }
 
 .wrapper .banner {
-  background-image: url("/Image/Ticket/4424A0.jpg");
+  /* background-image: url("/Image/Ticket/4424A0.jpg"); */
   background-size: contain;
   height: 500px;
   background-position: center;
@@ -69,6 +69,20 @@
   -webkit-box-flex: 7;
       -ms-flex-positive: 7;
           flex-grow: 7;
+}
+
+.wrapper .ticket-type .ticket-type-content button {
+  border: 1px solid #e55b00;
+  background-color: white;
+}
+
+.wrapper .ticket-type .ticket-type-content span {
+  border-bottom: 1px solid #e55b00;
+  border-top: 1px solid #e55b00;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 3px;
+  padding-top: 2px;
 }
 
 .wrapper .ticket-type .info-ticket {

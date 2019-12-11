@@ -21,7 +21,7 @@
                                                             <div class="padding-10">
                                                                 <div class="table w-100 margin-bottom-0">
                                                                     <div class="table-cell event-title">
-                                                                        <a href="{{url('ticket-detail/'.$event->id)}}"
+                                                                        <a href="{{url('ticket-detail/'.$eventList[$i]->id)}}"
                                                                            title="{{$eventList[$i]->name}}" target="_blank">
                                                                             {{$eventList[$i]->name}}
                                                                         </a>
@@ -32,7 +32,7 @@
                                                                 <div class="table w-100 margin-bottom-0">
                                                                     <div class="table-cell">
                                                                         <div class="event-price w-100">
-                                                                            <span class="color-6">Từ</span> <strong> {{$eventList[$i]->ticketClasses->first()->price}} VNĐ</strong>
+                                                                            <span class="color-6">Từ</span> <strong> {{$eventList[$i]->minPrice()}} VNĐ</strong>
                                                                         </div>
                                                                         <div class="event-tags w-100">
                                                                             <div class="tag-venues">
@@ -59,7 +59,7 @@
                                                                 <div class="padding-10">
                                                                     <div class="table w-100 margin-bottom-0">
                                                                         <div class="table-cell event-title">
-                                                                            <a href="{{url('ticket-detail/'.$event->id)}}"
+                                                                            <a href="{{url('ticket-detail/'.$eventList[$i]->id)}}"
                                                                                title="{{$eventList[$i]->name}}" target="_blank">
                                                                                 {{$eventList[$i]->name}}
                                                                             </a>
@@ -70,7 +70,7 @@
                                                                     <div class="table w-100 margin-bottom-0">
                                                                         <div class="table-cell">
                                                                             <div class="event-price w-100">
-                                                                                <span class="color-6">Từ</span> <strong> {{$eventList[$i]->ticketClasses->first()->price}} VNĐ</strong>
+                                                                                <span class="color-6">Từ</span> <strong> {{$eventList[$i]->minPrice()}} VNĐ</strong>
                                                                             </div>
                                                                             <div class="event-tags w-100">
                                                                                 <div class="tag-venues">

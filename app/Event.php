@@ -37,7 +37,7 @@ class Event extends Model
      * @var array
      */
     protected $fillable = ['name', 'categoryId', 'organizerId', 'startTime', 'endTime', 'description', 'image', 'locationId', 'startSellingTime', 'endSellingTime', 'status', 'created_at', 'updated_at'];
-
+    protected $dates = ['startTime', 'endTime'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -69,5 +69,18 @@ class Event extends Model
     public function ticketClasses()
     {
         return $this->hasMany('App\TicketClass', 'eventId');
+    }
+    public function minPrice()
+    {
+        $minPrice=0;
+        foreach($this->ticketClasses as $ticket)
+        {
+            if($ticket->price<$minPrice)
+            {
+                $minPrice=$ticket->price;
+            }
+        }
+
+        return $minPrice;
     }
 }
