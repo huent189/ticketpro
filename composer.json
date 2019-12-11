@@ -13,7 +13,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/socialite": "^4.3",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "mservice/payment": "*"
     },
     "require-dev": {
         "beyondcode/laravel-er-diagram-generator": "^1.4",

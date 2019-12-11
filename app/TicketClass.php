@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @property integer $id
@@ -23,7 +25,7 @@ class TicketClass extends Model
      * 
      * @var string
      */
-    protected $table = 'ticketClasses';
+    protected $table = 'ticketclasses';
 
     /**
      * The "type" of the auto-incrementing ID.
@@ -52,5 +54,23 @@ class TicketClass extends Model
     {
         return $this->hasMany('App\BookingDetail', 'ticketClassId');
     }
-
+    public function getQuantityReservedAttribute()
+    {
+        $reserved_total = DB::table('reserved_tickets')
+        ->where('ticket_id', $this->id)
+        ->where('expires', '>', Carbon::now())
+        ->sum('quantity_reserved');
+        return $reserved_total;
+    }
+    public function getQuantityRemainingAttribute()
+    {
+        return ($this->numberAvailable - $this->getQuantityReservedAttribute());
+    }
+    public function getIsSoldoutAttribute(){
+        return ($this->getQuantityRemainingAttribute() <= 0);   
+    }
+    public function getMaxTicketAttribute()
+    {
+        return min($this->maxPerPerson, $this->getQuantityRemainingAttribute());
+    }
 }

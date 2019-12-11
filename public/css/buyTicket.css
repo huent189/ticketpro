@@ -43,17 +43,15 @@
   margin-right: 9%;
 }
 
-.wrapper .info .img-location {
-  height: 400px;
-  width: 300px;
-  background-size: cover;
+.wrapper .info .media .media-body .img-location {
+  height: 750px;
+  background-size: 50%;
   background-repeat: no-repeat;
-  background-image: url("/Image/icon/home_enfo.jpg");
-  margin-left: 35%;
-  margin-bottom: 2%;
+  background-image: url("/Image/icon/56268553_2289767041344300_6768879041295417344_o.jpg");
+  margin-bottom: -2%;
 }
 
-.wrapper .info .space {
+.wrapper .info .media .media-body .space {
   margin-bottom: 2%;
   width: 100%;
   height: 2px;

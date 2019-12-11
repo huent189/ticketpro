@@ -1,17 +1,17 @@
 @extends('front-end.layout.master')
 @section('pageTitle', 'TicketPro: chooseTickets')
 @section('content')
+
 <div class="main main-choose-tickets">
            <div class="wrapper">
-            <div class="banner" style='background-image: url("{{asset($event->image)}}")'></div>
+               <div class="banner"></div>
                <div class="title"><div class="media">
-                <img src="{{asset($event->organizer->profileImage)}}" style="height: 100px; width: 100px;"
-                        class="align-self-start mr-3" alt="...">
-                    <div class="media-body">
-                      <h5 class="mt-0">{{$event->name}}</h5>
-                      <p>{{$event->startTime->isoFormat('dd, D-mm-YYYY')}} ({{$event->startTime->isoFormat('LT')}} - {{$event->endTime->isoFormat('LT')}})</p>
-                      <p>{{$event->location->place}}</p>
-                      <p>{{$event->location->fullAddress}}, {{$event->location->city}}</p>
+                <img src="https://picsum.photos/80/80" class="align-self-start mr-3" alt="...">
+                <div class="media-body">
+                  <h5 class="mt-0">Show của Thế Anh</h5>
+                  <p>Thứ 7 Ngày 09 tháng 11 năm 2019 (08:00 PM - 11:00 PM)</p>
+                  <p>Đại học Công nghệ - Đại học Quốc gia Hà Nội</p>
+                  <p>144 Xuân Thủy,Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
                 </div>
               </div>
             </div>
@@ -32,23 +32,27 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  @for ($i = 0; $i < count($event->ticketClasses); $i++)
                                   <tr>
-                                    <th scope="row">{{$i + 1}}</th>
-                                    <td>{{$event->ticketClasses[$i]->type}}</td>
-                                    <td id="{{$event->ticketClasses[$i]->type."_price"}}">@price_format($event->ticketClasses[$i]->price) VND</td>
-                                    @if ($event->ticketClasses[$i]->is_sold_out)
-                                    <td>Hết vé</td>
-                                    @else
-                                  <td><button><i class="fas fa-minus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', -1)"
-                                    ></i></button>
-                                    <input type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{$event->ticketClasses[$i]->type. "_val"}}" price="{{$event->ticketClasses[$i]->price}}">
-                                    <button><i class="fas fa-plus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', 1)"></i></button></td>
-                                    @endif
+                                    <th scope="row">1</th>
+                                    <td>Hook A</td>
+                                    <td>400.000 VND</td>
+                                    <td id="giatri"><input type="number" style="width:40px;"></td>
                                   </tr>
-                                  @endfor
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Hook B</td>
+                                    <td>500.000 VND</td>
+                                    <td><input type="number" style="width:40px;"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">3</th>
+                                    <td>Gold</td>
+                                    <td>10.000.000 VND</td>
+                                    <td><input type="number" style="width:40px;"></td>
+                                  </tr>
                                 </tbody>
                               </table>
+                              <div class="error" style="color: red; margin-left: 5%;"> Vé mà bạn đặt đã hết. Xin lỗi về sự bất tiền này</div>
                     </div>
                     <div class="space"></div>
                     <div class="info-ticket">
@@ -63,28 +67,31 @@
                                         <th scope="col">Thành tiền</th>
                                     </tr>
                                 </thead>
-                                <tbody id="ticket_info">
-                                    {{-- <tr>
+                                <tbody>
+                                    <tr>
                                         <th scope="row">1</th>
                                         <td>Vé miễn phí</td>
-                                        <td id="info_class">2</td>
+                                        <td>2</td>
                                         <td>0 VND</td>
-                                    </tr> --}}
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Vé Gold</td>
+                                        <td>1</td>
+                                        <td id="thanhtien"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <div class="total">
                                 <div class="text">Tổng tiền</div>
-                                <div class="money" id="sumAll">0 VND</div>
+                                <div class="money">10.000.000 VND</div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary btn-lg"
-                            style="width: 30rem; background-color:  #e55b00; border: none; margin-top: 4%;">Tiếp tục</button>
+                            disabled style="width: 30rem; background-color:  #e55b00; border: none; margin-top: 4%;">Tiếp tục</button>
                     </div>
                 </div>
             </div>
         </div>
 
 @endsection('content')
-@push('scripts')
-      <script type="text/javascript" src="{{asset("/js/ticket_booking.js")}}"></script>
-@endpush

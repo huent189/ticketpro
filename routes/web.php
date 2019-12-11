@@ -11,15 +11,16 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/','HomeController@getIndex')->name('home');
-Route::get('/ticket-detail/{eventId}','HomeController@getTicketDetail')->name('ticket-detail');
+// Route::get('/ticket-detail/{eventId}','HomeController@getTicketDetail')->name('ticket-detail');
 
 //TODO::group router
 Route::get('/sport','HomeController@getSportEvent')->name('sport');
 Route::get('/music','HomeController@getMusicEvent');
 Route::get('/conference','HomeController@getConferenceEvent');
 
-Route::get('/event/{eventId}/ticket-booking/{userId}', 'BookingController@chooseTicket'); 
 
 //Auth
 /**
@@ -112,3 +113,11 @@ Route::prefix('user')->group(function (){
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
 Route::get('/logout','SocialController@logout')->name('logout');
+Route::prefix('event/{eventId}')->group(function(){
+    Route::get('/','HomeController@getTicketDetail')->name('event-detail');
+    Route::get('/ticket-booking', 'BookingController@showSelectTicket')->name('choose-ticket');
+    Route::get('/checkout', 'BookingController@showEventCheckout')->name('event-checkout');
+});
+Route::get('/booking/complete', 'BookingController@completePayment');
+// Route::get('/booking/purchase', 'BookingController@purchase');
+// Route::get('/event/{eventId}/ticket-booking/{userId}', 'BookingController@chooseTicket'); 

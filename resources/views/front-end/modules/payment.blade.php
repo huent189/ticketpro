@@ -26,7 +26,7 @@
                     <form>
                         <div class="form-group">
                             <label for="InputHo">Họ</label>
-                            <input type="text" class="form-control" placeholder="Nhập họ">
+                            <input type="text" class="form-control" placeholder="Nhập họ" onclick="start()">
                         </div>
                         <div class="form-group">
                             <label for="InputTen">Tên</label>
@@ -59,6 +59,12 @@
                 <div class="space"></div>
                 <div class="info-ticket">
                     <div class="card" style="width: 30rem;">
+                    <div class="clock"><i class="fas fa-stopwatch"></i></div>   
+                        <div class="show-clock">
+                            <span id="h">Giờ</span> :
+                            <span id="m">Phút</span> :
+                            <span id="s">Giây</span>
+                        </div>
                         <div class="title-info-ticket">Thông tin đặt vé</div>
                         <table class="table">
                             <thead>
@@ -98,3 +104,6 @@
     </div>
 
 @endsection('content')
+@section('scripts')
+<script src="{{asset("js/clock.js")}}"></script>
+@endsection
