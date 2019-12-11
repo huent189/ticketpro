@@ -1,10 +1,10 @@
 function changeTicket (self,ticket_class, val){
     var display_field = $('#'+ticket_class + "_val");
-    var current = parseInt(display_field.val());
+    var current = parseInt(display_field.html());
     current = current + val;
     console.log(current);
     if((current >= display_field.attr("min") && current <= display_field.attr("max"))){
-        display_field.val(current);
+        display_field.html(current);
         if($("#info_"+ticket_class).length){
             $("#info_"+ticket_class).html(current);
             $("#sum_"+ticket_class).html(current * display_field.attr("price"));
