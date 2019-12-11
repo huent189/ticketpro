@@ -47,7 +47,8 @@ class UserController extends Controller
 
         $image = $request->image->move(public_path('images\event'), $imageName);
 
-//        dd($image->getRealPath());
+//        dd($image);
+//        dd("public\\images\\event\\".$request->image->getClientOriginalName());
         $activeUser=Organizer::where('id', Auth::user()->id)->first();
 //        dd($activeUser);
         if(!$activeUser)
@@ -57,6 +58,8 @@ class UserController extends Controller
                 'name'=>Auth::user()->name,
                 'phone'=>$request->phoneNumber,
                 'email'=>Auth::user()->email,
+                'bankAccountNumber'=>$request->bankAccountNumber,
+                'bankAccountName'=>$request->bankAccountName,
 
             ]);
         }
@@ -74,17 +77,17 @@ class UserController extends Controller
         $category=Category::where('name',$request->categoryName)->first();
 //        dd($category);
         $event=Event::create([
-            'image'=>$image->getRealPath(),
+            'image'=>"images/event/".$imageName,
             'name'=>$request->eventName,
             'categoryId'=>$category->id,
             'organizerId'=>Auth::user()->id,
-            'startTime'=>$request->startTime,
-            'endTime'=>$request->endTime,
-            'description'=>$request->discription,
+            'startTime'=>date_create($request->startTime),
+            'endTime'=>date_create($request->endTime),
+            'description'=>$request->description,
             'locationId'=>$location->id,
-            'startSellingTime'=>$request->timeStartSell,
-            'endSellingTime'=>$request->timeEndSell,
-            'status'=>0,
+            'startSellingTime'=>date_create($request->timeStartSell),
+            'endSellingTime'=>date_create($request->timeEndSell),
+            'status'=>'0',
         ]);
 //        dd($event);
         TicketClass::create([

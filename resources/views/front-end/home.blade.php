@@ -11,6 +11,7 @@
                               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                               <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                             </ol>
+                            @if(count($slide)!=0)
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img class="d-block " src={{$slide[0]->image }} width="1100" height="300" alt="First slide">
@@ -21,6 +22,7 @@
                                 </div>
                                 @endfor
                             </div>
+                            @endif
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="sr-only">Previous</span>
@@ -35,6 +37,7 @@
                     <div  class="title"><a href="{{url('sport')}}">SPORT</a></div>
                     <div class="dash"></div>
                     <div class="content">
+                    @if(count($sportListEvent)>0)
                     @foreach($sportListEvent as $event)
                     <div class="component-ticket">
                             <div class="img item-1"><img src={{$event->image}} alt=""></div>
@@ -73,12 +76,15 @@
                             </div>
                         </div>
                     @endforeach
+                    @endif
                     </div>
+
                 </div>
                 <div class="category">
                     <div class="title"><a href="{{url('conference')}}">MUSIC</a></div>
                     <div class="dash"></div>
                     <div class="content">
+                    @if(count($musicListEvent)>0)
                     @foreach($musicListEvent as $event)
                     <div class="component-ticket">
                             <div class="img item-3"><img src={{$event->image}} alt=""></div>
@@ -116,6 +122,7 @@
                             </div>
                         </div>
                     @endforeach
+                    @endif
                     </div>
 {{--                    <div class="row">{{$musicListEvent->links()}}</div>--}}
                 </div>
@@ -123,6 +130,7 @@
                     <div class="title"><a href="{{url('conference')}}">CONFERENCE</a></div>
                     <div class="dash"></div>
                     <div class="content">
+                    @if(count($conferenceListEvent)>0)
                     @foreach($conferenceListEvent as $event)
                     <div class="component-ticket">
                             <div class="img item-5"><img src={{$event->image}} alt=""></div>
@@ -160,7 +168,7 @@
                             </div>
                         </div>
                     @endforeach
-
+                    @endif
                     </div>
 {{--                    <div class="row">{{$conferenceListEvent->links()}}</div>--}}
                 </div>

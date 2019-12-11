@@ -37,7 +37,7 @@
                             <div class="noti"> Tải ảnh bìa lên <br> kích thước tối ưu:<br>1560 x 600px (không quá 1MB)
                             </div>
                         </a>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required>
                     </div>
                 </div>
                 <div class="info-event">
@@ -79,7 +79,7 @@
                                     <div class="form-group">
                                         <label>Nhập loại sự kiện muốn tổ chức</label>
                                         <select name="categoryName" class="form-control">
-                                            <option value="sprort">Sport</option>
+                                            <option value="sport">Sport</option>
                                             <option value="music">Music</option>
                                             <option value="conference">Conference</option>
                                         </select>
@@ -165,8 +165,8 @@
                                 <table class="table">
                                     <tbody>
                                     <tr>
-                                        <td>Giá vé (VND) <span><br><br></span> <input type="text" placeholder="0" name="price" required></td>
-                                        <td>Tổng số lượng vé <span><br><br></span> <input type="text" placeholder="0" name="numOfTicket"required></td>
+                                        <td>Giá vé (VND) <span><br><br></span> <input type="number" placeholder="0" name="price" required></td>
+                                        <td>Tổng số lượng vé <span><br><br></span> <input type="number" placeholder="0" name="numOfTicket"required></td>
                                     </tr>
                                     <tr>
                                         <td>Ngày bắt đầu bán</td>
@@ -190,7 +190,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Thêm mô tả vé</span>
                                             </div>
-                                            <textarea class="form-control" aria-label="With textarea" name="discription"></textarea>
+                                            <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
                                         </div>
                                     </tr>
                                     </tbody>
@@ -211,25 +211,25 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Chủ tài khoản</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Chủ tài khoản" name="bankAaccountNname"required>
+                                        <input type="text" class="form-control" placeholder="Chủ tài khoản" name="bankAccountName"required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Số tài khoản</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Số tài khoản" name="bankAccountNumbet" required>
+                                        <input type="text" class="form-control" placeholder="Số tài khoản" name="bankAccountNumber" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Tên ngân hàng</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Tên ngân hàng" name="bank-name" required>
+                                        <input type="text" class="form-control" placeholder="Tên ngân hàng" name="bankName" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Chi nhánh</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Chi nhánh" name="bank-branch" required>
+                                        <input type="text" class="form-control" placeholder="Chi nhánh" name="bankBranch" required>
                                     </div>
                                 </div>
                             </div>
