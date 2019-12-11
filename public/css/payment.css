@@ -135,7 +135,10 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
+.wrapper .ticket-type .show-clock {
+  position: absolute;
+  left: 5%;
+}
 .banner, .title, .toolbars, .ticket-type {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;

@@ -82,6 +82,7 @@
   border-left: none;
   border-right: none;
   width: 25px;
+  height:28px !important;
 }
 
 .wrapper .ticket-type .info-ticket {
