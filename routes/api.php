@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('/event/{id}/validate-tickets', 'BookingController@validateTickets');
 Route::prefix('/event/{eventId}')->group(function ()
 {
-    Route::post('/validate-tickets', 'BookingController@validateTickets');
+    Route::post('/validate-tickets', 'BookingController@validateTickets')->name('validateTicket');
     Route::post('/validate-order', 'BookingController@validateOrder');
 });

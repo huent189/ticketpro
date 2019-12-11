@@ -1,4 +1,8 @@
 @extends('front-end.layout.master')
+@push('metadata')
+<meta name="csrf-token" content="{{csrf_token()}}">
+<meta name="event-id" content="{{$event->id}}">
+@endpush
 @section('pageTitle', 'TicketPro: chooseTickets')
 @section('content')
 <div class="main main-choose-tickets">
@@ -42,7 +46,7 @@
                                     @else
                                   <td><button><i class="fas fa-minus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', -1)"
                                     ></i></button>
-                                    <span type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{$event->ticketClasses[$i]->type. "_val"}}" price="{{$event->ticketClasses[$i]->price}}"></span>
+                                    <span type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{$event->ticketClasses[$i]->type. "_val"}}" price="{{$event->ticketClasses[$i]->price}}">0</span>
                                     <button><i class="fas fa-plus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', 1)"></i></button></td>
                                     @endif
                                   </tr>
@@ -74,11 +78,11 @@
                             </table>
                             <div class="total">
                                 <div class="text">Tổng tiền</div>
-                                <div class="money" id="sumAll">0 VND</div>
+                                <div class="money" id="sum_all">0 VND</div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary btn-lg"
-                            style="width: 30rem; background-color:  #e55b00; border: none; margin-top: 4%;">Tiếp tục</button>
+                            style="width: 30rem; background-color:  #e55b00; border: none; margin-top: 4%;" onclick="submitTicket()">Tiếp tục</button>
                     </div>
                 </div>
             </div>
@@ -86,5 +90,11 @@
 
 @endsection('content')
 @push('scripts')
-      <script type="text/javascript" src="{{asset("/js/ticket_booking.js")}}"></script>
+    
+@if (Session::has('jsalert'))
+<script>      
+var msg = '{{Session::get('jsalert')}}';
+alert(msg);
+</script>
+@endif    
 @endpush

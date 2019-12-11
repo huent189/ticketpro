@@ -117,13 +117,14 @@ class BookingController extends Controller
     public function showEventCheckout(Request $request, $eventId)
     {
         $order_session = session()->get('ticket_order_' . $eventId);
-        if($order_session || $order_session['expires'] < Carbon::now()){
-            // TODO: alert message
-            return redirect()->route('event-detail', ['eventId' => $eventId]);
+        if($order_session){
+            $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
+            if($secondsToExpire > 0){
+                // TODO mockup data to view
+                return view('front-end.modules.payment');
+            }
         }
-        $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
-        // TODO mockup data to view
-        return view('front-end.modules.payment');
+        return redirect()->route('choose-ticket', ['eventId' => $eventId])->with('jsalert','phiên đặt vé của bạn đã kết thúc');
     }
     public function validateOrder(Request $request, $eventId)
     {

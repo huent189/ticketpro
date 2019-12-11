@@ -117,6 +117,8 @@ Route::prefix('event/{eventId}')->group(function(){
     Route::get('/','HomeController@getTicketDetail')->name('event-detail');
     Route::get('/ticket-booking', 'BookingController@showSelectTicket')->name('choose-ticket');
     Route::get('/checkout', 'BookingController@showEventCheckout')->name('event-checkout');
+    Route::post('/validate-tickets', 'BookingController@validateTickets')->name('validateTicket');
+    
 });
 Route::get('/booking/complete', 'BookingController@completePayment');
 // Route::get('/booking/purchase', 'BookingController@purchase');
