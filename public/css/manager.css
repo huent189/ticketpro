@@ -1,0 +1,62 @@
+.wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+}
+
+.wrapper .header, .wrapper .main, .wrapper .footer {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+}
+
+.wrapper .header .container-header {
+  min-width: 1170px;
+  position: relative;
+  background-color: #e55b00;
+  top: 2px;
+  left: 5px;
+  margin-right: 10px;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wrapper .header .container-header .logo {
+  background-image: url("/Image/icon/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 150px;
+  width: 150px;
+  left: 3%;
+  position: absolute;
+  top: -27px;
+}
+
+.wrapper .header .container-header .title {
+  margin-left: 15%;
+  margin-top: 20px;
+}
+
+.wrapper .header .container-header .title .component-title h2 {
+  color: white;
+}
+
+.wrapper .main .Ticket-seller {
+  background-color: white;
+}
+
+.wrapper .main .Ticket-seller .title {
+  min-width: 600px;
+  margin-top: 0%;
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+
+.wrapper .main .Ticket-seller .Ticket-seller-content {
+  margin-left: 9%;
+  margin-right: 9%;
+}
+/*# sourceMappingURL=manager.css.map */

@@ -45,9 +45,14 @@
     <link rel="stylesheet" href="/css/CreateEvent1.css">
     <link rel="stylesheet" href="/css/CreateEvent2.css">
     <link rel="stylesheet" href="/css/CreateEvent3.css">
+    <link rel="stylesheet" href="/css/manager.css">
+
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <script src="/resources/js/clock.js"></script>
+    <script src="/public/js/chart_total.js"></script>
+    <script src="/public/js/chart_all_ticket.js"></script>
+    <script src="/public/js/clock.js"></script>
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}} rel="stylesheet">
     <style>
         body {
@@ -72,24 +77,6 @@
 
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script src="/js/jquery.min.js"></script>
-
-<script src="/js/bootstrap-slider.js"></script>
-
-<!-- Bootstrap JS form CDN -->
-
-<!-- jQuery sticky menu -->
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/jquery.sticky.js"></script>
-
-<!-- jQuery easing -->
-<script src="/js/jquery.easing.1.3.min.js"></script>
-
-<!-- Main Script -->
-<script src="/js/main.js"></script>
-
-<!-- Slider -->
-<script type="text/javascript" src={{ asset('js/bxslider.min.js') }}></script>
-<script type="text/javascript" src="/js/script.slider.js"></script>
 
 
 </body>
