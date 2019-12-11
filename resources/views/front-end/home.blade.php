@@ -32,7 +32,7 @@
                           </div>
                 </div>
                 <div class="category">
-                    <div  class="title"><a href={{url('sport')}}>SPORT</a></div>
+                    <div  class="title"><a href="{{url('sport')}}">SPORT</a></div>
                     <div class="dash"></div>
                     <div class="content">
                     @foreach($sportListEvent as $event)
@@ -56,11 +56,12 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> {{$event->ticketClasses->first()->price}} VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->minPrice()}} VNĐ</strong>
                                                         </div>
+                                                        
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->city}}</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->place}} - {{$event->location->city}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -75,7 +76,7 @@
                     </div>
                 </div>
                 <div class="category">
-                    <div class="title"><a href={{url('conference')}}>MUSIC</a></div>
+                    <div class="title"><a href="{{url('conference')}}">MUSIC</a></div>
                     <div class="dash"></div>
                     <div class="content">
                     @foreach($musicListEvent as $event)
@@ -99,11 +100,11 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> {{$event->price}} VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->minPrice()}} VNĐ</strong>
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->place}}</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->place}} - {{$event->location->city}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -119,7 +120,7 @@
 {{--                    <div class="row">{{$musicListEvent->links()}}</div>--}}
                 </div>
                 <div class="category">
-                    <div class="title"><a href={{url('conference')}}>CONFERENCE</a></div>
+                    <div class="title"><a href="{{url('conference')}}">CONFERENCE</a></div>
                     <div class="dash"></div>
                     <div class="content">
                     @foreach($conferenceListEvent as $event)
@@ -143,11 +144,11 @@
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell">
                                                         <div class="event-price w-100">
-                                                            <span class="color-6">Từ</span> <strong> {{$event->price}} VNĐ</strong>
+                                                            <span class="color-6">Từ</span> <strong> {{$event->minPrice()}} VNĐ</strong>
                                                         </div>
                                                         <div class="event-tags w-100">
                                                             <div class="tag-venues">
-                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->place}}</span>
+                                                                <span class="tag-venue smooth-trans  uppercase">{{$event->location->place}} - {{$event->location->city}}</span>
                                                             </div>
                                                         </div>
                                                     </div>

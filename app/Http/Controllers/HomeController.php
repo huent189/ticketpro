@@ -16,32 +16,55 @@ class HomeController extends Controller
     public function getIndex()
     {
         $slide = Event::where('isPopular','1')->take(4)->get();
+        $event=Event::get();
+        $sportListEvent=[];
+        $musicListEvent=[];
+        $conferenceListEvent=[];
+        foreach($event as $e)
+        {
+            if($e->categoryId==1 && $e->startTime > date("Y-m-d H:i:s") && sizeof($sportListEvent)<2)
+            {
+                array_push($sportListEvent,$e);                
+            }    
+            elseif($e->categoryId==2 && $e->startTime > date("Y-m-d H:i:s")&&sizeof($musicListEvent)<2)
+            {
+                array_push($musicListEvent,$e);                
+            }
+            elseif($e->categoryId==3 && $e->startTime > date("Y-m-d H:i:s")&&sizeof($conferenceListEvent)<2)
+            {
+                array_push($conferenceListEvent,$e);                
+            }
+            if(sizeof($sportListEvent)==2 &&sizeof($musicListEvent)==2 &&sizeof($conferenceListEvent)==2)
+            {
+                break;
+            }       
+        }
 
-        $sportListEvent = Category::where('name', 'sport')->first()->events->take(2);
+        
 
-        // Category::join('events','events.categoryId','=','categories.id')
-        // ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-        // ->join('locations','events.locationId','=','locations.id')
-        // ->select('events.name','events.image','locations.place','ticketClasses.price')
-        // ->where('categories.id','1')
-        // ->paginate(2);
+//         // Category::join('events','events.categoryId','=','categories.id')
+//         // ->join('ticketClasses','ticketClasses.eventId','=','events.id')
+//         // ->join('locations','events.locationId','=','locations.id')
+//         // ->select('events.name','events.image','locations.place','ticketClasses.price')
+//         // ->where('categories.id','1')
+//         // ->paginate(2);
 
-        $musicListEvent = Category::where('name', 'music')->first()->events->take(2);
-//            Category::join('events','events.categoryId','=','categories.id')
-//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-//        ->join('locations','events.locationId','=','locations.id')
-//        ->select('events.name','events.image','locations.place','ticketClasses.price')
-//        ->where('categories.id','2')
-//        ->paginate(2);
+//         $musicListEvent = Category::where('name', 'music')->first()->events->take(2);
+// //            Category::join('events','events.categoryId','=','categories.id')
+// //        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
+// //        ->join('locations','events.locationId','=','locations.id')
+// //        ->select('events.name','events.image','locations.place','ticketClasses.price')
+// //        ->where('categories.id','2')
+// //        ->paginate(2);
 
-        $conferenceListEvent = Category::where('name', 'conference')->first()->events->take(2);
-//            Category::join('events','events.categoryId','=','categories.id')
-//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-//        ->join('locations','events.locationId','=','locations.id')
-//        ->select('events.name','events.image','locations.place','ticketClasses.price')
-//        ->where('categories.id','3')
-//        ->paginate(2);
-        // dd($sportListEvent);
+//         $conferenceListEvent = Category::where('name', 'conference')->first()->events->take(2);
+// //            Category::join('events','events.categoryId','=','categories.id')
+// //        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
+// //        ->join('locations','events.locationId','=','locations.id')
+// //        ->select('events.name','events.image','locations.place','ticketClasses.price')
+// //        ->where('categories.id','3')
+// //        ->paginate(2);
+//         // dd($sportListEvent);
 
         return view('front-end.home',compact('sportListEvent','musicListEvent','conferenceListEvent','slide'));
     }
@@ -68,8 +91,8 @@ class HomeController extends Controller
 //        ->select('events.name','events.image','locations.place','ticketClasses.price')
 //        ->where('categories.id','2')
 //        ->get();
-
-        return view('front-end.modules.sport',compact('eventList'));
+//        dd($eventList);
+        return view('front-end.modules.music',compact('eventList'));
     }
 
     public function getConferenceEvent()
@@ -82,7 +105,7 @@ class HomeController extends Controller
 //        ->where('categories.id','3')
 //        ->get();
 
-        return view('front-end.modules.sport',compact('eventList'));
+        return view('front-end.modules.conference',compact('eventList'));
     }
 
 

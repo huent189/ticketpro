@@ -10,7 +10,7 @@
     display: flex;
     -ms-flex-pack: distribute;
         justify-content: space-around;
-    width: 700px;
+    width: 400px;
     left: 10px;
     top: 29px;
   }

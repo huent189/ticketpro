@@ -21,6 +21,9 @@ class CreateOrganizers extends Migration
             $table->string('phone');
             $table->string('email');
             $table->longText('description');
+            $table->string('bankAccountNumber');
+            $table->string('bankAccountName');
+
             $table->timestamps();
         });
     }

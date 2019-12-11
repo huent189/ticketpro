@@ -70,4 +70,17 @@ class Event extends Model
     {
         return $this->hasMany('App\TicketClass', 'eventId');
     }
+    public function minPrice()
+    {
+        $minPrice=0;
+        foreach($this->ticketClasses as $ticket)
+        {
+            if($ticket->price<$minPrice)
+            {
+                $minPrice=$ticket->price;
+            }
+        }
+
+        return $minPrice;
+    }
 }
