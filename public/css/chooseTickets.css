@@ -76,13 +76,13 @@
   background-color: white;
 }
 
-.wrapper .ticket-type .ticket-type-content input {
+.wrapper .ticket-type .ticket-type-content span {
   border-bottom: 1px solid #e55b00;
   border-top: 1px solid #e55b00;
-  border-left: none;
-  border-right: none;
-  width: 25px;
-  height:28px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 3px;
+  padding-top: 2px;
 }
 
 .wrapper .ticket-type .info-ticket {

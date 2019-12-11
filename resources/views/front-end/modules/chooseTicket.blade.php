@@ -42,7 +42,7 @@
                                     @else
                                   <td><button><i class="fas fa-minus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', -1)"
                                     ></i></button>
-                                    <input type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{$event->ticketClasses[$i]->type. "_val"}}" price="{{$event->ticketClasses[$i]->price}}">
+                                    <span type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{$event->ticketClasses[$i]->type. "_val"}}" price="{{$event->ticketClasses[$i]->price}}"></span>
                                     <button><i class="fas fa-plus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', 1)"></i></button></td>
                                     @endif
                                   </tr>
