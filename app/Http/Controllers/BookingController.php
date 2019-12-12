@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Event;
 use App\ReservedTicket;
 use App\TicketClass;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
@@ -17,10 +18,11 @@ class BookingController extends Controller
     // {
     //     $this->payment = $p;
     // }
-    public function showSelectTicket($eventId)      
+    public function showSelectTicket(Request $request, $eventId)      
     {
         $event = Event::find($eventId)->first();
         if($event){
+            $request->session()->keep('_token');
             return view('front-end.modules.chooseTicket', compact('event'));
         }
         return "Xin loi su kien nay khong ton tai";
@@ -94,7 +96,7 @@ class BookingController extends Controller
                 'message' => 'No valid ticket selected',
             ], 400);
         }
-        session()->put('ticket_order_'. $eventId, [
+        Session::put('ticket_order_'. $eventId, [
             'event_id' => $eventId,
             'tickets' => $ticket_details,
             'expires' => $expire_time,
@@ -110,13 +112,15 @@ class BookingController extends Controller
                 ])
             ]);
         }
+        // dd(Session::all());
         return redirect()->route('event-checkout', [
             'eventId' => $eventId
         ]);
     }
     public function showEventCheckout(Request $request, $eventId)
     {
-        $order_session = session()->get('ticket_order_' . $eventId);
+        
+        $order_session = Session::get('ticket_order_' . $eventId);
         if($order_session){
             $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
             if($secondsToExpire > 0){

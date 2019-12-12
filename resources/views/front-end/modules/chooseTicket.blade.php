@@ -87,14 +87,7 @@
                 </div>
             </div>
         </div>
-
 @endsection('content')
 @push('scripts')
-    
-@if (Session::has('jsalert'))
-<script>      
-var msg = '{{Session::get('jsalert')}}';
-alert(msg);
-</script>
-@endif    
+      <script src="{{asset('js/ticket_booking.js')}}"></script>
 @endpush

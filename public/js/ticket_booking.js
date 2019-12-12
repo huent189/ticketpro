@@ -33,12 +33,12 @@ function submitTicket() {
     console.log('hera');
     
     $.ajax({
-        url: "validate-tickets",
+        url:  'validate-tickets',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         type: "POST",
-        data: JSON.stringify({"tickets": data}),
+        data: JSON.stringify({'_token': $('meta[name="csrf-token"]').attr('content'), "tickets": data}),
         cache: false,
         contentType: 'application/json; charset=utf-8',
         processData: false,
