@@ -4,11 +4,22 @@
     <list default="true" id="d91867df-83b1-44db-b436-0c8fed398854" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main-home.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main-home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/jquery/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/jquery/jquery.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/front-end/Event/create-event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/Event/create-event.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/front-end/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-end/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-end/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/layout/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/front-end/modules/conference.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/modules/conference.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-end/modules/manager.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/modules/manager.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-end/modules/music.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/modules/music.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-end/modules/signIn.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/modules/signIn.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-end/modules/sport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/modules/sport.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -145,18 +157,19 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/user/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\ticketpro\public\bootstrap\css" />
-      <recent name="C:\xampp\htdocs\ticketpro\public\jquery" />
-      <recent name="C:\xampp\htdocs\ticketpro\public\css" />
-      <recent name="C:\xampp\htdocs\ticketpro\public\fonts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ticketpro\ticketpro\resources\views\front-end\layout" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ticketpro\public\user\js" />
+      <recent name="C:\xampp\htdocs\ticketpro\public\js" />
+      <recent name="C:\xampp\htdocs\ticketpro\public\user" />
+      <recent name="C:\xampp\htdocs\ticketpro\public\css" />
+      <recent name="C:\xampp\htdocs\ticketpro\public\jquery" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -199,6 +212,9 @@
       <workItem from="1576038510195" duration="649000" />
       <workItem from="1576056975133" duration="13318000" />
       <workItem from="1576084936926" duration="7672000" />
+      <workItem from="1576119317956" duration="6981000" />
+      <workItem from="1576130618363" duration="4159000" />
+      <workItem from="1576135332070" duration="4022000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,4 @@
-
+@extends('front-end.layout.master')
 @section('pageTitle', 'TicketPro: manager')
 @section('content')
 <div class="wrapper">
@@ -19,7 +19,7 @@
             <div id="chart-all-total"></div>
         <div class="Ticket-seller">
             <div class="title" >
-                <h3>Thông tên người bán trên trang Ticket Pro</h3>
+                <h3>Thông tin người bán trên trang Ticket Pro</h3>
             </div>
             <div class="Ticket-seller-content">
                     <table class="table table-bordered">
@@ -53,29 +53,6 @@
                           </table>
             </div>
            
-        </div>
-
-        <div class="footer">
-            <div class="logo-footer"></div>
-            <div class="community">
-                <div class="columns-icon">
-                    <div class="rows-icon">
-                        <div class="icons item-1"></div>
-                        <div class="icons item-2"></div>
-                    </div>
-                    <div class="rows-icon">
-                        <div class="icons item-3"></div>
-                        <div class="icons item-4"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="contact">
-                <div class="content">
-                    <h5>HOTLINE: 0387870022 </h5>
-                    <h5>Email: Nguyentheanh17071998@gmail.com</h5>
-                    <h5>Địa chỉ: Mai Dịch - Cầu Giấy - Hà Nội</h5>
-                </div>
-            </div>
         </div>
     </div>
     @endsection('content')

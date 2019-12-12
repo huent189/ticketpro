@@ -25,7 +25,10 @@ class UserController extends Controller
      */
     public function  getCreateEvent()
     {
-        return view('front-end.Event.create-event');
+        $activeUser=Organizer::where('id', Auth::user()->id)->first();
+        $existOrganizers= false;
+        if($activeUser) $existOrganizers=true;
+        return view('front-end.Event.create-event',compact('existOrganizers'));
     }
 
     /**
@@ -33,7 +36,7 @@ class UserController extends Controller
      */
     public function storeEvent(Request $request)
     {
-//        dd($request->all());
+        dd($request->all());
 //        $event=Event::where('id',31)->first();
 //        dd(gettype($event->startTime));
 //        dd(gettype($request->startTime));
@@ -63,13 +66,13 @@ class UserController extends Controller
 
             ]);
         }
-        $location=Location::where('place',$request->place)->first();
+        $location=Location::where('fullAddress',$request->fullAddress)->first();
         if(!$location)
         {
             $location=Location::create([
                 'place'=>$request->place,
-                'city'=>null,
-                'fullAddreess'=>null,
+                'city'=>$request->city,
+                'fullAddreess'=>$request->fullAddress,
 
             ]);
         }
