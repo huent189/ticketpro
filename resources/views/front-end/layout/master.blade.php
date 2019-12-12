@@ -53,6 +53,7 @@
     <script src="/public/js/chart_total.js"></script>
     <script src="/public/js/chart_all_ticket.js"></script>
     <script src="/public/js/clock.js"></script>
+    <script src="/public/js/buyticket.js"></script>
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}} rel="stylesheet">
     <style>
         body {

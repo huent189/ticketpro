@@ -197,6 +197,9 @@
                             </table>
                         </div>
                     </div>
+                    <div class="btn-group" style="width:140px; margin-top: 2%;" role="group">
+                        <button type="button" class="btn" onclick="duplicated()" style=" background-color: #e55b00; color: white;">Thêm loại vé</button>
+                    </div>
                 </div>
     
     
