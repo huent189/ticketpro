@@ -19,7 +19,6 @@
             font-weight: 100;
             height: 100vh;
             margin: 0;
-            background-image: url('/images/IMG_7290.JPG');
             background-size: cover;
         }
 
@@ -48,10 +47,10 @@
         }
 
         .title {
-            color: #00bcd4;
-            font-size: 84px;
+            color: #d40000;
+            font-size: 79px;
             font-style: italic;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif
         }
 
         .links > a {
@@ -82,13 +81,13 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Chức năng này đang trong thời gian hoàn thiện và nâng cấp rất xin lỗi vì sự bất tiện này.
+            Chức năng đang trong quá trình hoàn thiện và nâng cấp. Xin lỗi quý khách vì sự bất tiện này.
         </div>
 
     </div>
 </div>
 <div class="back-button">
-    <a href="/" class="btn btn-success">Quay lại</a>
+    <a href="/" class="btn btn-success">Quay lại trang chủ</a>
 </div>
 </body>
 </html>

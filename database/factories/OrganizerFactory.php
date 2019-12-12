@@ -12,5 +12,7 @@ $factory->define(App\Organizer::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'email' => $faker->companyEmail,
         'description' => $faker->jobTitle,
+        'bankAccountNumber'=>$faker->bankAccountNumber,
+        'bankAccountName'=>$faker->name,
     ];
 });

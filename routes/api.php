@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+// use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +16,10 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+// Route::post('/event/{id}/validate-tickets', 'BookingController@validateTickets');
+Route::prefix('/event/{eventId}')->group(function ()
+{
+    Route::post('/validate-tickets', 'BookingController@validateTickets');
+    Route::post('/validate-order', 'BookingController@validateOrder');
 });

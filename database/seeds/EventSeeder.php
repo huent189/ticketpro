@@ -1,8 +1,9 @@
 <?php
 
 use App\Category;
+use App\Organizer;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class EventSeeder extends Seeder
 {
     /**
@@ -25,5 +26,12 @@ class EventSeeder extends Seeder
             $e->name = "Conference ".$e->name;
             $e->save();
         });
+        // Organizer::all()->each(function ($o)
+        // {
+        //     $o->profileImage = "uploads/organizer_avatars/dong_nam_media.jpg";
+        //     $o->save();
+        // });
+        DB::table('organizers')->update(['profileImage' => 'uploads/organizer_avatars/dong_nam_media.jpg']);
+        DB::table('events')->update(['ticketMap' => 'uploads/ticket_maps/aaa_vietnam.jpg']);
     }
 }

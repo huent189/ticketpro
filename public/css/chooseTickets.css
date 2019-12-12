@@ -6,7 +6,7 @@
 }
 
 .wrapper .banner {
-  background-image: url("/Image/Ticket/4424A0.jpg");
+  /* background-image: url("/Image/Ticket/4424A0.jpg"); */
   background-size: contain;
   height: 500px;
   background-position: center;
