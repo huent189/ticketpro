@@ -20,7 +20,7 @@ Route::get('/','HomeController@getIndex')->name('home');
 Route::get('/sport','HomeController@getSportEvent')->name('sport');
 Route::get('/music','HomeController@getMusicEvent');
 Route::get('/conference','HomeController@getConferenceEvent');
-
+Route::get('/search','HomeController@getSearch')->name('search');
 
 //Auth
 /**
@@ -113,6 +113,10 @@ Route::prefix('user')->group(function (){
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
 Route::get('/logout','SocialController@logout')->name('logout');
+
+/**
+ * Rout xủ lí Event
+ */
 Route::prefix('event/{eventId}')->group(function(){
     Route::get('/','HomeController@getTicketDetail')->name('event-detail');
     Route::get('/ticket-booking', 'BookingController@showSelectTicket')->name('choose-ticket');

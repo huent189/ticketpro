@@ -100,6 +100,6 @@
                         </table>
                     </div>
                 </div>
-</div>
+    </div>
 
   @endsection('content')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Location;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Event;
@@ -117,5 +118,16 @@ class HomeController extends Controller
             return view('front-end.modules.buyTicket', compact('event'));
         }
         return "Xin loi su kien nay khong ton tai";
+    }
+
+    public function getSearch(Request $request)
+    {
+        $location=Location::where('city','like','%'.$request->key.'%')->first();
+//        dd($location);
+        $eventList = $eventList = Event::where('name','like', '%'.$request->key.'%')
+//                                        ->orWhere('locationId',$location->id)
+                                        ->get();
+//        dd($eventList);
+        return view('front-end.modules.search',compact('eventList'));
     }
 }
