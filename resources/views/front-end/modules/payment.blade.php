@@ -1,18 +1,22 @@
 @extends('front-end.layout.master')
+@push('metadata')
+<meta name="expire-time" content="{{$expire_timestamp}}">
+@endpush
 @section('pageTitle', 'TicketPro: Payment')
 @section('content')
 <div class="main main-choose-tickets">
         <div class="wrapper">
-            <div class="banner"></div>
+            <div class="banner" style='background-image: url("{{asset($event->image)}}")'></div>
             <div class="title">
                 <div class="media">
-                    <img src="https://picsum.photos/80/80" class="align-self-start mr-3" alt="...">
+                    <img src="{{asset($event->organizer->profileImage)}}" style="height: 100px; width: 100px;"
+                        class="align-self-start mr-3" alt="...">
                     <div class="media-body">
-                        <h5 class="mt-0">Show của Thế Anh</h5>
-                        <p>Thứ 7 Ngày 09 tháng 11 năm 2019 (08:00 PM - 11:00 PM)</p>
-                        <p>Đại học Công nghệ - Đại học Quốc gia Hà Nội</p>
-                        <p>144 Xuân Thủy,Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
-                    </div>
+                      <h5 class="mt-0">{{$event->name}}</h5>
+                      <p>{{$event->startTime->isoFormat('dd, D-mm-YYYY')}} ({{$event->startTime->isoFormat('LT')}} - {{$event->endTime->isoFormat('LT')}})</p>
+                      <p>{{$event->location->place}}</p>
+                      <p>{{$event->location->fullAddress}}, {{$event->location->city}}</p>
+                </div>
                 </div>
             </div>
             <div class="toolbars">
@@ -61,7 +65,6 @@
                     <div class="card" style="width: 30rem;">
                     <div class="clock"><i class="fas fa-stopwatch"></i></div>   
                         <div class="show-clock">
-                            <span id="h">Giờ</span> :
                             <span id="m">Phút</span> :
                             <span id="s">Giây</span>
                         </div>
@@ -76,23 +79,19 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @for ($i = 0; $i < count($order_session['tickets']); $i++)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Vé miễn phí</td>
-                                    <td>2</td>
-                                    <td>0 VND</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Vé Gold</td>
-                                    <td>1</td>
-                                    <td>10.000.000 VND</td>
-                                </tr>
+                                <th scope="row">{{($i+1)}}</th>
+                                    <td>{{$order_session['tickets'][$i]['type']}}</td>
+                                    <td>{{$order_session['tickets'][$i]['quantity']}}</td>
+                                    <td>@price_format($order_session['tickets'][$i]['total_price']) VND</td>
+                                </tr>     
+                                @endfor
                             </tbody>
                         </table>
                         <div class="total">
                             <div class="text">Tổng tiền</div>
-                            <div class="money">10.000.000 VND</div>
+                            <div class="money">@price_format($order_session['order_total']) VND</div>
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary btn-lg"
