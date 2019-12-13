@@ -20,7 +20,7 @@ class BookingController extends Controller
     // }
     public function showSelectTicket(Request $request, $eventId)      
     {
-        $event = Event::find($eventId)->first();
+        $event = Event::find($eventId);
         if($event){
             $request->session()->keep('_token');
             return view('front-end.modules.chooseTicket', compact('event'));
@@ -79,7 +79,8 @@ class BookingController extends Controller
             $reservedTickets->save();
             $order_total = $order_total + ($current_quantity * $ticket->price);
             $ticket_details[] = [
-                'ticket' => $ticket->id,
+                'ticket_id' => $ticket->id,
+                'type' => $ticket->type,
                 'quantity' => $current_quantity,
                 'total_price' => $current_quantity * $ticket->price
             ];  
@@ -122,10 +123,10 @@ class BookingController extends Controller
         
         $order_session = Session::get('ticket_order_' . $eventId);
         if($order_session){
-            $secondsToExpire = Carbon::now()->diffInSeconds($order_session['expires']);
-            if($secondsToExpire > 0){
-                // TODO mockup data to view
-                return view('front-end.modules.payment');
+            $expire_timestamp = $order_session['expires']->timestamp;
+            if(Carbon::now()->lt($order_session['expires'])){
+                $event = Event::find($eventId);
+                return view('front-end.modules.payment', compact('event', 'expire_timestamp', 'order_session'));
             }
         }
         return redirect()->route('choose-ticket', ['eventId' => $eventId])->with('jsalert','phiên đặt vé của bạn đã kết thúc');
