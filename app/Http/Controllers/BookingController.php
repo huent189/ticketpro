@@ -155,13 +155,12 @@ class BookingController extends Controller
         }
         $event = Event::findOrFail($eventId);
         $order = new Booking();
-        $validator = Validator::make($request->all(), [
-            $order->rules, $order->fail_messages
-       ])->validate();
+        // dd($order->rules);
+        $validator = Validator::make($request->all(), $order->rules, $order->fail_messages);
         if ($validator->fails()) {
             return response()->json([
                 'status'   => 'error',
-                'messages' => $validator->messages(),
+                'messages' => $validator->errors()->all(),
             ]);
         }
         return response()->json([
