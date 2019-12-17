@@ -1,6 +1,6 @@
 <?php
 
-return [
+$results = [
 
     /*
     |--------------------------------------------------------------------------
@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
@@ -231,3 +231,8 @@ return [
     ],
 
 ];
+if ( env( 'APP_ENV' ) === 'local' )
+{
+    $results['providers'][] = 'Barryvdh\Debugbar\ServiceProvider';
+}
+return $results;
