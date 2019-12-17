@@ -1,8 +1,8 @@
 @extends('front-end.layout.master')
-push('css')
+@push('css')
 <link rel="stylesheet" href="/css/buyTicket.css">
 @endpush
-push('scripts')
+@push('scripts')
 <script src="/public/js/buyticket.js"></script>
 @endpush
 

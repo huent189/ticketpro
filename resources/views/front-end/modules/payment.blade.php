@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-push('css')
+@push('css')
 <link rel="stylesheet" href="/css/payment.css">
 @endpush
 @push('metadata')
@@ -106,6 +106,6 @@ push('css')
     </div>
 
 @endsection('content')
-@section('scripts')
+@push('scripts')
 <script src="/js/clock.js"></script>
-@endsection
+@endpush
