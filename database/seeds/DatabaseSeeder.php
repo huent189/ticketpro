@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Category;
+use App\TicketClass;
+use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -52,6 +54,23 @@ class DatabaseSeeder extends Seeder
         Category::where('name', 'conference')->first()->events->each(function($e){
             $e->name = "Conference ".$e->name;
             $e->save();
+        });
+        Category::where('name', 'music')->first()->events->each(function($e){
+            $e->name = "Music ".$e->name;
+            $e->save();
+        });
+        Category::where('name', 'sport')->first()->events->each(function($e){
+            $e->name = "Sport ".$e->name;
+            $e->save();
+        });
+        Category::where('name', 'conference')->first()->events->each(function($e){
+            $e->name = "Conference ".$e->name;
+            $e->save();
+        });
+        TicketClass::all()->each(function($t){
+            $t->minPerPerson = 0;
+            $t->maxPerPerson = rand(1,5);
+            $t->save();
         });
     }
 }

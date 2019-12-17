@@ -99,8 +99,8 @@
                                             <div class="padding-10">
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell event-title">
-                                                        <a href="{{url('event-detail/'.$event->id)}}"
-                                                            title="{{$event->name}}" target="_blank">
+                                                        <a href="{{route('event-detail', ['eventId' => $event->id])}}"
+                                                            title="{{$event->name}}">
                                                             {{$event->name}}
                                                         </a>
                                                     </div>
@@ -148,8 +148,8 @@
                                             <div class="padding-10">
                                                 <div class="table w-100 margin-bottom-0">
                                                     <div class="table-cell event-title">
-                                                        <a href="{{url('event-detail/'.$event->id)}}"
-                                                            title="{{$event->name}}" target="_blank">
+                                                        <a href="{{route('event-detail', ['eventId' => $event->id])}}"
+                                                            title="{{$event->name}}">
                                                             {{$event->name}}
                                                         </a>
                                                     </div>

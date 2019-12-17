@@ -22,8 +22,8 @@
                                                             <div class="padding-10">
                                                                 <div class="table w-100 margin-bottom-0">
                                                                     <div class="table-cell event-title">
-                                                                        <a href="{{url('ticket-detail/'.$eventList[$i]->id)}}"
-                                                                           title="{{$eventList[$i]->name}}" target="_blank">
+                                                                        <a href="{{route('event-detail', ['eventId' => $eventList[$i]->id])}}"
+                                                                           title="{{$eventList[$i]->name}}">
                                                                             {{$eventList[$i]->name}}
                                                                         </a>
                                                                     </div>
@@ -63,8 +63,8 @@
                                                                 <div class="padding-10">
                                                                     <div class="table w-100 margin-bottom-0">
                                                                         <div class="table-cell event-title">
-                                                                            <a href="{{url('ticket-detail/'.$eventList[$i+1]->id)}}"
-                                                                               title="{{$eventList[$i+1]->name}}" target="_blank">
+                                                                            <a href="{{route('event-detail', ['eventId' => $eventList[$i+1]->id])}}"
+                                                                               title="{{$eventList[$i+1]->name}}">
                                                                                 {{$eventList[$i+1]->name}}
                                                                             </a>
                                                                         </div>
