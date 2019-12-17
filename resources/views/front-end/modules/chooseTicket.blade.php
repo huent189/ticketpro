@@ -42,15 +42,15 @@
                                   @for ($i = 0; $i < count($event->ticketClasses); $i++)
                                   <tr>
                                     <th scope="row">{{$i + 1}}</th>
-                                    <td>{{$event->ticketClasses[$i]->type}}</td>
-                                    <td id="{{$event->ticketClasses[$i]->type."_price"}}">@price_format($event->ticketClasses[$i]->price) VND</td>
+                                    <td id="{{"class_".$event->ticketClasses[$i]->id."_type"}}">{{$event->ticketClasses[$i]->type}}</td>
+                                    <td id="{{"class_".$event->ticketClasses[$i]->id."_price"}}">@price_format($event->ticketClasses[$i]->price) VND</td>
                                     @if ($event->ticketClasses[$i]->is_sold_out)
                                     <td>Hết vé</td>
                                     @else
-                                  <td><button><i class="fas fa-minus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', -1)"
+                                  <td><button><i class="fas fa-minus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->id}}', -1)"
                                     ></i></button>
-                                    <span type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{$event->ticketClasses[$i]->type. "_val"}}" price="{{$event->ticketClasses[$i]->price}}">0</span>
-                                    <button><i class="fas fa-plus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->type}}', 1)"></i></button></td>
+                                    <span type="text" min="{{$event->ticketClasses[$i]->minPerPerson}}" max="{{$event->ticketClasses[$i]->maxTicket}}" value="0" id= "{{"class_".$event->ticketClasses[$i]->id. "_val"}}" price="{{$event->ticketClasses[$i]->price}}">0</span>
+                                    <button><i class="fas fa-plus" onclick="changeTicket(this,'{{$event->ticketClasses[$i]->id}}', 1)"></i></button></td>
                                     @endif
                                   </tr>
                                   @endfor
@@ -92,5 +92,5 @@
         </div>
 @endsection('content')
 @push('scripts')
-      <script src="{{asset('js/ticket_booking.js')}}"></script>
+      <script src="/js/ticket_booking.js"></script>
 @endpush

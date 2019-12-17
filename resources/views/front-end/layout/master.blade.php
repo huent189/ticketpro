@@ -72,16 +72,12 @@
 @stack('scripts')
 <script src="/jquery/jquery.min.js"></script>
 <script src="/js/popper.min.js"></script>
-<script src="/bootstrap/css/bootstrap.min.css"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 
 <script src="/js/html5shiv.min.js"></script>
-<script type="text/javascript" src="js/loader.js"></script>
+{{-- <script type="text/javascript" src="js/loader.js"></script> --}}
 <script src="/js/respond.min.js"></script>
-<script src="/js/chart_total.js"></script>
-<script src="/js/chart_all_ticket.js"></script>
-<script src="/js/clock.js"></script>
 
 
 <script src="/js/5279a6eae4.js"></script>

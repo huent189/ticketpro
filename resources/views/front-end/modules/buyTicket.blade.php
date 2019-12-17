@@ -19,7 +19,7 @@
                     <h5 class="mt-0">{{$event->name}}</h5>
                     <p>{{$event->startTime->isoFormat('dd, D-mm-YYYY')}} ({{$event->startTime->isoFormat('LT')}} - {{$event->endTime->isoFormat('LT')}})</p>
                         <p>{{$event->location->place}}</p>
-                        <p>{{$event->location->fullAddress}}, {{$event->location->city}}</p>
+                        <p>{{$event->location->fullAddress}}</p>
                     </div>
                 </div>
                 @if ($event->status == 4)
