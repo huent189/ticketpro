@@ -231,8 +231,8 @@ $results = [
     ],
 
 ];
-if ( env( 'APP_ENV' ) === 'local' )
-{
-    $results['providers'][] = 'Barryvdh\Debugbar\ServiceProvider';
-}
+// if ( env( 'APP_ENV' ) === 'local' )
+// {
+//     $results['providers'][] = 'Barryvdh\Debugbar\ServiceProvider';
+// }
 return $results;
