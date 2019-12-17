@@ -11,15 +11,6 @@
     ?>
     <div class="wrapper">
         <div class="side-left">
-            <div class="side-top top-bar">
-                <div class="logo"></div>
-                <div class="acc">
-                    <div class="text">
-                        <h5>Anh</h5>
-                    </div>
-                    <div class="avatar"></div>
-                </div>
-            </div>
             <div class="toolbar">
                 <ul class="list">
                     <li class="list-group" style=" background-color: white; color:black">
@@ -37,7 +28,7 @@
                             <div class="noti"> Tải ảnh bìa lên <br> kích thước tối ưu:<br>1560 x 600px (không quá 1MB)
                             </div>
                         </a>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required>
                     </div>
                 </div>
                 <div class="info-event">
@@ -61,10 +52,16 @@
                                     <h3 class="mt-0">Tên địa điểm</h3>
                                     <div class="space"></div>
                                     <div class="form-group">
+                                        <label>Thành Phố</label>
+                                        <input type="text" class="form-control" placeholder="eg: Hà Nội" name="city" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Địa Điểm</label>
+                                        <input type="text" class="form-control" placeholder="eg: Trường đại học Công Nghệ" name="place" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Địa chỉ chi tiết</label>
-                                        <input type="text" class="form-control" placeholder="Địa chỉ chi tiết" name="place" required>
-                                        <small id="emailHelp" class="form-text text-muted">Bạn nhập lần lượt từ số nhà, ngõ,
-                                            phường, quận/huyện, thành phố (Cách nhau bởi dấu ",")</small>
+                                        <input type="text" class="form-control" placeholder="eg: 144 Xuân Thủy, Cầu Giấy, Hà Nội" name="fullAddress" required>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +76,7 @@
                                     <div class="form-group">
                                         <label>Nhập loại sự kiện muốn tổ chức</label>
                                         <select name="categoryName" class="form-control">
-                                            <option value="sprort">Sport</option>
+                                            <option value="sport">Sport</option>
                                             <option value="music">Music</option>
                                             <option value="conference">Conference</option>
                                         </select>
@@ -113,9 +110,7 @@
                                     <div class="space"></div>
                                     <div style="display:flex;">
                                         <div class="form-group row">
-                                            <label for="inputPassword" style="width: 100px;" class="col-sm-5 col-form-label">Số
-                                                điện
-                                                thoại</label>
+                                            <label for="inputPassword" style="width: 100px;" class="col-sm-5 col-form-label">Số điện thoại</label>
                                             <div class="col-sm-10">
                                                 <input type="text" style="width:400px" class="form-control"
                                                        id="inputPassword" placeholder="Số điện thoại" name="phoneNumber" required>
@@ -152,7 +147,7 @@
                                     <span>&nbsp; Đến &nbsp;</span>
                                     <input type="datetime-local" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="endTime" required>
                                 </div>
-                                <div class="Title" style="margin-top: 20px;">
+                                <div class="Title" id="title-ticket" style="margin-top: 20px;">
                                     <h4>Loại vé</h4>
                                 </div>
                                 <div class="media" style="margin-bottom: 10px">
@@ -165,8 +160,8 @@
                                 <table class="table">
                                     <tbody>
                                     <tr>
-                                        <td>Giá vé (VND) <span><br><br></span> <input type="text" placeholder="0" name="price" required></td>
-                                        <td>Tổng số lượng vé <span><br><br></span> <input type="text" placeholder="0" name="numOfTicket"required></td>
+                                        <td>Giá vé (VND) <span><br><br></span> <input type="number" placeholder="0" name="price" required></td>
+                                        <td>Tổng số lượng vé <span><br><br></span> <input type="number" placeholder="0" name="numOfTicket"required></td>
                                     </tr>
                                     <tr>
                                         <td>Ngày bắt đầu bán</td>
@@ -190,16 +185,17 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Thêm mô tả vé</span>
                                             </div>
-                                            <textarea class="form-control" aria-label="With textarea" name="discription"></textarea>
+                                            <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
                                         </div>
                                     </tr>
                                     </tbody>
                                 </table>
+                                <div class="btn" id="add-ticket-class">Thêm</div>
                             </div>
                         </div>
                     </div>
 
-
+                    @if(!$existOrganizers)
                     <div class="side-right-3">
                         <div class="info-customer">
                             <h2>3. Thông tin thanh toán</h2>
@@ -211,31 +207,32 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Chủ tài khoản</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Chủ tài khoản" name="bankAaccountNname"required>
+                                        <input type="text" class="form-control" placeholder="Chủ tài khoản" name="bankAccountName"required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Số tài khoản</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Số tài khoản" name="bankAccountNumbet" required>
+                                        <input type="text" class="form-control" placeholder="Số tài khoản" name="bankAccountNumber" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Tên ngân hàng</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Tên ngân hàng" name="bank-name" required>
+                                        <input type="text" class="form-control" placeholder="Tên ngân hàng" name="bankName" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Chi nhánh</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Chi nhánh" name="bank-branch" required>
+                                        <input type="text" class="form-control" placeholder="Chi nhánh" name="bankBranch" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                    @endif
                     <div class="save-continue">
                         <div class="btn-group" role="group">
                             <button type="submit" class="btn">Hoàn tất</button>
@@ -247,4 +244,7 @@
 
 
     </div>
+    <script href="js/create-event.js">
+
+    </script>
 @endsection('content')

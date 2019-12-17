@@ -2,27 +2,23 @@
 @section('pageTitle', 'TicketPro: SignIn')
 @section('content')
 <div class="main main-sign-in">
-                <form>
+                <form action="{{route("admin.auth.loginadmin")}}" method="post">
+                    {{csrf_field()}}
                     <div class="title"><h1>LOG IN</h1></div>
                             <div class="form-group row">
-                              <label class="col-sm-2 col-form-label">User name</label>
+                              <label class="col-sm-2 col-form-label">Admin Email</label>
                               <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="username" placeholder="User name">
+                                    <input type="email" class="form-control" id="username" placeholder="Admin Email" name="email">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                               <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
                               </div>
                              
                             </div>
                             <button type="submit" class="btn btn-primary">Log in</button>
-                            <div class="title"><h1>Or</h1></div>
-                            <div class="login-f-g">
-                                    <div class="facebook"></div>
-                                    <div class="google"></div>
-                                </div>
                       </form>
                      
         </div>

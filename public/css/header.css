@@ -39,53 +39,52 @@
   }
 
   .site-branding-area .container .search-form .icon-search {
-    background-image: url("/Image/icon/loupe.svg");
-    background-repeat: no-repeat;
-    height: 21px;
-    width: 21px;
-    position: absolute;
-    right: 11px;
-    top: 4px;
-  }
+      background-image: url(/Image/icon/loupe.svg);
+      background-repeat: no-repeat;
+      height: 32px;
+      width: 32px;
+      position: absolute;
+      right: 0px;
+}
 
 
 .site-branding-area .container .search-form .dropdown {
-    position: absolute;
-    top: 0px;
-    right: -40px;
+position: absolute;
+top: 0px;
+right: -40px;
 }
 
 .site-branding-area .container .search-form .dropdown .dropdown-menu a:hover {
-    background-color: #e55b00;
-    color: #000000;
+background-color: #e55b00;
+color: #000000;
 }
-  .site-branding-area .container .sign-up-in {
-    position: absolute;
-    right: 100px;
-    top: 60px;
-    color: #ffffff;
-      font-weight: bold;
+.site-branding-area .container .sign-up-in {
+position: absolute;
+right: 100px;
+top: 60px;
+color: #ffffff;
+  font-weight: bold;
 
-  }
+}
 
-  .site-branding-area .container .sign-up-in a {
-    padding: 3px 8px;
-    text-decoration: none;
-    color: #000000;
-    font-weight: 500;
-    font-size: 14px;
-  }
+.site-branding-area .container .sign-up-in a {
+padding: 3px 8px;
+text-decoration: none;
+color: #000000;
+font-weight: 500;
+font-size: 14px;
+}
 
-  .site-branding-area .container .sign-up-in a:hover {
-    background-color: #e55b00;
-    border-radius: 3px;
-  }
+.site-branding-area .container .sign-up-in a:hover {
+background-color: #e55b00;
+border-radius: 3px;
+}
 
-  .text-bold{
-      color: #ffffff!important;
-      font-weight: bold!important;
-      font-size: 18px!important;
-  }
+.text-bold{
+  color: #ffffff!important;
+  font-weight: bold!important;
+  font-size: 18px!important;
+}
 
 
- /*END HEADER */
+/*END HEADER */

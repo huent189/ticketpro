@@ -20,6 +20,10 @@ hr{
 	text-align: center;
 	width: 80%;
 }
+.cover-image{
+    height: 200px!important;
+    width: 520px!important;
+}
 
 .hide {
     display: none;

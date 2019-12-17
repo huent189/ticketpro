@@ -13,10 +13,13 @@
                     <div class="component-toolbar"><a href="/music">MUSIC</a></div>
                     <div class="component-toolbar"><a href="/conference">CONFERENCE</a></div>
                 </div>
-                <div class="search-form">
-                    <input type="text" placeholder="Search..">
-                    <div class="icon-search"></div>   
-                </div>
+                <form role="search" action="{{route('search')}}" method="get">
+                    <div class="search-form">
+                        <input type="text" placeholder="Search.." name="key">
+                        <button  class="icon-search"></button>
+                    </div>
+                </form>
+
                 @if(Auth::check())
                     <div class="sign-up-in">
                         <div class="dropdown">
@@ -24,8 +27,6 @@
                                 {{Auth::user()->name}}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 150px;">
-                                <a class="dropdown-item" href="#">Quản lý trang</a>
-                                <a class="dropdown-item" href="#">Nhật ký hoạt động</a>
                                 <a class="dropdown-item" href="{{route('create-event')}}">Tạo sự kiện mới</a>
                                 <a class="dropdown-item" href="{{route('logout')}}">Đăng xuất</a>
                             </div>
