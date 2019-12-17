@@ -49,9 +49,10 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <script src="/js/chart_total.js"></script>
-    <script src="/js/chart_all_ticket.js"></script>
-    <script src="/js/clock.js"></script>
+    <script src="/public/js/chart_total.js"></script>
+    <script src="/public/js/chart_all_ticket.js"></script>
+    <script src="/public/js/clock.js"></script>
+    <script src="/public/js/buyticket.js"></script>
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}} rel="stylesheet">
     <style>
         body {
