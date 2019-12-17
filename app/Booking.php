@@ -24,10 +24,17 @@ class Booking extends Model
      */
     protected $table = 'booking';
     public $rules = [
-        'booking_first_name' => ['required'],
-        'booking_last_name'  => ['required'],
-        'booking_email'      => ['required', 'email'],
-        'booking_phone'      => ['required']   
+        'booking_first_name' => 'required',
+        'booking_last_name'  => 'required',
+        'booking_email'      => 'required|email',
+        'booking_phone'      => 'required'   
+    ];
+    public $fail_messages = [
+        'booking_first_name.required' => "Bạn phải nhập đầy đủ tên",
+        'booking_last_name.required'  => "Bạn phải nhập đầy đủ họ",
+        'booking_email.required'  => "Bạn phải nhập đầy đủ email",
+        'booking_email.email'  => "Email không đúng",
+        'booking_phone.required'      => "Bạn phải nhập đầy đủ số điện thoại"
     ];
     /**
      * The "type" of the auto-incrementing ID.

@@ -48,7 +48,7 @@ class BookingController extends Controller
             if($current_quantity < 1){
                 continue;
             }
-            $ticket = TicketClass::where('eventId', $eventId)->where('type', $ticket_ordered["ticket-class"])->first();
+            $ticket = TicketClass::where('eventId', $eventId)->where('id', $ticket_ordered["ticket-class"])->first();
             if(!$ticket){
                 return response()->json([
                     'status' => 'error',
@@ -144,7 +144,7 @@ class BookingController extends Controller
                 ])
                 ], 440);
         }
-        if(Carbon::now()->lt($order_session['expires'])){
+        if(Carbon::now()->gt($order_session['expires'])){
             return response()->json([
                 'status'      => 'error',
                 'message'     => 'Đã hết thời gian đặt vé',
@@ -155,17 +155,19 @@ class BookingController extends Controller
         }
         $event = Event::findOrFail($eventId);
         $order = new Booking();
-        if (!$order->validate($request->all())) {
+        $validator = Validator::make($request->all(), [
+            $order->rules, $order->fail_messages
+       ])->validate();
+        if ($validator->fails()) {
             return response()->json([
                 'status'   => 'error',
-                'messages' => $order->errors(),
+                'messages' => $validator->messages(),
             ]);
         }
         return response()->json([
             'status'      => 'success',
             'redirectUrl' => route('showEventPayment', [
-                    'event_id'    => $eventId,
-                    'is_embedded' => $this->is_embedded
+                    'eventId'    => $eventId
                 ])
         ]);
     }   

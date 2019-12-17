@@ -122,7 +122,7 @@ Route::prefix('event/{eventId}')->group(function(){
     Route::get('/ticket-booking', 'BookingController@showSelectTicket')->name('choose-ticket');
     Route::get('/checkout', 'BookingController@showEventCheckout')->name('event-checkout');
     Route::post('/validate-tickets', 'BookingController@validateTickets')->name('validateTicket');
-    
+    Route::post('/validate-order', 'BookingController@validateOrder')->name('validateOrder');
 });
 Route::get('/booking/complete', 'BookingController@completePayment');
 // Route::get('/booking/purchase', 'BookingController@purchase');
