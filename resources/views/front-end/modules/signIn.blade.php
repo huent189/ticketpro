@@ -1,4 +1,8 @@
 @extends('front-end.layout.master')
+@push('css')
+<link rel="stylesheet" href="/css/style-sign-in.css">
+<link rel="stylesheet" href="/css/sign-in-res.css">
+@endpush
 @section('pageTitle', 'TicketPro: SignIn')
 @section('content')
 <div class="main main-sign-in">

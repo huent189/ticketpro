@@ -1,4 +1,7 @@
 @extends('front-end.layout.master')
+@push('css')
+<link rel="stylesheet" href="/css/chooseTickets.css">
+@endpush
 @push('metadata')
 <meta name="csrf-token" content="{{csrf_token()}}">
 <meta name="event-id" content="{{$event->id}}">

@@ -1,4 +1,9 @@
 @section('pageTitle', 'TicketPro: CreateEvent1')
+@push('css')
+<link rel="stylesheet" href="/css/CreateEvent1.css">
+<link rel="stylesheet" href="/css/CreateEvent2.css">
+<link rel="stylesheet" href="/css/CreateEvent3.css">
+@endpush
 @section('content')
 <div class="wrapper">
         <div class="side-left">

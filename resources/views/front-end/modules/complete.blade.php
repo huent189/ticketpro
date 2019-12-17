@@ -1,4 +1,7 @@
 @extends('front-end.layout.master')
+@push('css')
+<link rel="stylesheet" href="/css/complete.css">
+@endpush
 @section('pageTitle', 'TicketPro: Complete')
 @section('content')
 <div class="main main-choose-tickets">
