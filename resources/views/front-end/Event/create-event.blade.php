@@ -1,5 +1,9 @@
 @extends('front-end.layout.master')
-@section('pageTitle', 'TicketPro: CreateEvent1')
+@section('pageTitle', 'TicketPro: CreateEvent')
+@push('css')
+    <link rel="stylesheet" href="/css/CreateEvent1.css">
+    <link rel="stylesheet" href="/css/CreateEvent2.css">
+    <link rel="stylesheet" href="/css/CreateEvent3.css">
 @section('content')
     <?php
     $message = Session::get('message');
@@ -10,15 +14,7 @@
         }
     ?>
     <div class="wrapper">
-        <div class="side-left">
-            <div class="toolbar">
-                <ul class="list">
-                    <li class="list-group" style=" background-color: white; color:black">
-                        <h5>Tạo sự kiện</h5>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        @include('front-end.layout.menu-left-create-event')
         <form action="{{route('store-event')}}" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
             <div class="side-right">

@@ -1,4 +1,4 @@
-@section('pageTitle', 'TicketPro: CreateEvent1')
+@section('pageTitle', 'TicketPro: CreateEvent')
 @push('css')
 <link rel="stylesheet" href="/css/CreateEvent1.css">
 <link rel="stylesheet" href="/css/CreateEvent2.css">

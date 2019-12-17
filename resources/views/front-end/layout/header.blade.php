@@ -27,7 +27,7 @@
                                 {{Auth::user()->name}}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right: 150px;">
-                                <a class="dropdown-item" href="{{route('create-event')}}">Tạo sự kiện mới</a>
+                                <a class="dropdown-item" href="{{route('create-event')}}">Tài khoản của tôi</a>
                                 <a class="dropdown-item" href="{{route('logout')}}">Đăng xuất</a>
                             </div>
                         </div>

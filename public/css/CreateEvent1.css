@@ -69,6 +69,7 @@
   padding-left: 15%;
   padding-top: 7%;
   border-right: 1px solid #414141;
+  cursor: pointer;
 }
 
 .wrapper .side-left .toolbar .list .list-group:hover {
