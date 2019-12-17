@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use Illuminate\Http\Request;
 use App\Services\PaymentGateway\Payment;
 use Carbon\Carbon;
@@ -13,11 +14,11 @@ use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
-    // protected $payment;
-    // public function __construct(Payment $p)
-    // {
-    //     $this->payment = $p;
-    // }
+    protected $payment;
+    public function __construct(Payment $p)
+    {
+        $this->payment = $p;
+    }
     public function showSelectTicket(Request $request, $eventId)      
     {
         $event = Event::find($eventId);
@@ -133,16 +134,40 @@ class BookingController extends Controller
     }
     public function validateOrder(Request $request, $eventId)
     {
-        if (!session()->get('ticket_order_' . $eventId)) {
+        $order_session = session()->get('ticket_order_' . $eventId);
+        if (!$order_session) {
             return response()->json([
                 'status'      => 'error',
                 'message'     => 'Phiên làm việc đã kết thúc.',
-                'redirectUrl' => route('event-detail', [
+                'redirectUrl' => route('choose-ticket', [
                     'eventId' => $eventId,
                 ])
                 ], 440);
         }
-        
+        if(Carbon::now()->lt($order_session['expires'])){
+            return response()->json([
+                'status'      => 'error',
+                'message'     => 'Đã hết thời gian đặt vé',
+                'redirectUrl' => route('choose-ticket', [
+                    'eventId' => $eventId,
+                ])
+                ], 440);
+        }
+        $event = Event::findOrFail($eventId);
+        $order = new Booking();
+        if (!$order->validate($request->all())) {
+            return response()->json([
+                'status'   => 'error',
+                'messages' => $order->errors(),
+            ]);
+        }
+        return response()->json([
+            'status'      => 'success',
+            'redirectUrl' => route('showEventPayment', [
+                    'event_id'    => $eventId,
+                    'is_embedded' => $this->is_embedded
+                ])
+        ]);
     }   
     public function getIPN(Request $request)
     {

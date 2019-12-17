@@ -23,7 +23,12 @@ class Booking extends Model
      * @var string
      */
     protected $table = 'booking';
-
+    public $rules = [
+        'booking_first_name' => ['required'],
+        'booking_last_name'  => ['required'],
+        'booking_email'      => ['required', 'email'],
+        'booking_phone'      => ['required']   
+    ];
     /**
      * The "type" of the auto-incrementing ID.
      *

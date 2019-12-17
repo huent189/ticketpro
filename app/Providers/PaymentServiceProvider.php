@@ -18,14 +18,16 @@ class PaymentServiceProvider extends ServiceProvider
     {
         // $this->app->bind(Payment::class, function ($app)
         // {
-        //     return new Payment();
+        //     return new Payment(new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", 
+        //     new PartnerInfo(env('DEV_ACCESS_KEY'), env('DEV_PARTNER_CODE'), env('DEV_SECRET_KEY')),
+        //     env('DEV')));
         // });
-        $this->app->bind(Environment::class, function ($app)
-        {
-            return new Environment(env('DEV_MOMO_ENDPOINT'), 
-                                new PartnerInfo(env('DEV_ACCESS_KEY'), env('DEV_PARTNER_CODE'), env('DEV_SECRET_KEY')),
-                                env('DEV'));   
-        });
+        // $this->app->bind(Environment::class, function ($app)
+        // {
+        //     return new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", 
+        //                         new PartnerInfo(env('DEV_ACCESS_KEY'), env('DEV_PARTNER_CODE'), env('DEV_SECRET_KEY')),
+        //                         env('DEV'));   
+        // });
     }
 
     /**
