@@ -1,4 +1,11 @@
 @extends('front-end.layout.master')
+push('css')
+<link rel="stylesheet" href="/css/buyTicket.css">
+@endpush
+push('scripts')
+<script src="/public/js/buyticket.js"></script>
+@endpush
+
 @section('pageTitle', 'TicketPro: buyTicket')
 @section('content')
 <div class="main main-choose-tickets">

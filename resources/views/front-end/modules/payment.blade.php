@@ -1,4 +1,7 @@
 @extends('front-end.layout.master')
+push('css')
+<link rel="stylesheet" href="/css/payment.css">
+@endpush
 @push('metadata')
 <meta name="expire-time" content="{{$expire_timestamp}}">
 @endpush
@@ -104,5 +107,5 @@
 
 @endsection('content')
 @section('scripts')
-<script src="{{asset("js/clock.js")}}"></script>
+<script src="/js/clock.js"></script>
 @endsection
