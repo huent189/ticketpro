@@ -92,5 +92,5 @@
         </div>
 @endsection('content')
 @push('scripts')
-      <script src="{{asset('js/ticket_booking.js')}}"></script>
+      <script src="/js/ticket_booking.js"></script>
 @endpush
