@@ -25,29 +25,29 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <!-- Font Awesome -->
     
-    <link rel="stylesheet" href="{{asset("css/font-awesome.min.css")}}">
+    <link rel="stylesheet" href="/css/font-awesome.min.css>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{asset("css/CreateEvent1.css")}}">
-    <link rel="stylesheet" href="{{asset("css/buyTicket.css")}}">
-    <link rel="stylesheet" href="{{asset("css/CreateEvent2.css")}}">
-    <link rel="stylesheet" href="{{asset("css/CreateEvent3.css")}}">
-    <link rel="stylesheet" href="{{asset("css/owl.carousel.css")}}">
-    <link rel="stylesheet" href="{{asset("css/style.css")}}">
-    <link rel="stylesheet" href="{{asset("css/header.css")}}">
-    <link rel="stylesheet" href="{{asset("css/footer.css")}}">
-    <link rel="stylesheet" href="{{asset("css/main-home.css")}}">
-    <link rel="stylesheet" href="{{asset("css/style-sign-up.css")}}">
-    <link rel="stylesheet" href="{{asset("css/style-sign-in.css")}}">
-    <link rel="stylesheet" href="{{asset("css/chooseTickets.css")}}">
-    <link rel="stylesheet" href="{{asset("css/complete.css")}}">
-    <link rel="stylesheet" href="{{asset("css/payment.css")}}">
-    <link rel="stylesheet" href="{{asset("css/responsive.css")}}">
-    <link rel="stylesheet" href="{{asset("css/sign-in-res.css")}}">
-    <link rel="stylesheet" href="{{asset("css/sign-up-res.css")}}">
-    <link rel="stylesheet" href="{{asset("css/buyTicket.css")}}">
-    <link rel="stylesheet" href="{{asset("css/CreateEvent1.css")}}">
-    <link rel="stylesheet" href="{{asset("css/CreateEvent2.css")}}">
-    <link rel="stylesheet" href="{{asset("css/CreateEvent3.css")}}">
+    <link rel="stylesheet" href="/css/CreateEvent1.css">
+    <link rel="stylesheet" href="/css/buyTicket.css">
+    <link rel="stylesheet" href="/css/CreateEvent2.css">
+    <link rel="stylesheet" href="/css/CreateEvent3.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/main-home.css">
+    <link rel="stylesheet" href="/css/style-sign-up.css">
+    <link rel="stylesheet" href="/css/style-sign-in.css">
+    <link rel="stylesheet" href="/css/chooseTickets.css">
+    <link rel="stylesheet" href="/css/complete.css">
+    <link rel="stylesheet" href="/css/payment.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/sign-in-res.css">
+    <link rel="stylesheet" href="/css/sign-up-res.css">
+    <link rel="stylesheet" href="/css/buyTicket.css">
+    <link rel="stylesheet" href="/css/CreateEvent1.css">
+    <link rel="stylesheet" href="/css/CreateEvent2.css">
+    <link rel="stylesheet" href="/css/CreateEvent3.css">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -78,7 +78,7 @@
 <!-- Latest jQuery form server -->
 
 <script src="js/jquery.min.js"></script>
-<script src="{{asset("js/jquery.min.js")}}"></script>
+<script src="/js/jquery.min.js"></script>
 
 {{-- <script src="/js/bootstrap-slider.js"></script> --}}
 
