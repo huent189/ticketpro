@@ -44,6 +44,7 @@ class BookingController extends Controller
         $tickets = $request->get("tickets");
         ReservedTicket::where('session_id', session()->getId())->delete();
         $order_total = 0;
+        $qty_total = 0;
         $quantity_available_validation_rules = [];
         $validator_fail = false;
         foreach($tickets as $ticket_ordered){
@@ -82,6 +83,7 @@ class BookingController extends Controller
             $reservedTickets->session_id = session()->getId();
             $reservedTickets->save();
             $order_total = $order_total + ($current_quantity * $ticket->price);
+            $qty_total = $qty_total + $current_quantity;
             $ticket_details[] = [
                 'ticket_id' => $ticket->id,
                 'type' => $ticket->type,
@@ -107,6 +109,7 @@ class BookingController extends Controller
             'expires' => $expire_time,
             'reserved_tickets_id' => $reservedTickets->id,
             'order_total' => $order_total,
+            'quantity_total' => $qty_total,
             // 'account_id' => 
         ]);
         if($request->ajax()){
@@ -174,6 +177,7 @@ class BookingController extends Controller
             $order->lastName = $request['booking_last_name'];
             $order->email = $request['booking_email'];
             $order->phone = $request['booking_phone'];
+            $order->totalQuantity = $order_session['quantity_total'];
             $order->save();
             //TODO: save booking detail
             foreach ($order_session['tickets'] as $ticket) {
@@ -203,41 +207,15 @@ class BookingController extends Controller
     {
         error_log($request->get('localMessage'));
     }
-    public function purchase(Request $request)
+    public function completePayment(Request $request, $eventId)
     {
-        return redirect($this->payment->purchase('12345','test vn pay', 20000, $request->ip()));
-    }
-    public function completePayment(Request $request)
-    {
-        dd($request);
-        // $vnp_SecureHash = $request->vnp_SecureHash;
-        // $inputData = array();
-        // foreach ($_GET as $key => $value) {
-        //     $inputData[$key] = $value;
-        // }
-        // unset($inputData['vnp_SecureHashType']);
-        // unset($inputData['vnp_SecureHash']);
-        // ksort($inputData);
-        // $i = 0;
-        // $hashData = "";
-        // foreach ($request as $key => $value) {
-        //     if ($i == 1) {
-        //         $hashData = $hashData . '&' . $key . "=" . $value;
-        //     } else {
-        //         $hashData = $hashData . $key . "=" . $value;
-        //         $i = 1;
-        //     }
-        // }
-
-        // $secureHash = hash('sha256',env('VNP_CHECKSUM') . $hashData);
-        // if ($secureHash == $vnp_SecureHash) {
-        //     if ($_GET['vnp_ResponseCode'] == '00') {
-        //         error_log('GD Thanh cong');
-        //     } else {
-        //         error_log('GD Khong thanh cong');
-        //     }
-        // } else {
-        //     error_log("Chu ky khong hop le");
-        // }
+        // dd($request);
+        $event = Event::find($eventId);
+        $booking = Booking::where('transactionId', $request->get('orderId'))->first();
+        if($event){
+            $request->session()->keep('_token');
+            return view('front-end.modules.complete')->with('event', $event)->with('booking', $booking);
+        }
+        return "Xin loi su kien nay khong ton tai";
     }
 }
