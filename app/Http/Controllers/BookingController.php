@@ -191,7 +191,7 @@ class BookingController extends Controller
         }
         //TODO call capture momo
         $payment_response =  $this->payment->purchase($eventId, $order->transactionId, "thanh toan ve su kien", strval($order->totalPrice));
-        return redirect($payment_response->payUrl);
+        return redirect($payment_response->getPayUrl());
         // return response()->json([
         //     'status'      => 'success',
         //     'redirectUrl' => route('showEventPayment', [
