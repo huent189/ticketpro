@@ -219,5 +219,6 @@
                 </div>
             </div>
         </div>
-
+@include('front-end.layout.footer')
 @endsection('content')
+

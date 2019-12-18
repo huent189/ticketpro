@@ -48,8 +48,6 @@
 <div class="rev-slider">
     @yield('content')
 </div> <!-- .container -->
-@include('front-end.layout.footer')
-
 
 
 <!-- include js files -->

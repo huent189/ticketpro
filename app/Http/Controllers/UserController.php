@@ -104,4 +104,21 @@ class UserController extends Controller
         Session::put('message','Tạo thành công');
         return redirect(route('create-event'));
     }
+
+    public function getProfile()
+    {
+        return view('front-end.modules.userProfile');
+    }
+    public function getBuyHistory()
+    {
+        return view('front-end.modules.buyHistory');
+    }
+
+    public function getEventList()
+    {
+        return view('front-end.modules.eventList');
+    }
+
 }
+
+

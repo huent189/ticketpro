@@ -104,6 +104,10 @@ Route::prefix('organizer')->group(function(){
 Route::prefix('user')->group(function (){
     Route::get('/create-event','UserController@getCreateEvent')->name('create-event');
     Route::post('/store-event','UserController@storeEvent')->name('store-event');
+    Route::get('/profile','UserController@getProfile')->name('profile');
+    Route::get('/buy-history','UserController@getBuyHistory')->name('buyHistory');
+    Route::get('/event-list','UserController@getEventList')->name('eventList');
+
 });
 
 
