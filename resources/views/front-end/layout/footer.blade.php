@@ -21,9 +21,9 @@
                     <h5>Địa chỉ: Mai Dịch - Cầu Giấy - Hà Nội</h5>
                 </div>
             </div>
-        </div>
+    </div>
     
-</div> <!-- End footer top area -->
+</div> 
 
 <div class="footer-bottom-area">
     <div class="container">

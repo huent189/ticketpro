@@ -4,13 +4,85 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .main {
+    top: 2px;
+    position: relative;
+    margin-bottom: 5px;
+    background-color: #f3f3f3;
+  }
+  .main .container {
+    padding-left: 43px;
+    padding-right: 0px;
+    margin-left: 3px;
+  }
+  .main .container .main-category #carouselExampleIndicators {
+    margin: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .main .container .category .title {
+    color: #e55b00;
+    font-size: 30px;
+    font-weight: 800;
+  }
+  .main .container .category .dash {
+    background-image: url("/Image/Untitled-2.jpg");
+    width: 100%;
+    height: 5px;
+  }
+  .main .container .category .content {
+    margin-left: -19%;
+  }
+  .main .container .category .content .component-ticket {
+    margin-left: 14%;
+    margin-right: -9%;
+    margin-top: 25px;
+    width: 432px;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    position: relative;
+    height: 355px;
+  }
+  .main .container .category .content .component-ticket .img {
+    background-size: cover;
+    height: 200px;
+    width: 460px;
+    background-image: url("/Image/Ticket/44175F.jpg");
+  }
+  
+  .main .container .category .content .component-ticket .text {
+    position: absolute;
+  }
+  .main .container .category .content .component-ticket .text .price .card {
+    min-height: 20px;
+    width: 460px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body {
+    height: 150px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body a {
+    color: black;
+    font-size: 20px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body .padding-10 {
+    margin-top: -10px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body .event-tags {
+    width: 50% !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+} 
 @media only screen and (max-width: 768px) {
   .site-branding-area .container {
-    min-width: 1170px;
-    position: relative;
     background-color: #e55b00;
     top: 2px;
-    left: 5px;
     margin-right: 10px;
     height: 80px;
     display: -webkit-box;
@@ -95,6 +167,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    margin-top: 0%;
   }
   .footer .logo-footer {
     position: absolute;
@@ -119,11 +192,10 @@
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     position: absolute;
-    right: 10%;
-    top: 90px;
+    margin-right: -31%;
   }
   .footer .community .columns-icon .rows-icon {
     display: -webkit-box;
@@ -161,14 +233,16 @@
   .footer .contact .content h5 {
     color: white;
   }
-}
-/*# sourceMappingURL=responsive.css.map */
-@media only screen and (max-width: 768px) {
   .main {
     top: 2px;
     position: relative;
     margin-bottom: 5px;
     background-color: #f3f3f3;
+  }
+  .main .container {
+    padding-left: 32px;
+    padding-right: 7px;
+    margin-left: 3px;
   }
   .main .container .main-category #carouselExampleIndicators {
     margin: 30px;
@@ -196,10 +270,11 @@
     margin-left: -4%;
   }
   .main .container .category .content .component-ticket {
+    margin-left: 10%;
     margin-top: 25px;
     width: 100%;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-around;
     position: relative;
     height: 355px;
   }
@@ -233,6 +308,265 @@
   .main .container .category .content .component-ticket .text .price .card {
     min-height: 20px;
     width: 520px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body {
+    height: 150px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body a {
+    color: black;
+    font-size: 20px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body .padding-10 {
+    margin-top: -10px;
+  }
+  .main .container .category .content .component-ticket .text .price .card .card-body .event-tags {
+    width: 50% !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+   .site-branding-area .container {
+    background-color: #e55b00;
+    top: 2px;
+    margin-right: 10px;
+    height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .site-branding-area .container .logo {
+    background-image: url("/Image/icon/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    width: 100px;
+    left: 5px;
+    position: absolute;
+    top: -5px;
+    left: 2%;
+  }
+  .site-branding-area .container .toolbar {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 500px;
+    left: 250px;
+    top: 24px;
+  }
+  .site-branding-area .container .toolbar .component-toolbar {
+    display: none;
+  }
+  .site-branding-area .container .toolbar .component-toolbar a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+  }
+  .site-branding-area .container .toolbar .component-toolbar a:hover {
+    padding: 5px 10px;
+    background-color: #8d2b08;
+  }
+  .site-branding-area .container .search-form {
+    display: none;
+    position: absolute;
+    right: 50px;
+    top: 24px;
+  }
+  .site-branding-area .container .search-form input {
+    height: 32px;
+    width: 280px;
+  }
+  .site-branding-area .container .search-form .icon-search {
+    background-image: url("/Image/icon/loupe.svg");
+    background-repeat: no-repeat;
+    height: 21px;
+    width: 21px;
+    position: absolute;
+    right: 11px;
+    top: 4px;
+  }
+  .site-branding-area .container .sign-up-in {
+    display: none;
+    position: absolute;
+    right: 100px;
+    top: 55px;
+  }
+  .site-branding-area .container .sign-up-in a {
+    padding: 3px 3px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .site-branding-area .container .sign-up-in a:hover {
+    background-color: #8d2b08;
+  }
+  .footer {
+    position: relative;
+    height: 300px;
+    margin-top: 30px;
+    background-color: #050549;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0%;
+  }
+  .footer .logo-footer {
+    position: absolute;
+    background-image: url("/Image/icon/logo.png");
+    height: 289px !important;
+    width: 253px !important;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    background-size: cover;
+    top: 3% !important;
+  }
+  .footer .community {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+  .footer .community .columns-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: absolute;
+    margin-right: -37%;
+  }
+  .footer .community .columns-icon .rows-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .footer .community .columns-icon .rows-icon .icons {
+    margin: 5px 5px;
+    height: 36px !important;
+    width: 36px !important;
+    background-size: cover;
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-1 {
+    background-image: url("/Image/icon/facebook-icon.png");
+    height: 37px !important;
+    width: 37px !important;
+    border-radius: 10px;
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-2 {
+    background-image: url("/Image/icon/ig-logo-email.png");
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-3 {
+    background-image: url("/Image/icon/Web-Youtube-alt-2-Metro-icon.png");
+    border-radius: 7px;
+  }
+  .footer .community .columns-icon .rows-icon .icons.item-4 {
+    background-image: url("/Image/icon/twitter_PNG32.png");
+  }
+  .footer .contact {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 30px;
+  }
+  .footer .contact .content h5 {
+    color: white;
+  }
+  .main {
+    top: 2px;
+    position: relative;
+    margin-bottom: 5px;
+    background-color: #f3f3f3;
+  }
+  .main .container {
+    padding-left: 32px;
+    padding-right: 7px;
+    margin-left: 3px;
+  }
+  .main .container .main-category {
+    margin-left: -31px;
+    margin-right: 0px;
+  }
+  .main .container .main-category #carouselExampleIndicators {
+    margin: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .main .container .category {
+    margin-left: -9%;
+  }
+  .main .container .category .title {
+    color: #e55b00;
+    font-size: 17px;
+    font-weight: 800;
+    margin-top: 5%;
+  }
+  .main .container .category .dash {
+    background-image: url("/Image/Untitled-2.jpg");
+    width: 100%;
+    height: 1px;
+  }
+  .main .container .category .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-left: -2%;
+  }
+  .main .container .category .content .component-ticket {
+    margin-left: -1%;
+    margin-top: 15px;
+    width: 100%;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    position: relative;
+    height: 355px;
+  }
+  .main .container .category .content .component-ticket .img {
+    background-size: cover;
+    height: 200px;
+    width: 354px;
+    background-image: url("/Image/Ticket/44175F.jpg");
+  }
+  .main .container .category .content .component-ticket .img.item-1 {
+    background-image: url("/Image/Ticket/649E3A.jpg");
+  }
+  .main .container .category .content .component-ticket .img.item-2 {
+    background-image: url("/Image/Ticket/4424A0.jpg");
+  }
+  .main .container .category .content .component-ticket .img.item-3 {
+    background-image: url("/Image/Ticket/AA0610.jpg");
+  }
+  .main .container .category .content .component-ticket .img.item-4 {
+    background-image: url("/Image/Ticket/5494D0.jpg");
+  }
+  .main .container .category .content .component-ticket .img.item-5 {
+    background-image: url("/Image/Ticket/CBD357.jpg");
+  }
+  .main .container .category .content .component-ticket .img.item-6 {
+    background-image: url("/Image/Ticket/6B5514.jpg");
+  }
+  .main .container .category .content .component-ticket .text {
+    position: absolute;
+  }
+  .main .container .category .content .component-ticket .text .price .card {
+    min-height: 20px;
+    width: 354px;
   }
   .main .container .category .content .component-ticket .text .price .card .card-body {
     height: 150px;
