@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 /**
  * @property integer $id
  * @property integer $customerId
@@ -66,5 +66,12 @@ class Booking extends Model
     public function event()
     {
         return $this->belongsTo('App\Event', 'eventId');
+    }
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function($model){
+            $model->transactionId = uniqid();
+        });
     }
 }

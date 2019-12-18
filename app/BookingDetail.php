@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 /**
  * @property integer $bookingId
  * @property integer $ticketClassId
@@ -67,7 +67,7 @@ class BookingDetail extends Model
     {
         parent::boot();
         self::creating(function($model){
-            $model->ticketCode = str_random(6);
+            $model->ticketCode = Str::random(6);
         });
     }
 }

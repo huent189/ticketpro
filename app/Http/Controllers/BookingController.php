@@ -177,7 +177,7 @@ class BookingController extends Controller
             $order->save();
             //TODO: save booking detail
             foreach ($order_session['tickets'] as $ticket) {
-                $order->bookingDetails->save(new BookingDetail(["bookingId" => $order->id, 
+                $order->bookingDetails()->save(new BookingDetail(["bookingId" => $order->id, 
                                                     "ticketClassId" => $ticket["ticket_id"]]));
                 
             }
@@ -190,16 +190,17 @@ class BookingController extends Controller
             ]);
         }
         //TODO call capture momo
-        return response()->json([
-            'status'      => 'success',
-            'redirectUrl' => route('showEventPayment', [
-                    'eventId'    => $eventId
-                ])
-        ]);
+        return $this->payment->purchase($eventId, $order->transactionId, "thanh toan ve su kien", strval($order->totalPrice));
+        // return response()->json([
+        //     'status'      => 'success',
+        //     'redirectUrl' => route('showEventPayment', [
+        //             'eventId'    => $eventId
+        //         ])
+        // ]);
     }   
     public function getIPN(Request $request)
     {
-        dd($request);
+        error_log($request->get('localMessage'));
     }
     public function purchase(Request $request)
     {
