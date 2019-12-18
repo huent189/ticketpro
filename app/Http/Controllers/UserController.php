@@ -36,11 +36,13 @@ class UserController extends Controller
      */
     public function storeEvent(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
 //        $event=Event::where('id',31)->first();
 //        dd(gettype($event->startTime));
 //        dd(gettype($request->startTime));
 //        dd(date_format($request->startTime, 'Y-m-d H:i:s'));
+        $startSellingTime=$request->timeStartSell[0];
+        $endSellingTime=$request->timeEndSell[0];
 
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -50,8 +52,6 @@ class UserController extends Controller
 
         $image = $request->image->move(public_path('images\event'), $imageName);
 
-//        dd($image);
-//        dd("public\\images\\event\\".$request->image->getClientOriginalName());
         $activeUser=Organizer::where('id', Auth::user()->id)->first();
 //        dd($activeUser);
         if(!$activeUser)
@@ -72,13 +72,10 @@ class UserController extends Controller
             $location=Location::create([
                 'place'=>$request->place,
                 'city'=>$request->city,
-                'fullAddreess'=>$request->fullAddress,
-
+                'fullAddress'=>$request->fullAddress,
             ]);
         }
-//        dd($location);
         $category=Category::where('name',$request->categoryName)->first();
-//        dd($category);
         $event=Event::create([
             'image'=>"images/event/".$imageName,
             'name'=>$request->eventName,
@@ -86,20 +83,24 @@ class UserController extends Controller
             'organizerId'=>Auth::user()->id,
             'startTime'=>date_create($request->startTime),
             'endTime'=>date_create($request->endTime),
-            'description'=>$request->description,
+            'description'=>$request->eventDescription,
             'locationId'=>$location->id,
-            'startSellingTime'=>date_create($request->timeStartSell),
-            'endSellingTime'=>date_create($request->timeEndSell),
+            'startSellingTime'=>date_create($startSellingTime),
+            'endSellingTime'=>date_create($endSellingTime),
             'status'=>'0',
         ]);
 //        dd($event);
-        TicketClass::create([
-            'eventId'=>$event->id,
-            'type'=>'free',
-            'price'=>$request->price,
-            'numberAvailable'=>$request->numOfTicket,
-            'total'=>$request->numOfTicket,
-        ]);
+//        dd(count($request->ticketClassName));
+        for($i=0;$i<count($request->ticketClassName);$i++)
+        {
+            $ticket = TicketClass::create([
+                'eventId' => $event->id,
+                'type' => $request->ticketClassName[$i],
+                'price' => $request->price[$i],
+                'numberAvailable' => $request->numOfTicket[$i],
+                'total' => $request->numOfTicket[$i],
+            ]);
+        }
         Session::put('message','Tạo thành công');
         return redirect(route('create-event'));
     }

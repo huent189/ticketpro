@@ -5,33 +5,68 @@
             <div class="container">
                 @if(count($slide)!=0)
                 <div class="main-category">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                            </ol>
 
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block " src={{$slide[0]->image }} width="1100" height="300" alt="First slide">
-                                </div>
-                                @for($i=1;$i<sizeof($slide);$i++)
-                                <div class="carousel-item ">
-                                    <img class="d-block " src={{$slide[$i]->image }} width="1100" height="300" alt="First slide">
-                                </div>
-                                @endfor
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a class="d-block" href="{{route('event-detail', ['eventId' => $slide[0]->id])}}">
+                                <img class="d-block w-100" src="{{$slide[0]->image }}">
+                                </a>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="sr-only">Next</span>
-                            </a>
-                          </div>
+                            @for($i=1;$i<sizeof($slide);$i++)
+                                <div class="carousel-item ">
+                                    <a class="d-block" href="{{route('event-detail', ['eventId' => $slide[$i]->id])}}">
+                                    <img class="d-block w-100" src={{$slide[$i]->image }}>
+                                    </a>
+                                </div>
+
+                            @endfor
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+
+{{--                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--}}
+{{--                            <ol class="carousel-indicators">--}}
+{{--                              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
+{{--                              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--}}
+{{--                              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--}}
+{{--                              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>--}}
+{{--                            </ol>--}}
+
+{{--                            <div class="carousel-inner">--}}
+
+{{--                                <div class="carousel-item active">--}}
+{{--                                    <a class="d-block" href="{{route('event-detail', ['eventId' => $slide[0]->id])}}">--}}
+{{--                                    <img class="d-block" src={{$slide[0]->image }} width="1100" height="300" alt="First slide">--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+
+{{--                                @for($i=1;$i<sizeof($slide);$i++)--}}
+{{--                                <div class="carousel-item ">--}}
+{{--                                    <a class="d-block" href="{{route('event-detail', ['eventId' => $slide[$i]->id])}}">--}}
+{{--                                    <img class="d-block" src={{$slide[$i]->image }} width="1100" height="300" alt="First slide">--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+
+{{--                                @endfor--}}
+{{--                            </div>--}}
+{{--                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">--}}
+{{--                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
+{{--                              <span class="sr-only">Previous</span>--}}
+{{--                            </a>--}}
+{{--                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">--}}
+{{--                              <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
+{{--                              <span class="sr-only">Next</span>--}}
+{{--                            </a>--}}
+{{--                          </div>--}}
                 </div>
                 @endif
                 <div class="category">

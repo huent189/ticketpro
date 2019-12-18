@@ -90,6 +90,7 @@
                 </div>
             </div>
         </div>
+    {{csrf_field()}}
 @endsection('content')
 @push('scripts')
       <script src="/js/ticket_booking.js"></script>

@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="/css/CreateEvent1.css">
     <link rel="stylesheet" href="/css/CreateEvent2.css">
     <link rel="stylesheet" href="/css/CreateEvent3.css">
+@endpush
+@push('scripts')
+    <script src="/js/create-event.js"></script>
+@endpush
 @section('content')
     <?php
     $message = Session::get('message');
@@ -146,47 +150,52 @@
                                 <div class="Title" id="title-ticket" style="margin-top: 20px;">
                                     <h4>Loại vé</h4>
                                 </div>
-                                <div class="media" style="margin-bottom: 10px">
-                                    <div class="media-body">
-                                        <p class="mt-0">Tên vé</p>
-                                        <div class="space"></div>
-                                        <input class="form-control form-control-lg" type="text" placeholder="&nbsp;Tên loại vé" required>
-                                    </div>
-                                </div>
-                                <table class="table">
-                                    <tbody>
-                                    <tr>
-                                        <td>Giá vé (VND) <span><br><br></span> <input type="number" placeholder="0" name="price" required></td>
-                                        <td>Tổng số lượng vé <span><br><br></span> <input type="number" placeholder="0" name="numOfTicket"required></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ngày bắt đầu bán</td>
-                                        <td>
-                                            <div class="input-group " style="margin-bottom: 10px;">
-                                                <input type="datetime-local" class="form-control" id="basic-url" aria-describedby="basic-addon3"name="timeStartSell"required>
+                                <ul id="ticket-classes" name="ticketClass">
+                                    <li>
+                                            <div class="media" style="margin-bottom: 10px">
+                                                <div class="media-body">
+                                                    <p class="mt-0">Tên vé</p>
+                                                    <div class="space"></div>
+                                                    <input class="form-control form-control-lg" type="text" placeholder="&nbsp;Tên loại vé" name="ticketClassName[]" required>
+                                                </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> Ngày kết thúc bán</td>
-                                        <td>
-                                            <div class="input-group " style="margin-bottom: 10px;">
-                                                <input type="datetime-local" class="form-control" id="basic-url" aria-describedby="basic-addon3"name="timeEndSell" required>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <td>Giá vé (VND) <span><br><br></span> <input type="number" placeholder="0" name="price[]" required></td>
+                                                    <td>Tổng số lượng vé <span><br><br></span> <input type="number" placeholder="0" name="numOfTicket[]"required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ngày bắt đầu bán</td>
+                                                    <td>
+                                                        <div class="input-group " style="margin-bottom: 10px;">
+                                                            <input type="datetime-local" class="form-control" id="basic-url" aria-describedby="basic-addon3"name="timeStartSell[]"required>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Ngày kết thúc bán</td>
+                                                    <td>
+                                                        <div class="input-group " style="margin-bottom: 10px;">
+                                                            <input type="datetime-local" class="form-control" id="basic-url" aria-describedby="basic-addon3"name="timeEndSell[]" required>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
 
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Thêm mô tả vé</span>
-                                            </div>
-                                            <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
-                                        </div>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="btn" id="add-ticket-class">Thêm</div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Thêm mô tả vé</span>
+                                                        </div>
+                                                        <textarea class="form-control" aria-label="With textarea" name="description[]"></textarea>
+                                                    </div>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                </ul>
+
+                                <div class="btn" id="btn-add-ticket" onclick="addTiketClass()">Thêm</div>
                             </div>
                         </div>
                     </div>
@@ -240,7 +249,7 @@
 
 
     </div>
-    <script href="js/create-event.js">
+    <script href="/js/create-event.js">
 
     </script>
 @endsection('content')
