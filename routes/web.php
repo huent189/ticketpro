@@ -115,7 +115,7 @@ Route::prefix('user')->group(function (){
  * Route cho phần đăng nhập bằng google
  */
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
-Route::get('/callback/{provider}', 'SocialController@callback');
+Route::get('/callback/{provider}', 'SocialController@callback')->name('callbackLogin');
 Route::get('/logout','SocialController@logout')->name('logout');
 
 /**
