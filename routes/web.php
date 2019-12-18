@@ -104,6 +104,10 @@ Route::prefix('organizer')->group(function(){
 Route::prefix('user')->group(function (){
     Route::get('/create-event','UserController@getCreateEvent')->name('create-event');
     Route::post('/store-event','UserController@storeEvent')->name('store-event');
+    Route::get('/profile','UserController@getProfile')->name('profile');
+    Route::get('/buy-history','UserController@getBuyHistory')->name('buyHistory');
+    Route::get('/event-list','UserController@getEventList')->name('eventList');
+
 });
 
 
@@ -111,7 +115,7 @@ Route::prefix('user')->group(function (){
  * Route cho phần đăng nhập bằng google
  */
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
-Route::get('/callback/{provider}', 'SocialController@callback');
+Route::get('/callback/{provider}', 'SocialController@callback')->name('callbackLogin');
 Route::get('/logout','SocialController@logout')->name('logout');
 
 /**
