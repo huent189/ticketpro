@@ -15,11 +15,11 @@ class Payment
             new PartnerInfo(env('DEV_ACCESS_KEY'), env('DEV_PARTNER_CODE'), env('DEV_SECRET_KEY')),
             env('DEV'));
     }
-    public function purchase($bookingId, $orderInfo, string $amount, $clientIp)
+    public function purchase($eventId, $bookingId, $orderInfo, string $amount)
     {
         $requestId = rand(100, 999999999);
-        $notifyURL = URL::to("/checkPayment");
-        $returnURL = URL::to("/booking/".strval($bookingId)."#complete");
+        $notifyURL = route('complete-payment', ['eventId' => $eventId]);
+        $returnURL = route('notify-payment', ['eventId' => $eventId]);
         return CaptureMoMo::process($this->env,$bookingId, $orderInfo, $amount,'', $requestId, 
                         $notifyURL, $returnURL);
         

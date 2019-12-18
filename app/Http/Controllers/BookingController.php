@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\BookingDetail;
+use App\Enums\BookingStatus;
 use Illuminate\Http\Request;
 use App\Services\PaymentGateway\Payment;
 use Carbon\Carbon;
 use App\Event;
 use App\ReservedTicket;
 use App\TicketClass;
+use Exception;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\DB;
 class BookingController extends Controller
 {
     protected $payment;
@@ -155,7 +158,6 @@ class BookingController extends Controller
         }
         $event = Event::findOrFail($eventId);
         $order = new Booking();
-        // dd($order->rules);
         $validator = Validator::make($request->all(), $order->rules, $order->fail_messages);
         if ($validator->fails()) {
             return response()->json([
@@ -163,6 +165,31 @@ class BookingController extends Controller
                 'messages' => $validator->errors()->all(),
             ]);
         }
+        try {
+            DB::beginTransaction();
+            $order->status = BookingStatus::WaitingForPayment;
+            $order->totalPrice = $order_session['order_total'];
+            $order->discountPrice = 0;
+            $order->firstName = $request['booking_first_name'];
+            $order->lastName = $request['booking_last_name'];
+            $order->email = $request['booking_email'];
+            $order->phone = $request['booking_phone'];
+            $order->save();
+            //TODO: save booking detail
+            foreach ($order_session['tickets'] as $ticket) {
+                $order->bookingDetails->save(new BookingDetail(["bookingId" => $order->id, 
+                                                    "ticketClassId" => $ticket["ticket_id"]]));
+                
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(), 
+            ]);
+        }
+        //TODO call capture momo
         return response()->json([
             'status'      => 'success',
             'redirectUrl' => route('showEventPayment', [
@@ -172,8 +199,7 @@ class BookingController extends Controller
     }   
     public function getIPN(Request $request)
     {
-        error_log('fromBooking');
-        error_log($request->fullUrl());
+        dd($request);
     }
     public function purchase(Request $request)
     {
@@ -181,8 +207,8 @@ class BookingController extends Controller
     }
     public function completePayment(Request $request)
     {
-        var_dump($request);
-        $vnp_SecureHash = $request->vnp_SecureHash;
+        dd($request);
+        // $vnp_SecureHash = $request->vnp_SecureHash;
         // $inputData = array();
         // foreach ($_GET as $key => $value) {
         //     $inputData[$key] = $value;
@@ -190,26 +216,26 @@ class BookingController extends Controller
         // unset($inputData['vnp_SecureHashType']);
         // unset($inputData['vnp_SecureHash']);
         // ksort($inputData);
-        $i = 0;
-        $hashData = "";
-        foreach ($request as $key => $value) {
-            if ($i == 1) {
-                $hashData = $hashData . '&' . $key . "=" . $value;
-            } else {
-                $hashData = $hashData . $key . "=" . $value;
-                $i = 1;
-            }
-        }
+        // $i = 0;
+        // $hashData = "";
+        // foreach ($request as $key => $value) {
+        //     if ($i == 1) {
+        //         $hashData = $hashData . '&' . $key . "=" . $value;
+        //     } else {
+        //         $hashData = $hashData . $key . "=" . $value;
+        //         $i = 1;
+        //     }
+        // }
 
-        $secureHash = hash('sha256',env('VNP_CHECKSUM') . $hashData);
-        if ($secureHash == $vnp_SecureHash) {
-            if ($_GET['vnp_ResponseCode'] == '00') {
-                error_log('GD Thanh cong');
-            } else {
-                error_log('GD Khong thanh cong');
-            }
-        } else {
-            error_log("Chu ky khong hop le");
-        }
+        // $secureHash = hash('sha256',env('VNP_CHECKSUM') . $hashData);
+        // if ($secureHash == $vnp_SecureHash) {
+        //     if ($_GET['vnp_ResponseCode'] == '00') {
+        //         error_log('GD Thanh cong');
+        //     } else {
+        //         error_log('GD Khong thanh cong');
+        //     }
+        // } else {
+        //     error_log("Chu ky khong hop le");
+        // }
     }
 }

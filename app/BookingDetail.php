@@ -63,4 +63,11 @@ class BookingDetail extends Model
     {
         return $this->belongsTo('App\TicketClass', 'ticketClassId');
     }
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function($model){
+            $model->ticketCode = str_random(6);
+        });
+    }
 }
