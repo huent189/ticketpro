@@ -177,9 +177,10 @@ class BookingController extends Controller
             $order->save();
             //TODO: save booking detail
             foreach ($order_session['tickets'] as $ticket) {
-                $order->bookingDetails()->save(new BookingDetail(["bookingId" => $order->id, 
+                for ($i=0; $i < $ticket['quantity']; $i++) { 
+                    $order->bookingDetails()->save(new BookingDetail(["bookingId" => $order->id, 
                                                     "ticketClassId" => $ticket["ticket_id"]]));
-                
+                }
             }
             DB::commit();
         } catch (Exception $e) {
