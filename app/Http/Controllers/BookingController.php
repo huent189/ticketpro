@@ -190,15 +190,14 @@ class BookingController extends Controller
                 'message' => $e->getMessage(), 
             ]);
         }
-        //TODO call capture momo
         $payment_response =  $this->payment->purchase($eventId, $order->transactionId, "thanh toan ve su kien", strval($order->totalPrice));
+        if($payment_response->getErrorCode() != 0){
+            return response()->json([
+                'status'      => 'error',
+                'message' => $payment_response->getMessage(),
+            ]);    
+        }
         return redirect($payment_response->getPayUrl());
-        // return response()->json([
-        //     'status'      => 'success',
-        //     'redirectUrl' => route('showEventPayment', [
-        //             'eventId'    => $eventId
-        //         ])
-        // ]);
     }   
     public function getIPN(Request $request)
     {
