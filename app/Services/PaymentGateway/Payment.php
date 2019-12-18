@@ -18,7 +18,7 @@ class Payment
     public function purchase($eventId, $bookingId, $orderInfo, string $amount)
     {
         $requestId = rand(100, 999999999);
-        $notifyURL = URL::to('/api/'.$eventId.'/notify-payment');
+        $notifyURL = route('notify-payment', ['eventId' => $eventId]);
         $returnURL = route('complete-payment', ['eventId' => $eventId]);
         return CaptureMoMo::process($this->env,strval($bookingId), $orderInfo, $amount,'', strval($requestId), 
                         $notifyURL, $returnURL);
