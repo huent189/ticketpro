@@ -208,6 +208,7 @@ class BookingController extends Controller
     {
         //TODO: thanh toan thanh cong
         error_log('ai do goi tao ne');
+        error_log($request->getContent());
         $ipn = $this->payment->receiveIPN($request->getContent());
         DB::beginTransaction();
         try {
