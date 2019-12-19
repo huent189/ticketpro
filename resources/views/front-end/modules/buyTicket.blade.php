@@ -34,8 +34,9 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mt-0">Giới thiệu</h3>
-                        {{$event->description}}
                         <div class="space"></div>
+                        {{$event->description}}
+                      
                     </div>
                 </div>
             </div>

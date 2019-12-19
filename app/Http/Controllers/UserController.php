@@ -143,8 +143,8 @@ class UserController extends Controller
             ->groupBy('ticketClasses.id')
             ->orderByRaw('price ASC')
             ->get();
-        dd($ticket);
-//        return view('front-end.modules.');
+        // dd($ticket);
+       return view('front-end.modules.buyHistoryDetail');
 
     }
     public function getCreatedEventList()
@@ -155,7 +155,7 @@ class UserController extends Controller
             ->where('organizers.userId', '=', Auth::user()->id)
             ->orderByRaw('created_at DESC')
             ->get();
-        dd($events);
+        // dd($events);
         return view('front-end.modules.eventList',compact('events'));
     }
     public function updateProfile()
