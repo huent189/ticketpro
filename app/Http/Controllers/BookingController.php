@@ -274,7 +274,7 @@ class BookingController extends Controller
         $event = Event::find($eventId);
         $booking = Booking::where('transactionId', $request->get('orderId'))->first();
         if($event){
-            if($request->get('errorCode') === 0){
+            if($request->get('errorCode') == 0){
                 return view('front-end.modules.complete')->with('event', $event)->with('booking', $booking);
             } else {
                 return "Thanh toán không thành công. Lỗi: ".$request->get('localMessage');
