@@ -34,7 +34,7 @@
                         </div>
                     </li>
                 </td>
-             
+             @endforeach
             </tr>
         </tbody>
     </table>
