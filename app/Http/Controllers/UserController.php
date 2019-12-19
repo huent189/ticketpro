@@ -163,6 +163,13 @@ class UserController extends Controller
 
     public  function getEventBuyDetail($eventid)
     {
+        $ticket= DB::table('ticketclasses')
+            ->select('ticketclasses.*')
+            ->join('events','ticketclasses.eventId','=','events.id')
+            ->where('events.id','=',$eventid)
+            ->get();
+        dd($ticket);
+
         return view('front-end.modules.eventBuyDetails');
     }
     public function updateProfile()

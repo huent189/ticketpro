@@ -27,7 +27,7 @@
                         <img class="d-flex mr-3 ava" src='{{asset($event->image)}}'
                             alt="Generic placeholder image">
                         <div class="media-body">
-                            <a href="{{route('buyEventDetails',['eventId' => $event->id])}}">
+                            <a href="{{route('ticketByDetails',['eventId' => $event->id])}}">
                                 <h5 class="mt-0 mb-2 font-weight-bold">{{$event->name}}</h5>
                             </a>
                             <p>{{$event->description}}</p>
