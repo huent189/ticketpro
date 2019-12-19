@@ -135,6 +135,11 @@ class UserController extends Controller
     }
     public function buyEventDetail($eventid)
     {
+        $totalMoney =0;
+        $i=0;
+        $event=DB::table('events')
+            ->select('events.*')
+            ->where('events.id', "=",$eventid)->first();
         $ticket = Db::table('ticketClasses')
             ->select('ticketClasses.*', DB::raw('count(*) as totalTicket'))
             ->join('bookingdetails','bookingdetails.ticketClassId','=', 'ticketclasses.id')
@@ -144,8 +149,12 @@ class UserController extends Controller
             ->groupBy('ticketClasses.id')
             ->orderByRaw('price ASC')
             ->get();
+        foreach ($ticket as $ticketClasses)
+        {
+            $totalMoney = $totalMoney + $ticketClasses->price * $ticketClasses->totalTicket ;
+        }
         // dd($ticket);
-       return view('front-end.modules.buyHistoryDetail');
+       return view('front-end.modules.buyHistoryDetail', compact('ticket','event', 'i', 'totalMoney'));
 
     }
     public function getCreatedEventList()

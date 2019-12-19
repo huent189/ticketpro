@@ -9,43 +9,28 @@
 <div class="wrapper">
     @include('front-end.layout.menu-left-create-event')
     <div class="right">
-    <h1>Chi tiết từng loại vé bạn đã mua</h1>
+    <h1>Chi tiết từng loại vé bạn đã mua cho sự kiện {{$event->name}}</h1>
+        <h1> Tổng chi phí: {{$totalMoney}} VNĐ</h1>
     <table class="table table-bordered" style = "width:96%;"> 
     <thead>
     <tr>
       <th scope="col">STT</th>
       <th scope="col">Loại vé</th>
-      <th scope="col">Giá vé</th>
-      <th scope="col">Số lượng đã bán ra</th>
-      <th scope="col">Số lượng còn lại</th>
-      <th scope="col">Tổng số tiền thu được</th>
+      <th scope="col">Giá vé / 1 vé</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">chi phí</th>
     </tr>
   </thead>
   <tbody>
+  @foreach($ticket as $ticketClasses)
     <tr>
-      <th scope="row">1</th>
-      <td>Hòa âm ánh sáng</td>
-      <td>400.000 VND</td>
-      <td>12</td>
-      <td>50</td>
-      <td>5.000.000 VND</td>
+      <th scope="row">{{++$i}}</th>
+      <td>{{$ticketClasses->type}}</td>
+        <td>{{$ticketClasses->price}} đồng</td>
+      <td>{{$ticketClasses->totalTicket}}</td>
+      <td>{{ $ticketClasses->price * $ticketClasses->totalTicket }} đồng</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Hòa âm ánh sáng</td>
-      <td>400.000 VND</td>
-      <td>12</td>
-      <td>50</td>
-      <td>5.000.000 VND</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Hòa âm ánh sáng</td>
-      <td>400.000 VND</td>
-      <td>12</td>
-      <td>50</td>
-      <td>5.000.000 VND</td>
-    </tr>
+    @endforeach
   </tbody>
     </table>
     </div>
