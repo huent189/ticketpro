@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\OrderCompletedEvent;
+use App\Jobs\GenerateTicket;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -26,6 +27,6 @@ class OrderCompletedListener
      */
     public function handle(OrderCompletedEvent $event)
     {
-        //
+        // GenerateTicket::dispatch($event->booking);
     }
 }

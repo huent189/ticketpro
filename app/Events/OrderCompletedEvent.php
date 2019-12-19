@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class OrderCompletedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    protected $booking;
+    public $booking;
     /**
      * Create a new event instance.
      *
