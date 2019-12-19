@@ -1,0 +1,51 @@
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .wrapper .content-ticket {
+    width: 1000px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    border-radius: 5px;
+    border: 1px solid #141212;
+  }
+  
+  .wrapper .content-ticket .right {
+    margin-top: 2%;
+    width: 200px;
+    margin-left: -10%;
+  }
+  
+  .wrapper .content-ticket .right .title {
+    color: #d1cfcf;
+    font-size: 14px;
+  }
+  
+  .wrapper .content-ticket .right .text h2 {
+    width: 260px;
+    margin-top: 6px;
+  }
+  
+  .wrapper .content-ticket .left {
+    width: 200px;
+    margin-right: -10%;
+  }
+  
+  .wrapper .content-ticket .left .QRcode {
+    background-image: url("/Image/icon/qr-code-2d-code-barcode-information-png-favpng-29frTA2GAPJZCGYKWHvsnED9g.jpg");
+    background-size: cover;
+    height: 200px;
+    margin-top: 22%;
+  }
+  /*# sourceMappingURL=ticket.css.map */
