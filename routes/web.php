@@ -108,6 +108,7 @@ Route::prefix('user')->group(function (){
     Route::get('/buy-history','UserController@getBuyHistory')->name('buyHistory');
     Route::get('/event-list','UserController@getEventList')->name('eventList');
     Route::post('/update-profile', 'UserController@updateProfile')->name('updateProfile');
+    Route::get('/buy-history/{eventId}', 'UserController@buyEventDetail')->name('buyEventDetails');
 
 });
 
