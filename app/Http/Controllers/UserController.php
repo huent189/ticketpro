@@ -144,8 +144,8 @@ class UserController extends Controller
             ->groupBy('ticketClasses.id')
             ->orderByRaw('price ASC')
             ->get();
-        dd($ticket);
-//        return view('front-end.modules.');
+        // dd($ticket);
+       return view('front-end.modules.buyHistoryDetail');
 
     }
     public function getCreatedEventList()

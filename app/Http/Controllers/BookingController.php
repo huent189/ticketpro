@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Services\PaymentGateway\Payment;
 use Carbon\Carbon;
 use App\Event;
+use App\Events\OrderCompletedEvent;
 use App\ReservedTicket;
 use App\TicketClass;
 use Exception;
@@ -221,7 +222,7 @@ class BookingController extends Controller
                 //TODO: thanh toan thanh cong
                 $booking = Booking::where('transactionId', $ipn->getOrderId())->first();
                 $booking->status = BookingStatus::Paid();
-                $booking->pdfTicketPath = 'ticket_pdf/'.$booking->event->name.'_'.$booking->id.Str::random(10);
+                $booking->pdfTicketPath = 'ticket_pdf/'.$booking->id.Str::random(10).'.pdf';
                 $booking->save();
                 foreach ($booking->bookingDetails as $item) {
                     for ($i=0; $i < $item->quantity; $i++) { 
@@ -231,15 +232,17 @@ class BookingController extends Controller
                     }
                     TicketClass::find($item->ticketClassId)->decrement('numberAvailable', $item->quantity);
                 }
+                DB::commit();
+                event(new OrderCompletedEvent($booking));
                 // error_log('update db thanh cong');
             } else {
                 //TODO: thanh toan khong thanh cong
                 $booking->status = BookingStatus::Canceled();
                 $booking->save();
+                DB::commit();
                 // error_log('update db khong thanh cong');
                 // error_log(print_r($ipn));
             }
-            DB::commit();
         } catch (Exception $e) {
             DB::rollback();
             error_log($e->getMessage());
