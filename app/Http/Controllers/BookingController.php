@@ -13,9 +13,11 @@ use App\Event;
 use App\ReservedTicket;
 use App\TicketClass;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 class BookingController extends Controller
 {
     protected $payment;
@@ -180,6 +182,9 @@ class BookingController extends Controller
             $order->phone = $request['booking_phone'];
             $order->totalQuantity = $order_session['quantity_total'];
             $order->eventId = $eventId;
+            if(Auth::user()){
+                $order->customerId = Auth::user()->id;
+            }
             $order->save();
             foreach ($order_session['tickets'] as $ticket) {
                 $order->bookingDetails()->save(new BookingDetail(["bookingId" => $order->id, 
@@ -196,7 +201,7 @@ class BookingController extends Controller
             ]);
         }
         $payment_response =  $this->payment->purchase($eventId, $order->transactionId, "thanh toan ve su kien", strval($order->totalPrice));
-        if($payment_response->getErrorCode() != 0){
+        if((!$payment_response) && $payment_response->getErrorCode() != 0){
             return response()->json([
                 'status'      => 'error',
                 'message' => $payment_response->getMessage(),
@@ -221,7 +226,8 @@ class BookingController extends Controller
                     for ($i=0; $i < $item->quantity; $i++) { 
                         $booking->attendees()->save(new Attendee(['firstName' => $booking->firstName,
                                             'lastName'=> $booking->lastName, 'email' => $booking->email,
-                                            'eventId' => $booking->eventId, 'ticketClassId' => $item->ticketClassId]));
+                                            'eventId' => $booking->eventId, 'ticketClassId' => $item->ticketClassId,
+                                            'pdfTicketPath' => 'ticket_pdf/'.$booking->event->name.'_'.$booking->id.Str::random(10)]));
                     }
                     TicketClass::find($item->ticketClassId)->decrement('numberAvailable', $item->quantity);
                 }
