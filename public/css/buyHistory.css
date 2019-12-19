@@ -1,5 +1,20 @@
-.list-unstyled{
-    margin-top: 10px;
-    margin-left: 10px;
-
+.wrapper .right .table  .media .ava {
+    height: 150px;
+    width: 30%;
+}
+.wrapper .right {
+    min-height: 100px;
+    overflow:scroll ;
+}
+.wrapper .right .table {
+    margin-left: 2%;
+    
+}
+.wrapper .right .table  th {
+    text-align: center;
+}
+.wrapper .right h1 {
+    margin-left: 3%;
+    margin-top: 1%;
+    font-weight: 700;
 }

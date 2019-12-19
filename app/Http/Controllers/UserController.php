@@ -120,8 +120,8 @@ class UserController extends Controller
     }
     public function getBuyHistory()
     {
-        $ticket = Booking::where('customerId', Auth::user()->id)->get();
-        dd($ticket);
+        // $ticket = Booking::where('customerId', Auth::user()->id)->get();
+        // dd($ticket);
         return view('front-end.modules.buyHistory');
     }
 
