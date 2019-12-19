@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '188002023976-4695qd9lj6gq7leur20ol55ocubcthle.apps.googleusercontent.com',
         'client_secret' => 'nm1bmfGlxeUuOjWfYf_VZqEt',
-        'redirect' => 'http://localhost/callback/google',
+        'redirect' => 'http://ticketpro-uet.herokuapp.com/callback/google',
     ],
 
 ];
