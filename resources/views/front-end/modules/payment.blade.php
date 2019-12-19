@@ -61,7 +61,7 @@
                         <div class="title-info-ticket">Thanh Toán trực tuyến</div>
                         <div class="vnpay-content">
                             <div class="img-vnpay"></div>
-                            <div class="text">Thanh toán bằng QR Vnpay</div>
+                            <div class="text">Thanh toán bằng MOMO</div>
                         </div>
     
                     </div>

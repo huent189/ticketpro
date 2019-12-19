@@ -70,7 +70,10 @@
       -ms-flex-positive: 7;
           flex-grow: 7;
 }
-
+.wrapper .ticket-type .ticket-type-content .form-group input{
+  height: 34px;
+  font-size: 15px;
+}
 .wrapper .ticket-type .ticket-type-content .vnpay .vnpay-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -86,6 +89,7 @@
   height: 80px;
   width: 400px;
   margin-left: 15%;
+  background-color: #b0006e;
 }
 
 .wrapper .ticket-type .ticket-type-content .vnpay .vnpay-content .img-vnpay {
@@ -94,7 +98,11 @@
   height: 50px;
   background-size: cover;
 }
-
+.wrapper .ticket-type .ticket-type-content .vnpay .vnpay-content .text {
+  margin-left: -81%;
+  color: white;
+  font-size: medium;
+}
 .wrapper .ticket-type .info-ticket {
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
@@ -120,6 +128,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          margin-left: -11%;
 }
 
 .wrapper .ticket-type .total {
