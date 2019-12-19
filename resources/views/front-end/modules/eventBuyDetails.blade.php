@@ -30,7 +30,7 @@
   <tbody>
   @foreach($tickets as $ticket)
     <tr>
-      <th scope="row">++$i</th>
+      <th scope="row">{{++$i}}</th>
       <td>{{$ticket->type}}</td>
       <td>{{$ticket->price}} đồng</td>
       <td>{{$ticket->total - $ticket->numberAvailable}}</td>

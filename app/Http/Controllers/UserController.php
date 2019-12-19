@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function  getCreateEvent()
     {
-        $activeUser=Organizer::where('id', Auth::user()->id)->first();
+        $activeUser=Organizer::where('userId', Auth::user()->id)->first();
         $existOrganizers= false;
         if($activeUser) $existOrganizers=true;
         return view('front-end.Event.create-event',compact('existOrganizers'));
@@ -54,11 +54,11 @@ class UserController extends Controller
         $imageCover = time().'cover.'.$request->image->extension();
         $eventMap = time().'map.'.$request->eventMap->extension();
 //        dd($eventMap);
-        $activeUser=Organizer::where('id', Auth::user()->id)->first();
+        $activeUser=Organizer::where('userId', Auth::user()->id)->first();
 //        dd($activeUser);
         if(!$activeUser)
         {
-            $newOrganizer=Organizer::create([
+            $activeUser=Organizer::create([
                 'userId'=> Auth::user()->id,
                 'profileImage'=>'được cập nhật',
                 'website'=>'chưa được cập nhật',
@@ -86,7 +86,7 @@ class UserController extends Controller
             'image'=>"images/event/cover/".$imageCover,
             'name'=>$request->eventName,
             'categoryId'=>$category->id,
-            'organizerId'=>Auth::user()->id,
+            'organizerId'=>$activeUser->id,
             'startTime'=>date_create($request->startTime),
             'endTime'=>date_create($request->endTime),
             'description'=>$request->eventDescription,
@@ -126,6 +126,7 @@ class UserController extends Controller
             ->select('events.*')
             ->join('booking', 'events.id', '=', 'booking.eventId')
             ->where('booking.userId','=',Auth::user()->id)
+            ->orWhere('booking.email','=',Auth::user()->email)
             ->orderByRaw('created_at DESC')
             ->distinct()
             ->get();
