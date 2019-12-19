@@ -229,14 +229,13 @@ class BookingController extends Controller
                 //TODO: thanh toan khong thanh cong
                 $booking->status = BookingStatus::Canceled();
                 $booking->save();
+                error_log('update db khong thanh cong');
+                error_log(print_r($ipn));
             }
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
-            return response()->json([
-                'status' => 'error',
-                'message' => $e->getMessage(), 
-            ]);
+            error_log($e->getMessage());
         }
         
     }
