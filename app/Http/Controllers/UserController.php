@@ -121,15 +121,15 @@ class UserController extends Controller
     }
     public function getBuyHistory()
     {
-        $event = DB::table('events')
+        $events = DB::table('events')
             ->select('events.*')
             ->join('booking', 'events.id', '=', 'booking.eventId')
             ->where('booking.userId','=',Auth::user()->id)
             ->distinct()
             ->get();
-        dd($event);
+//        dd($events);
 
-        return view('front-end.modules.buyHistory');
+        return view('front-end.modules.buyHistory',compact('events'));
     }
     public function buyEventDetail($eventid)
     {
@@ -142,6 +142,7 @@ class UserController extends Controller
             ->groupBy('ticketClasses.id')
             ->get();
         dd($ticket);
+//        return view('front-end.modules.');
 
     }
     public function getEventList()
