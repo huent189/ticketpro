@@ -34,8 +34,12 @@
                         </div>
                     </li>
                 </td>
+<<<<<<< HEAD
              @endforeach
+=======
+>>>>>>> 8110c92a6cf29beeff026bf25bac8b194b9a9813
             </tr>
+            @endforeach
         </tbody>
     </table>
     </div>
