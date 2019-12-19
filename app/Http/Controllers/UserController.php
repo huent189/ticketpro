@@ -12,6 +12,7 @@ use App\Event;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\DB;
 Session_start();
 class UserController extends Controller
 {
@@ -120,15 +121,42 @@ class UserController extends Controller
     }
     public function getBuyHistory()
     {
-        // $ticket = Booking::where('customerId', Auth::user()->id)->get();
-        // dd($ticket);
-        return view('front-end.modules.buyHistory');
+        $events = DB::table('events')
+            ->select('events.*')
+            ->join('booking', 'events.id', '=', 'booking.eventId')
+            ->where('booking.userId','=',Auth::user()->id)
+            ->orderByRaw('created_at DESC')
+            ->distinct()
+            ->get();
+//        dd($events);
+
+        return view('front-end.modules.buyHistory',compact('events'));
     }
-
-    public function getEventList()
+    public function buyEventDetail($eventid)
     {
+        $ticket = Db::table('ticketClasses')
+            ->select('ticketClasses.*', DB::raw('count(*) as totalTicket'))
+            ->join('bookingdetails','bookingdetails.ticketClassId','=', 'ticketclasses.id')
+            ->join('booking','booking.id','=','bookingdetails.bookingId')
+            ->where('booking.eventId','=',$eventid)
+            ->where('booking.userId','=', Auth::user()->id)
+            ->groupBy('ticketClasses.id')
+            ->orderByRaw('price ASC')
+            ->get();
+        dd($ticket);
+//        return view('front-end.modules.');
 
-        return view('front-end.modules.eventList');
+    }
+    public function getCreatedEventList()
+    {
+        $events= DB::table('events')
+            ->select('events.*')
+            ->join('organizers','organizers.id','=', 'events.organizerId')
+            ->where('organizers.userId', '=', Auth::user()->id)
+            ->orderByRaw('created_at DESC')
+            ->get();
+        dd($events);
+        return view('front-end.modules.eventList',compact('events'));
     }
     public function updateProfile()
     {

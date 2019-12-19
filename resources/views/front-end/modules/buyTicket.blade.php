@@ -50,20 +50,20 @@
                         <div class="ticket">
                                 <table class="table">
                                     <tbody>
-                                        @for ($i = 0; $i < count($event->ticketClasses); $i++)
+                                        @for ($i = 0; $i < count($ticketClasses); $i++)
                                         <tr>
                                         <th scope="row">{{$i + 1}}</th>
                                             <td>
-                                            <h5>{{$event->ticketClasses[$i]->type}}</h5>
-                                            @if ($event->ticketClasses[$i]->location)
-                                            <p>Vị trí: {{$event->ticketClasses[$i]->location}}</p>    
+                                            <h5>{{$ticketClasses[$i]->type}}</h5>
+                                            @if ($ticketClasses[$i]->location)
+                                            <p>Vị trí: {{$ticketClasses[$i]->location}}</p>
                                             @endif
-                                            @if ($event->ticketClasses[$i]->benefit)
-                                            <p>Quyền lợi: {{$event->ticketClasses[$i]->benefit}}</p>
+                                            @if ($ticketClasses[$i]->benefit)
+                                            <p>Quyền lợi: {{$ticketClasses[$i]->benefit}}</p>
                                             @endif
                                             </td>
                                             <td>
-                                            <h5>@price_format($event->ticketClasses[$i]->price) VND</h5>
+                                            <h5>@price_format($ticketClasses[$i]->price) VND</h5>
                                             </td>
                                 
                                         </tr>    
@@ -76,6 +76,4 @@
             </div>
         </div>
     </div>
-
-
-@endsection('content')
+@endsection
