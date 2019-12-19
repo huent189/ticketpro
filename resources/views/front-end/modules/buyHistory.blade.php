@@ -42,7 +42,7 @@
                
                 <td>
                     <li class="media">
-                        <img class="d-flex mr-3 ava" src="/uploads/eventcovers/ABL_10_Saigon_Heat_2019.jpg"
+                        <img class="d-flex mr-3 ava" src="/uploads/eventcovers/newyear.jpg"
                             alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mt-0 mb-2 font-weight-bold">Anna Smith</h5>
@@ -61,7 +61,7 @@
                 
                 <td>
                     <li class="media">
-                        <img class="d-flex mr-3 ava" src="/uploads/eventcovers/ABL_10_Saigon_Heat_2019.jpg"
+                        <img class="d-flex mr-3 ava" src="/uploads/eventcovers/saigon.jpg"
                             alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mt-0 mb-2 font-weight-bold">Anna Smith</h5>
