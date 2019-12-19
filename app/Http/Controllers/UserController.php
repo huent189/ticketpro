@@ -59,7 +59,7 @@ class UserController extends Controller
         if(!$activeUser)
         {
             $newOrganizer=Organizer::create([
-                'id'=> Auth::user()->id,
+                'userId'=> Auth::user()->id,
                 'profileImage'=>'được cập nhật',
                 'website'=>'chưa được cập nhật',
                 'description'=>'chưa có mô tả',
@@ -93,7 +93,7 @@ class UserController extends Controller
             'locationId'=>$location->id,
             'startSellingTime'=>date_create($startSellingTime),
             'endSellingTime'=>date_create($endSellingTime),
-            'status'=>'0',
+            'status'=>'2',
             'ticketMap'=>"images/event/map/".$eventMap,
         ]);
 //        dd($event);
@@ -121,6 +121,7 @@ class UserController extends Controller
     }
     public function getBuyHistory()
     {
+        $i=0;
         $events = DB::table('events')
             ->select('events.*')
             ->join('booking', 'events.id', '=', 'booking.eventId')
@@ -130,10 +131,15 @@ class UserController extends Controller
             ->get();
 //        dd($events);
 
-        return view('front-end.modules.buyHistory',compact('events'));
+        return view('front-end.modules.buyHistory',compact('events','i'));
     }
     public function buyEventDetail($eventid)
     {
+        $totalMoney =0;
+        $i=0;
+        $event=DB::table('events')
+            ->select('events.*')
+            ->where('events.id', "=",$eventid)->first();
         $ticket = Db::table('ticketClasses')
             ->select('ticketClasses.*', DB::raw('count(*) as totalTicket'))
             ->join('bookingdetails','bookingdetails.ticketClassId','=', 'ticketclasses.id')
@@ -143,20 +149,44 @@ class UserController extends Controller
             ->groupBy('ticketClasses.id')
             ->orderByRaw('price ASC')
             ->get();
+        foreach ($ticket as $ticketClasses)
+        {
+            $totalMoney = $totalMoney + $ticketClasses->price * $ticketClasses->totalTicket ;
+        }
         // dd($ticket);
-       return view('front-end.modules.buyHistoryDetail');
+       return view('front-end.modules.buyHistoryDetail', compact('ticket','event', 'i', 'totalMoney'));
 
     }
     public function getCreatedEventList()
     {
+        $i=0;
         $events= DB::table('events')
             ->select('events.*')
             ->join('organizers','organizers.id','=', 'events.organizerId')
             ->where('organizers.userId', '=', Auth::user()->id)
             ->orderByRaw('created_at DESC')
             ->get();
-        // dd($events);
-        return view('front-end.modules.eventList',compact('events'));
+//        dd($events);
+        return view('front-end.modules.eventList',compact('events','i'));
+    }
+
+    public  function getEventBuyDetail($eventid)
+    {
+        $totalMoney=0;
+        $i=0;
+        $tickets= DB::table('ticketclasses')
+            ->select('ticketclasses.*')
+            ->join('events','ticketclasses.eventId','=','events.id')
+            ->where('events.id','=',$eventid)
+            ->orderByRaw('price ASC')
+            ->get();
+        foreach ($tickets as $ticket)
+        {
+            $totalMoney = $totalMoney + ($ticket->total - $ticket->numberAvailable)* $ticket->price;
+        }
+//        dd($tickets);
+
+        return view('front-end.modules.eventBuyDetails',compact('tickets','totalMoney','i'));
     }
     public function updateProfile()
     {
