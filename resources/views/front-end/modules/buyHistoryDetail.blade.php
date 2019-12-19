@@ -1,11 +1,14 @@
 @extends('front-end.layout.master')
 @push('css')
 <link rel="stylesheet" href="/css/buyTicket.css">
+<link rel="stylesheet" href="/css/CreateEvent1.css">
+<link rel="stylesheet" href="/css/buyHistory.css">
 @endpush
 
 @section('pageTitle', 'TicketPro: buyTicketHistoryDetail')
 @section('content')
 <div class="main main-choose-tickets">
+
     <div class="wrapper">
         <div class="banner"></div>
         <div class="title">
@@ -112,7 +115,4 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection('content')
