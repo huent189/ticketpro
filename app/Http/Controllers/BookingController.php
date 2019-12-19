@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
 class BookingController extends Controller
 {
     protected $payment;
@@ -40,9 +41,12 @@ class BookingController extends Controller
         $expire_time = Carbon::now()->addMinutes(env('CHECKOUT_TIMEOUT'));
         $event = Event::findorFail($eventId);
         if(!$request->has("tickets")){
+            // return Redirect::back()->withErrors(['msg_alert', 'No tickets selected']);
+            
             return response()->json([
                 'status' => 'error',
                 'message' => 'No tickets selected',
+                'new_token' => csrf_token(),
             ], 400);
         }
         $tickets = $request->get("tickets");
@@ -58,9 +62,12 @@ class BookingController extends Controller
             }
             $ticket = TicketClass::where('eventId', $eventId)->where('id', $ticket_ordered["ticket-class"])->first();
             if(!$ticket){
+                // return Redirect::back()->withErrors(['msg_alert', 'Selected invalid ticket class']);
+                
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Selected invalid ticket class ',
+                    'new_token' => csrf_token(),
                 ], 400);
             }
             $max_per_person = $ticket->max_ticket;
@@ -96,15 +103,21 @@ class BookingController extends Controller
             ];  
         }
         if($validator_fail){
+            // return Redirect::back()->withErrors(['msg_alert', $validator_fail_messages]);
+            
             return response()->json([
                 'status'  => 'error',
                 'message' => $validator_fail_messages,
+                'new_token' => csrf_token(),
             ], 400);
         }
         if(empty($ticket_details)){
+            // return Redirect::back()->withErrors(['msg_alert', 'No valid ticket selected']);
+            
             return response()->json([
                 'status'  => 'error',
                 'message' => 'No valid ticket selected',
+                'new_token' => csrf_token(),
             ], 400);
         }
         Session::put('ticket_order_'. $eventId, [
@@ -140,37 +153,40 @@ class BookingController extends Controller
                 return view('front-end.modules.payment', compact('event', 'expire_timestamp', 'order_session'));
             }
         }
-        return redirect()->route('choose-ticket', ['eventId' => $eventId])->with('jsalert','phiên đặt vé của bạn đã kết thúc');
+        return redirect()->route('choose-ticket', ['eventId' => $eventId])->withErrors('msg_alert','phiên đặt vé của bạn đã kết thúc');
     }
     public function validateOrder(Request $request, $eventId)
     {
         $order_session = session()->get('ticket_order_' . $eventId);
         if (!$order_session) {
-            return response()->json([
-                'status'      => 'error',
-                'message'     => 'Phiên làm việc đã kết thúc.',
-                'redirectUrl' => route('choose-ticket', [
-                    'eventId' => $eventId,
-                ])
-                ], 440);
+            return redirect()->route('choose-ticket', ['eventId' => $eventId])->withErrors('msg_alert','phiên đặt vé của bạn đã kết thúc');
+            // return response()->json([
+            //     'status'      => 'error',
+            //     'message'     => 'Phiên làm việc đã kết thúc.',
+            //     'redirectUrl' => route('choose-ticket', [
+            //         'eventId' => $eventId,
+            //     ])
+            //     ], 440);
         }
         if(Carbon::now()->gt($order_session['expires'])){
-            return response()->json([
-                'status'      => 'error',
-                'message'     => 'Đã hết thời gian đặt vé',
-                'redirectUrl' => route('choose-ticket', [
-                    'eventId' => $eventId,
-                ])
-                ], 440);
+            return redirect()->route('choose-ticket', ['eventId' => $eventId])->withErrors('msg_alert','Đã hết thời gian đặt vé');
+            // return response()->json([
+            //     'status'      => 'error',
+            //     'message'     => 'Đã hết thời gian đặt vé',
+            //     'redirectUrl' => route('choose-ticket', [
+            //         'eventId' => $eventId,
+            //     ])
+            //     ], 440);
         }
         $event = Event::findOrFail($eventId);
         $order = new Booking();
         $validator = Validator::make($request->all(), $order->rules, $order->fail_messages);
         if ($validator->fails()) {
-            return response()->json([
-                'status'   => 'error',
-                'messages' => $validator->errors()->all(),
-            ]);
+            return redirect()->back()->withErrors('msg_alert',$validator->errors()->all());
+            // return response()->json([
+            //     'status'   => 'error',
+            //     'messages' => $validator->errors()->all(),
+            // ]);
         }
         try {
             DB::beginTransaction();
@@ -196,17 +212,19 @@ class BookingController extends Controller
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
-            return response()->json([
-                'status' => 'error',
-                'message' => $e->getMessage(), 
-            ]);
+            return redirect()->route('choose-ticket', ['eventId' => $eventId])->withErrors('msg_alert','Có lỗi xảy ra trong quá trình mua vé'.$e->getMessage());
+            // return response()->json([
+            //     'status' => 'error',
+            //     'message' => $e->getMessage(), 
+            // ]);
         }
         $payment_response =  $this->payment->purchase($eventId, $order->transactionId, "thanh toan ve su kien", strval($order->totalPrice));
         if((!$payment_response) && $payment_response->getErrorCode() != 0){
-            return response()->json([
-                'status'      => 'error',
-                'message' => $payment_response->getMessage(),
-            ]);    
+            return redirect()->route('choose-ticket', ['eventId' => $eventId])->withErrors('msg_alert','Có lỗi xảy ra trong quá trình mua vé'.$payment_response->getMessage());
+            // return response()->json([
+            //     'status'      => 'error',
+            //     'message' => $payment_response->getMessage(),
+            // ]);    
         }
         return redirect($payment_response->getPayUrl());
     }   
@@ -256,8 +274,12 @@ class BookingController extends Controller
         $event = Event::find($eventId);
         $booking = Booking::where('transactionId', $request->get('orderId'))->first();
         if($event){
-            $request->session()->keep('_token');
-            return view('front-end.modules.complete')->with('event', $event)->with('booking', $booking);
+            if($request->get('errorCode') === 0){
+                return view('front-end.modules.complete')->with('event', $event)->with('booking', $booking);
+            } else {
+                return "Thanh toán không thành công. Lỗi: ".$request->get('localMessage');
+            }
+            
         }
         return "Xin loi su kien nay khong ton tai";
     }
