@@ -163,14 +163,21 @@ class UserController extends Controller
 
     public  function getEventBuyDetail($eventid)
     {
-        $ticket= DB::table('ticketclasses')
+        $totalMoney=0;
+        $i=0;
+        $tickets= DB::table('ticketclasses')
             ->select('ticketclasses.*')
             ->join('events','ticketclasses.eventId','=','events.id')
             ->where('events.id','=',$eventid)
+            ->orderByRaw('price ASC')
             ->get();
-        dd($ticket);
+        foreach ($tickets as $ticket)
+        {
+            $totalMoney = $totalMoney + ($ticket->total - $ticket->numberAvailable)* $ticket->price;
+        }
+//        dd($tickets);
 
-        return view('front-end.modules.eventBuyDetails');
+        return view('front-end.modules.eventBuyDetails',compact('tickets','totalMoney','i'));
     }
     public function updateProfile()
     {
