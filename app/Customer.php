@@ -30,8 +30,4 @@ class Customer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bookings()
-    {
-        return $this->hasMany('App\Booking', 'customerId');
-    }
 }

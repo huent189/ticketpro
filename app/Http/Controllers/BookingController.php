@@ -183,7 +183,7 @@ class BookingController extends Controller
             $order->totalQuantity = $order_session['quantity_total'];
             $order->eventId = $eventId;
             if(Auth::user()){
-                $order->customerId = Auth::user()->id;
+                $order->userId = Auth::user()->id;
             }
             $order->save();
             foreach ($order_session['tickets'] as $ticket) {
@@ -221,13 +221,13 @@ class BookingController extends Controller
                 //TODO: thanh toan thanh cong
                 $booking = Booking::where('transactionId', $ipn->getOrderId())->first();
                 $booking->status = BookingStatus::Paid();
+                $booking->pdfTicketPath = 'ticket_pdf/'.$booking->event->name.'_'.$booking->id.Str::random(10);
                 $booking->save();
                 foreach ($booking->bookingDetails as $item) {
                     for ($i=0; $i < $item->quantity; $i++) { 
                         $booking->attendees()->save(new Attendee(['firstName' => $booking->firstName,
                                             'lastName'=> $booking->lastName, 'email' => $booking->email,
-                                            'eventId' => $booking->eventId, 'ticketClassId' => $item->ticketClassId,
-                                            'pdfTicketPath' => 'ticket_pdf/'.$booking->event->name.'_'.$booking->id.Str::random(10)]));
+                                            'eventId' => $booking->eventId, 'ticketClassId' => $item->ticketClassId]));
                     }
                     TicketClass::find($item->ticketClassId)->decrement('numberAvailable', $item->quantity);
                 }

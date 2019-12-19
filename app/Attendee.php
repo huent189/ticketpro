@@ -8,7 +8,7 @@ class Attendee extends Model
 {
     protected $table = 'attendees';
     protected $keyType = 'string';
-    protected $fillable = ['eventId', 'bookingId', 'firstName', 'lastName', 'email', 'ticketClassId'];
+    protected $fillable = ['eventId', 'bookingId', 'firstName', 'lastName', 'email', 'ticketClassId', 'pdfTicketPath'];
     public function booking()
     {
         return $this->belongsTo('App\Booking', 'bookingId');
