@@ -46,14 +46,14 @@ class Booking extends Model
     /**
      * @var array
      */
-    protected $fillable = ['customerId', 'status', 'created_at', 'updated_at', 'totalPrice', 'discountPrice', 'totalQuantity'];
+    protected $fillable = ['userId', 'status', 'created_at', 'updated_at', 'totalPrice', 'discountPrice', 'totalQuantity'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo('App\Customer', 'customerId');
+        return $this->belongsTo('App\Model\User', 'userId');
     }
 
     /**
