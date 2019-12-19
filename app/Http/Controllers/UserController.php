@@ -125,6 +125,7 @@ class UserController extends Controller
             ->select('events.*')
             ->join('booking', 'events.id', '=', 'booking.eventId')
             ->where('booking.userId','=',Auth::user()->id)
+            ->orderByRaw('created_at DESC')
             ->distinct()
             ->get();
 //        dd($events);
@@ -140,15 +141,22 @@ class UserController extends Controller
             ->where('booking.eventId','=',$eventid)
             ->where('booking.userId','=', Auth::user()->id)
             ->groupBy('ticketClasses.id')
+            ->orderByRaw('price ASC')
             ->get();
         dd($ticket);
 //        return view('front-end.modules.');
 
     }
-    public function getEventList()
+    public function getCreatedEventList()
     {
-
-        return view('front-end.modules.eventList');
+        $events= DB::table('events')
+            ->select('events.*')
+            ->join('organizers','organizers.id','=', 'events.organizerId')
+            ->where('organizers.userId', '=', Auth::user()->id)
+            ->orderByRaw('created_at DESC')
+            ->get();
+        dd($events);
+        return view('front-end.modules.eventList',compact('events'));
     }
     public function updateProfile()
     {
