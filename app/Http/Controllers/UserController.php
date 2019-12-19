@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use App\Category;
 use App\Location;
 use App\Model\User;
@@ -37,7 +38,8 @@ class UserController extends Controller
     public function storeEvent(Request $request)
     {
 //        dd($request->all());
-//        $event=Event::where('id',31)->first();
+//        $event=Event::first();
+//        dd($event);
 //        dd(gettype($event->startTime));
 //        dd(gettype($request->startTime));
 //        dd(date_format($request->startTime, 'Y-m-d H:i:s'));
@@ -46,18 +48,20 @@ class UserController extends Controller
 
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'eventMap'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        $imageName = time().'.'.$request->image->extension();
-
-        $image = $request->image->move(public_path('images\event'), $imageName);
-
+        $imageCover = time().'cover.'.$request->image->extension();
+        $eventMap = time().'map.'.$request->eventMap->extension();
+//        dd($eventMap);
         $activeUser=Organizer::where('id', Auth::user()->id)->first();
 //        dd($activeUser);
         if(!$activeUser)
         {
             $newOrganizer=Organizer::create([
                 'id'=> Auth::user()->id,
+                'profileImage'=>'được cập nhật',
+                'website'=>'chưa được cập nhật',
+                'description'=>'chưa có mô tả',
                 'name'=>Auth::user()->name,
                 'phone'=>$request->phoneNumber,
                 'email'=>Auth::user()->email,
@@ -76,8 +80,9 @@ class UserController extends Controller
             ]);
         }
         $category=Category::where('name',$request->categoryName)->first();
+
         $event=Event::create([
-            'image'=>"images/event/".$imageName,
+            'image'=>"images/event/cover/".$imageCover,
             'name'=>$request->eventName,
             'categoryId'=>$category->id,
             'organizerId'=>Auth::user()->id,
@@ -88,8 +93,11 @@ class UserController extends Controller
             'startSellingTime'=>date_create($startSellingTime),
             'endSellingTime'=>date_create($endSellingTime),
             'status'=>'0',
+            'ticketMap'=>"images/event/map/".$eventMap,
         ]);
 //        dd($event);
+        $request->image->move(public_path('images\event\cover'), $imageCover);
+        $request->eventMap->move(public_path('images\event\map'), $eventMap);
 //        dd(count($request->ticketClassName));
         for($i=0;$i<count($request->ticketClassName);$i++)
         {
@@ -107,16 +115,24 @@ class UserController extends Controller
 
     public function getProfile()
     {
+
         return view('front-end.modules.userProfile');
     }
     public function getBuyHistory()
     {
+        $ticket = Booking::where('customerId', Auth::user()->id)->get();
+        dd($ticket);
         return view('front-end.modules.buyHistory');
     }
 
     public function getEventList()
     {
+
         return view('front-end.modules.eventList');
+    }
+    public function updateProfile()
+    {
+        return redirect()->route('profile');
     }
 
 }

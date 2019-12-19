@@ -28,7 +28,7 @@ class Organizer extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id','name', 'profileImage', 'website', 'phone', 'email', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['id','name', 'profileImage', 'website', 'phone', 'email', 'description', 'created_at', 'updated_at','bankAccountNumber','bankAccountName'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
