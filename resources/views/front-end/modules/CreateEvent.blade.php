@@ -179,13 +179,10 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div class="btn-group" style="width:140px; margin-top: 2%;" role="group">
                         <button type="button" class="btn" onclick="duplicated()" style=" background-color: #e55b00; color: white;">Thêm loại vé</button>
                     </div>
                 </div>
-    
-    
                 <div class="side-right-3">
                     <div class="info-customer">
                         <h2>3. Thông tin thanh toán</h2>
@@ -195,18 +192,6 @@
                             <h5 class="card-title">Thông tin tài khoản của bạn</h5>
                             <h6 class="card-subtitle mb-2 text-muted">TickPro sẽ chuyển tiền về tài khoản của bạn</h6>
                             <form>
-=======
-
-
-                    <div class="side-right-3">
-                        <div class="info-customer">
-                            <h2>3. Thông tin thanh toán</h2>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Thông tin tài khoản của bạn</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">TickPro sẽ chuyển tiền về tài khoản của bạn</h6>
->>>>>>> 3d9e6dfb244d209a2002364029b2a556872ffaa1
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Chủ tài khoản</label>
                                     <div class="col-sm-10">

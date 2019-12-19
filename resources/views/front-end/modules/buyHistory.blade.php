@@ -1,60 +1,82 @@
 @extends('front-end.layout.master')
 @section('pageTitle', 'TicketPro: buyHistory')
 @push('css')
-    <link rel="stylesheet" href="/css/CreateEvent1.css">
-    <link rel="stylesheet" href="/css/buyHistory.css">
+<link rel="stylesheet" href="/css/CreateEvent1.css">
+<link rel="stylesheet" href="/css/buyHistory.css">
 @endpush
 
 @section('content')
-    <div class="wrapper">
-        @include('front-end.layout.menu-left-create-event')
-        <ul class="list-unstyled">
-            <h2>Các vé đã mua: </h2>
-            <li class="media">
-                <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/avatar-min1.jpg" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-2 font-weight-bold">Anna Smith</h5>
-                    <!--Review-->
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                        odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                        Donec lacinia congue felis in faucibus.</p>
-                </div>
-            </li>
-            <li class="media my-4">
-                <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/avatar-min2.jpg" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-2 font-weight-bold">Tom Brown</h5>
-                    <!--Review-->
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star grey-text"> </i>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                        odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                        Donec lacinia congue felis in faucibus.</p>
-                </div>
-            </li>
-            <li class="media">
-                <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/avatar-min3.jpg" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-2 font-weight-bold">Natalie Doe</h5>
-                    <!--Review-->
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star blue-text"> </i>
-                    <i class="fas fa-star grey-text"> </i>
-                    <i class="fas fa-star grey-text"> </i>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                        odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                        Donec lacinia congue felis in faucibus.</p>
-                </div>
-            </li>
-        </ul>
+<div class="wrapper">
+    @include('front-end.layout.menu-left-create-event')
+    <div class="right">
+    <h1>Sự kiện bạn đã mua vé</h1>
+    <table class="table table-bordered" style = "width:96%;"> 
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Sự kiện</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+               
+                <td>
+                    <li class="media">
+                        <img class="d-flex mr-3 ava" src="/uploads/eventcovers/ABL_10_Saigon_Heat_2019.jpg"
+                            alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-2 font-weight-bold">Anna Smith</h5>
+                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                sollicitudin. Cras purus
+                                odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                                vulputate fringilla.
+                                Donec lacinia congue felis in faucibus.</p>
+                        </div>
+                    </li>
+                </td>
+             
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+               
+                <td>
+                    <li class="media">
+                        <img class="d-flex mr-3 ava" src="/uploads/eventcovers/newyear.jpg"
+                            alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-2 font-weight-bold">Anna Smith</h5>
+                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                sollicitudin. Cras purus
+                                odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                                vulputate fringilla.
+                                Donec lacinia congue felis in faucibus.</p>
+                        </div>
+                    </li>
+                </td>
+             
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                
+                <td>
+                    <li class="media">
+                        <img class="d-flex mr-3 ava" src="/uploads/eventcovers/saigon.jpg"
+                            alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-2 font-weight-bold">Anna Smith</h5>
+                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                sollicitudin. Cras purus
+                                odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                                vulputate fringilla.
+                                Donec lacinia congue felis in faucibus.</p>
+                        </div>
+                    </li>
+                </td>
+           
+            </tr>
+        </tbody>
+    </table>
     </div>
+</div>
 @endsection
