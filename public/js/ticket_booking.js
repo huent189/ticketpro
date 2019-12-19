@@ -46,6 +46,11 @@ function submitTicket() {
         {
             console.log(response);
             window.location.href = response.redirectURL;
+        },
+        error: function(xhr, textStatus, errorThrown){
+            var err = JSON.parse(xhr.responseText);
+            alert("Error: " + err.message);
+            // $('meta[name="csrf-token"]').attr('content', err.new_token); 
         }
     });
 }
