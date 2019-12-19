@@ -59,7 +59,7 @@ class UserController extends Controller
         if(!$activeUser)
         {
             $newOrganizer=Organizer::create([
-                'id'=> Auth::user()->id,
+                'userId'=> Auth::user()->id,
                 'profileImage'=>'được cập nhật',
                 'website'=>'chưa được cập nhật',
                 'description'=>'chưa có mô tả',
@@ -93,7 +93,7 @@ class UserController extends Controller
             'locationId'=>$location->id,
             'startSellingTime'=>date_create($startSellingTime),
             'endSellingTime'=>date_create($endSellingTime),
-            'status'=>'0',
+            'status'=>'2',
             'ticketMap'=>"images/event/map/".$eventMap,
         ]);
 //        dd($event);
@@ -121,6 +121,7 @@ class UserController extends Controller
     }
     public function getBuyHistory()
     {
+        $i=0;
         $events = DB::table('events')
             ->select('events.*')
             ->join('booking', 'events.id', '=', 'booking.eventId')
@@ -130,7 +131,7 @@ class UserController extends Controller
             ->get();
 //        dd($events);
 
-        return view('front-end.modules.buyHistory',compact('events'));
+        return view('front-end.modules.buyHistory',compact('events','i'));
     }
     public function buyEventDetail($eventid)
     {
@@ -149,14 +150,20 @@ class UserController extends Controller
     }
     public function getCreatedEventList()
     {
+        $i=0;
         $events= DB::table('events')
             ->select('events.*')
             ->join('organizers','organizers.id','=', 'events.organizerId')
             ->where('organizers.userId', '=', Auth::user()->id)
             ->orderByRaw('created_at DESC')
             ->get();
-        dd($events);
-        return view('front-end.modules.eventList',compact('events'));
+//        dd($events);
+        return view('front-end.modules.eventList',compact('events','i'));
+    }
+
+    public  function getEventBuyDetail($eventid)
+    {
+        return view('front-end.modules.eventBuyDetails');
     }
     public function updateProfile()
     {

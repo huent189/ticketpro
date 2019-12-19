@@ -20,7 +20,7 @@
         <tbody>
         @foreach($events as $event)
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{++$i}}</th>
                
                 <td>
                     <li class="media">
