@@ -32,6 +32,6 @@ class SendTickets implements ShouldQueue
      */
     public function handle(OrderMailer $orderMailer)
     {
-        //$orderMailer->sendOrderTickets($this->order);
+        $orderMailer->sendOrderTickets($this->booking);
     }
 }

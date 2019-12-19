@@ -233,16 +233,6 @@ class BookingController extends Controller
                     TicketClass::find($item->ticketClassId)->decrement('numberAvailable', $item->quantity);
                 }
                 DB::commit();
-                // $data = [
-                //     'order'     => $booking,
-                //     'event'     => $booking->event,
-                //     //xem lai cho nay
-                //     // 'tickets'   => $this->event->tickets,
-                //     'attendees' => $booking->attendees,
-                //     'css'       => file_get_contents(public_path('css/ticket_pdf.css')),
-                //     'image'     => base64_encode(file_get_contents(public_path($booking->event->organizer->profileImage))),
-                // ];
-                // return view('front-end.ticket.PDFTicket', $data);
                 event(new OrderCompletedEvent($booking));
                 // error_log('update db thanh cong');
             } else {
