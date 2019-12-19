@@ -27,7 +27,9 @@ class Payment
 
     public function receiveIPN(string $rawPostData)
     {
-        return CaptureIPN::process($this->env, $rawPostData);
+        $captureIPN = new CaptureIPN($this->env);
+        return $captureIPN->getIPNInformationFromMoMo($rawPostData);
+        
     }
 
 }

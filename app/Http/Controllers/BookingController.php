@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attendee;
 use App\Booking;
 use App\BookingDetail;
 use App\Enums\BookingStatus;
@@ -178,14 +179,14 @@ class BookingController extends Controller
             $order->email = $request['booking_email'];
             $order->phone = $request['booking_phone'];
             $order->totalQuantity = $order_session['quantity_total'];
+            $order->eventId = $eventId;
             $order->save();
-            //TODO: save booking detail
             foreach ($order_session['tickets'] as $ticket) {
-                for ($i=0; $i < $ticket['quantity']; $i++) { 
-                    $order->bookingDetails()->save(new BookingDetail(["bookingId" => $order->id, 
-                                                    "ticketClassId" => $ticket["ticket_id"]]));
-                }
+                $order->bookingDetails()->save(new BookingDetail(["bookingId" => $order->id, 
+                                                    "ticketClassId" => $ticket["ticket_id"], 
+                                                    'quantity' => $ticket['quantity']]));
             }
+            //TODO: extend reserved table
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -205,11 +206,44 @@ class BookingController extends Controller
     }   
     public function getIPN(Request $request)
     {
-        error_log($request->get('localMessage'));
+        //TODO: thanh toan thanh cong
+        error_log('ai do goi tao ne');
+        $ipn = $this->payment->receiveIPN($request->getContent());
+        DB::beginTransaction();
+        try {
+            if($ipn && $ipn->getErrorCode() == 0){
+                //TODO: thanh toan thanh cong
+                $booking = Booking::where('transactionId', $ipn->getTransId())->first();
+                $booking->status = BookingStatus::Paid();
+                $booking->save();
+                foreach ($booking->bookingDetails as $item) {
+                    for ($i=0; $i < $item->quantity; $i++) { 
+                        $booking->saveMany(new Attendee(['firstName' => $booking->firstName,
+                                            'lastName'=> $booking->lastName, 'email' => $booking->email,
+                                            'eventId' => $booking->eventId, 'ticketClassId' => $item->ticketClassId]));
+                    }
+                    TicketClass::find($item->ticketClassId)->decrement('numberAvailable', $item->quantity);
+                }
+                error_log('update db thanh cong');
+            } else {
+                //TODO: thanh toan khong thanh cong
+                $booking->status = BookingStatus::Canceled();
+                $booking->save();
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(), 
+            ]);
+        }
+        
     }
     public function completePayment(Request $request, $eventId)
     {
         // dd($request);
+        // TODO: thanh toasn khong thanh cong
         $event = Event::find($eventId);
         $booking = Booking::where('transactionId', $request->get('orderId'))->first();
         if($event){

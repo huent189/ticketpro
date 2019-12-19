@@ -63,6 +63,10 @@ class Booking extends Model
     {
         return $this->hasMany('App\BookingDetail', 'bookingId');
     }
+    public function attendees()
+    {
+        return $this->hasMany('App\Attendee', 'bookingId');
+    }
     public function event()
     {
         return $this->belongsTo('App\Event', 'eventId');
