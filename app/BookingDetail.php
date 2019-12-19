@@ -34,19 +34,19 @@ class BookingDetail extends Model
      * 
      * @var string
      */
-    protected $keyType = 'string';
+    protected $keyType = 'integer';
 
     /**
      * Indicates if the IDs are auto-incrementing.
      * 
      * @var bool
      */
-    public $incrementing = false;
+    public $incrementing = true;
 
     /**
      * @var array
      */
-    protected $fillable = ['bookingId', 'ticketClassId', 'created_at', 'updated_at'];
+    protected $fillable = ['bookingId', 'ticketClassId', 'created_at', 'updated_at', 'quantity'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -55,19 +55,11 @@ class BookingDetail extends Model
     {
         return $this->belongsTo('App\Booking', 'bookingId');
     }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function ticketClass()
     {
         return $this->belongsTo('App\TicketClass', 'ticketClassId');
-    }
-    public static function boot()
-    {
-        parent::boot();
-        self::creating(function($model){
-            $model->ticketCode = Str::random(6);
-        });
     }
 }

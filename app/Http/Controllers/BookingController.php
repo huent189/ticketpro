@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attendee;
 use App\Booking;
 use App\BookingDetail;
 use App\Enums\BookingStatus;
@@ -44,6 +45,7 @@ class BookingController extends Controller
         $tickets = $request->get("tickets");
         ReservedTicket::where('session_id', session()->getId())->delete();
         $order_total = 0;
+        $qty_total = 0;
         $quantity_available_validation_rules = [];
         $validator_fail = false;
         foreach($tickets as $ticket_ordered){
@@ -82,6 +84,7 @@ class BookingController extends Controller
             $reservedTickets->session_id = session()->getId();
             $reservedTickets->save();
             $order_total = $order_total + ($current_quantity * $ticket->price);
+            $qty_total = $qty_total + $current_quantity;
             $ticket_details[] = [
                 'ticket_id' => $ticket->id,
                 'type' => $ticket->type,
@@ -107,6 +110,7 @@ class BookingController extends Controller
             'expires' => $expire_time,
             'reserved_tickets_id' => $reservedTickets->id,
             'order_total' => $order_total,
+            'quantity_total' => $qty_total,
             // 'account_id' => 
         ]);
         if($request->ajax()){
@@ -174,13 +178,15 @@ class BookingController extends Controller
             $order->lastName = $request['booking_last_name'];
             $order->email = $request['booking_email'];
             $order->phone = $request['booking_phone'];
+            $order->totalQuantity = $order_session['quantity_total'];
+            $order->eventId = $eventId;
             $order->save();
-            //TODO: save booking detail
             foreach ($order_session['tickets'] as $ticket) {
                 $order->bookingDetails()->save(new BookingDetail(["bookingId" => $order->id, 
-                                                    "ticketClassId" => $ticket["ticket_id"]]));
-                
+                                                    "ticketClassId" => $ticket["ticket_id"], 
+                                                    'quantity' => $ticket['quantity']]));
             }
+            //TODO: extend reserved table
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -189,55 +195,61 @@ class BookingController extends Controller
                 'message' => $e->getMessage(), 
             ]);
         }
-        //TODO call capture momo
         $payment_response =  $this->payment->purchase($eventId, $order->transactionId, "thanh toan ve su kien", strval($order->totalPrice));
+        if($payment_response->getErrorCode() != 0){
+            return response()->json([
+                'status'      => 'error',
+                'message' => $payment_response->getMessage(),
+            ]);    
+        }
         return redirect($payment_response->getPayUrl());
-        // return response()->json([
-        //     'status'      => 'success',
-        //     'redirectUrl' => route('showEventPayment', [
-        //             'eventId'    => $eventId
-        //         ])
-        // ]);
     }   
     public function getIPN(Request $request)
     {
-        error_log($request->get('localMessage'));
+        //TODO: thanh toan thanh cong
+        // error_log('ai do goi tao ne');
+        // error_log($request->getContent());
+        $ipn = $this->payment->receiveIPN($request->getContent());
+        DB::beginTransaction();
+        try {
+            if($ipn && $ipn->getErrorCode() == 0){
+                //TODO: thanh toan thanh cong
+                $booking = Booking::where('transactionId', $ipn->getOrderId())->first();
+                $booking->status = BookingStatus::Paid();
+                $booking->save();
+                foreach ($booking->bookingDetails as $item) {
+                    for ($i=0; $i < $item->quantity; $i++) { 
+                        $booking->attendees()->save(new Attendee(['firstName' => $booking->firstName,
+                                            'lastName'=> $booking->lastName, 'email' => $booking->email,
+                                            'eventId' => $booking->eventId, 'ticketClassId' => $item->ticketClassId]));
+                    }
+                    TicketClass::find($item->ticketClassId)->decrement('numberAvailable', $item->quantity);
+                }
+                // error_log('update db thanh cong');
+            } else {
+                //TODO: thanh toan khong thanh cong
+                $booking->status = BookingStatus::Canceled();
+                $booking->save();
+                // error_log('update db khong thanh cong');
+                // error_log(print_r($ipn));
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+            error_log($e->getMessage());
+        }
+        
     }
-    public function purchase(Request $request)
+    public function completePayment(Request $request, $eventId)
     {
-        return redirect($this->payment->purchase('12345','test vn pay', 20000, $request->ip()));
-    }
-    public function completePayment(Request $request)
-    {
-        dd($request);
-        // $vnp_SecureHash = $request->vnp_SecureHash;
-        // $inputData = array();
-        // foreach ($_GET as $key => $value) {
-        //     $inputData[$key] = $value;
-        // }
-        // unset($inputData['vnp_SecureHashType']);
-        // unset($inputData['vnp_SecureHash']);
-        // ksort($inputData);
-        // $i = 0;
-        // $hashData = "";
-        // foreach ($request as $key => $value) {
-        //     if ($i == 1) {
-        //         $hashData = $hashData . '&' . $key . "=" . $value;
-        //     } else {
-        //         $hashData = $hashData . $key . "=" . $value;
-        //         $i = 1;
-        //     }
-        // }
-
-        // $secureHash = hash('sha256',env('VNP_CHECKSUM') . $hashData);
-        // if ($secureHash == $vnp_SecureHash) {
-        //     if ($_GET['vnp_ResponseCode'] == '00') {
-        //         error_log('GD Thanh cong');
-        //     } else {
-        //         error_log('GD Khong thanh cong');
-        //     }
-        // } else {
-        //     error_log("Chu ky khong hop le");
-        // }
+        // dd($request);
+        // TODO: thanh toasn khong thanh cong
+        $event = Event::find($eventId);
+        $booking = Booking::where('transactionId', $request->get('orderId'))->first();
+        if($event){
+            $request->session()->keep('_token');
+            return view('front-end.modules.complete')->with('event', $event)->with('booking', $booking);
+        }
+        return "Xin loi su kien nay khong ton tai";
     }
 }

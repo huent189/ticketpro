@@ -46,7 +46,7 @@ class Booking extends Model
     /**
      * @var array
      */
-    protected $fillable = ['customerId', 'status', 'created_at', 'updated_at', 'totalPrice', 'discountPrice'];
+    protected $fillable = ['customerId', 'status', 'created_at', 'updated_at', 'totalPrice', 'discountPrice', 'totalQuantity'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -62,6 +62,10 @@ class Booking extends Model
     public function bookingDetails()
     {
         return $this->hasMany('App\BookingDetail', 'bookingId');
+    }
+    public function attendees()
+    {
+        return $this->hasMany('App\Attendee', 'bookingId');
     }
     public function event()
     {

@@ -8,12 +8,12 @@
         <div class="wrapper">
             <div class="title">
                 <div class="media">
-                    <img src="https://picsum.photos/80/80" class="align-self-start mr-3" alt="...">
+                    <img src="{{asset($event->organizer->profileImage)}}" style="height: 100px; width: 100px;" class="align-self-start mr-3" alt="...">
                     <div class="media-body">
-                        <h5 class="mt-0">Show của Thế Anh</h5>
-                        <p>Thứ 7 Ngày 09 tháng 11 năm 2019 (08:00 PM - 11:00 PM)</p>
-                        <p>Đại học Công nghệ - Đại học Quốc gia Hà Nội</p>
-                        <p>144 Xuân Thủy,Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+                        <h5 class="mt-0">{{$event->name}}</h5>
+                        <p>{{$event->startTime->isoFormat('dd, D-mm-YYYY')}} ({{$event->startTime->isoFormat('LT')}} - {{$event->endTime->isoFormat('LT')}})</p>
+                        <p>{{$event->location->place}}</p>
+                        <p>{{$event->location->fullAddress}}</p>
                     </div>
                 </div>
             </div>
@@ -41,32 +41,36 @@
                     <tbody>
                         <tr>
                             <th scope="row" width="250px">Mã đơn hàng</th>
-                            <td>C9MQSX</td>
+                        <td>{{strtoupper($booking->transactionId)}}</td>
     
                         </tr>
                         <tr>
                             <th scope="row">Ngày đặt vé</th>
-                            <td>22/11/2019</td>
+                        <td>{{$booking->created_at->isoFormat('D-mm-YYYY')}}</td>
     
                         </tr>
                         <tr>
                             <th scope="row">Thông tin đặt vé</th>
-                            <td>1 x Vé tham dự</td>
+                            <td>{{$booking->totalQuantity}} x Vé tham dự</td>
     
                         </tr>
                         <tr>
                             <th scope="row">Hình thức thanh toán</th>
-                            <td>Miễn phí - Nhận vé qua email
-                                Vé điện tử sẽ được gửi đến địa chỉ email: nguyentheanh1771998@gmail.com
-    
-                                Vui lòng in vé và đem theo đến sự kiện hoặc xuất trình mã vé (barcode/QR code) trên smart
-                                phone.
-    
-                                Trong trường hợp bạn không nhận được email xác nhận từ chúng tôi, vui lòng kiểm tra thư mục
-                                Spam của bạn.
-    
-                                Nếu có, hãy đánh dấu email đó là "Không phải Spam", để bạn có thể nhận được các thông tin
-                                khác từ TicketPro.</td>
+                            <td>MOMO</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Hình thức nhận vé</th>
+                            <td>Nhận vé qua email <br>
+                                    Vé điện tử sẽ được gửi đến địa chỉ email: {{$booking->email}}
+        
+                                    Vui lòng in vé và đem theo đến sự kiện hoặc xuất trình mã vé (barcode/QR code) trên smart
+                                    phone.
+        
+                                    Trong trường hợp bạn không nhận được email xác nhận từ chúng tôi, vui lòng kiểm tra thư mục
+                                    Spam của bạn.
+        
+                                    Nếu có, hãy đánh dấu email đó là "Không phải Spam", để bạn có thể nhận được các thông tin
+                                    khác từ TicketPro.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -74,7 +78,7 @@
             </div>
         </div>
         <div class="back-home">
-            <button type="button" class="btn btn-primary btn-lg"
+        <button type="button" onclick="location.href='/'" class="btn btn-primary btn-lg"
                 style="width: 25rem; background-color:  #e55b00; border: none; margin-top: 4%;">Quay lại trang chủ</button>
         </div>
     </div>

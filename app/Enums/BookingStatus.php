@@ -16,5 +16,5 @@ final class BookingStatus extends Enum
     const WaitingForPayment = 2;
     const Paid = 3;
     const Finished = 4;
-    const canceled = 5;
+    const Canceled = 5;
 }

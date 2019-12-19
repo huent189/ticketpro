@@ -45,7 +45,10 @@ class Event extends Model
     {
         return $this->belongsTo('App\Category', 'categoryId');
     }
-
+    public function attendees()
+    {
+        return $this->hasMany('App\Attendee', 'bookingId');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
