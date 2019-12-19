@@ -30,19 +30,22 @@
             <div class="ticket-type">
                 <div class="ticket-type-content">
                     <div class="title-info-ticket">Thông tin nhận vé</div>
-                    <form>
+                    <form method="POST" action="{{route('validateOrder', [
+                        'eventId'    => $event->id
+                    ])}}" id = "form-info">
+                        @csrf
                         <div class="form-group">
                             <label for="InputHo">Họ</label>
-                            <input type="text" class="form-control" placeholder="Nhập họ" onclick="start()">
+                            <input type="text" class="form-control" placeholder="Nhập họ" name="booking_last_name">
                         </div>
                         <div class="form-group">
                             <label for="InputTen">Tên</label>
-                            <input type="text" class="form-control" placeholder="Nhập tên">
+                            <input type="text" class="form-control" placeholder="Nhập tên" name="booking_first_name">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="Enter email">
+                                placeholder="Enter email" name="booking_email">
                         </div>
                         <div class="form-group">
                             <label for="InputEmailAgain">Email address</label>
@@ -51,14 +54,14 @@
                         </div>
                         <div class="form-group">
                             <label for="InputTen">Số điện thoại</label>
-                            <input type="text" class="form-control" placeholder="Nhập số điện thoại">
+                            <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="booking_phone">
                         </div>
                     </form>
                     <div class="vnpay">
                         <div class="title-info-ticket">Thanh Toán trực tuyến</div>
                         <div class="vnpay-content">
                             <div class="img-vnpay"></div>
-                            <div class="text">Thanh toán bằng QR Vnpay</div>
+                            <div class="text">Thanh toán bằng MOMO</div>
                         </div>
     
                     </div>
@@ -97,7 +100,7 @@
                             <div class="money">@price_format($order_session['order_total']) VND</div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary btn-lg"
+                    <button type="submit" form="form-info" class="btn btn-primary btn-lg"
                         style="width: 30rem; background-color:  #e55b00; border: none; margin-top: 4%;">Thanh Toán</button>
                 </div>
     
