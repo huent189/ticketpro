@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Enums\EventStatus;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -91,5 +93,20 @@ class Event extends Model
 
         return $minPrice;
     }
-
+    public function updateStatus()
+    {
+        if($this->status != EventStatus::Canceled){
+            $now = Carbon::now();
+            if($now->lt($this->endSellingTime) && $now->gt($this->startSellingTime)){
+                $this->status = EventStatus::OnSelling;
+            } else if ($now->gt($this->endSellingTime) && $now->lt($this->startTime)) {
+                $this->status = EventStatus::EndSelling;
+            } else if ($now->lt($this->endTime) && $now->gt($this->startTime)){
+                $this->status = EventStatus::Ongoing;
+            } else {
+                $this->status = EventStatus::Ended;
+            }
+            $this->save();
+        }
+    }
 }

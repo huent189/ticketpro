@@ -18,5 +18,5 @@ final class EventStatus extends Enum
     const EndSelling = 5;
     const Ongoing = 6;
     const Ended = 7;
-    const Rejected = 8;
+    const Canceled = 8;
 }
