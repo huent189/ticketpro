@@ -32,7 +32,7 @@
                             <div class="noti"> Tải ảnh bìa lên <br> kích thước tối ưu:<br>1560 x 600px (không quá 1MB)
                             </div>
                         </a>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" onclick="readURL(this)">
                     </div>
                 </div>
                 <div class="info-event">

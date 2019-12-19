@@ -36,7 +36,7 @@ class Event extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'categoryId', 'organizerId', 'startTime', 'endTime', 'description', 'image', 'locationId', 'startSellingTime', 'endSellingTime', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'categoryId', 'organizerId', 'startTime', 'endTime', 'description', 'image', 'locationId', 'startSellingTime', 'endSellingTime', 'status', 'created_at', 'updated_at','ticketMap'];
     protected $dates = ['startTime', 'endTime'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -75,7 +75,12 @@ class Event extends Model
     }
     public function minPrice()
     {
+//        dd($this->ticketClasses);
         $minPrice=0;
+        if(count($this->ticketClasses)>0)
+        {
+            $minPrice=$this->ticketClasses[0]->price;
+        }
         foreach($this->ticketClasses as $ticket)
         {
             if($ticket->price<$minPrice)
@@ -86,4 +91,5 @@ class Event extends Model
 
         return $minPrice;
     }
+
 }

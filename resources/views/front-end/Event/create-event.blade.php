@@ -9,26 +9,32 @@
     <script src="/js/create-event.js"></script>
 @endpush
 @section('content')
-    <?php
-    $message = Session::get('message');
-    if($message)
-        {
-            echo $message;
-            Session::put('message',null);
-        }
-    ?>
+
     <div class="wrapper">
         @include('front-end.layout.menu-left-create-event')
         <form action="{{route('store-event')}}" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
+            <hr>
             <div class="side-right">
-                <div class="banner-right">
-                    <div class="form-group">
-                        <a href="">
-                            <div class="noti"> Tải ảnh bìa lên <br> kích thước tối ưu:<br>1560 x 600px (không quá 1MB)
-                            </div>
-                        </a>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required>
+                <h1>Tạo sự kiên mới: </h1>
+                <hr>
+                <div class="info-event">
+                    <h2>Tải ảnh bìa </h2>
+                    <br>
+                    <input type="file" class="form-control-file" id="cover-image-control" data-errormsg="PhotoUploadErrorMsg" name="image" required>
+                    <div class="banner-right">
+                            <img src="" alt="" id="cover-image"  class="required borrowerImageFile" style="height: 350px">
+                    </div>
+                </div>
+                <hr>
+                <div class="info-event">
+                    <h2>Tải ảnh sơ đồ chỗ ngồi lên</h2>
+                    <br>
+                    <input type="file" class="form-control-file" id="event-map-control" data-errormsg="PhotoUploadErrorMsg" name="eventMap" required>
+                    <div class="banner-right">
+                        <div class="form-group">
+                            <img src="" alt="" id="event-map" class="required borrowerImageFile" style="height: 350px">
+                        </div>
                     </div>
                 </div>
                 <div class="info-event">
@@ -249,7 +255,17 @@
 
 
     </div>
+
     <script href="/js/create-event.js">
 
     </script>
+
+    <?php
+    $message = Session::get('message');
+    if($message)
+    {
+        echo '<script type="text/javascript">alert("' . $message . '")</script>';
+        Session::put('message',null);
+    }
+    ?>
 @endsection('content')

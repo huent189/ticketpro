@@ -9,6 +9,7 @@
 @section('pageTitle', 'TicketPro: buyTicket')
 @section('content')
 <div class="main main-choose-tickets">
+
         <div class="wrapper">
             <div class="banner" style='background-image: url("{{asset($event->image)}}")'></div>
             <div class="title">
@@ -33,8 +34,8 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mt-0">Giới thiệu</h3>
-                        <div class="space"></div>
                         {{$event->description}}
+                        <div class="space"></div>
                     </div>
                 </div>
             </div>
@@ -43,7 +44,9 @@
                     <div class="media-body">
                         <h3 class="mt-0">Thông tin vé</h3>
                         <div class="space"></div>
-                        <div class="img-location" style="background-image: url({{asset($event->ticketMap)}})"></div>
+{{--                        <div class="img-location" style='background-image: url("{{asset($event->ticketMap)}}")'>--}}
+                            <img src="{{asset($event->ticketMap)}}" alt="">
+{{--                        </div>--}}
                         <div class="ticket">
                                 <table class="table">
                                     <tbody>

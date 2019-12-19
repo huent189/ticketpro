@@ -1,3 +1,12 @@
+$(document).ready(function () {
+    $("#cover-image-control").change(function() {
+        readURL(this, "#cover-image");
+    });
+    $("#event-map-control").change(function() {
+        readURL(this, "#event-map");
+    });
+});
+
 
 function addTiketClass()
 {
@@ -47,5 +56,15 @@ function addTiketClass()
     );
 }
 
+function readURL(input, entry) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $(entry).attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 function deleteTicketClass() {
 }
