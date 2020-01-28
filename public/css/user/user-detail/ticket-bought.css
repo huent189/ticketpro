@@ -1,0 +1,61 @@
+.main-events-bought
+{
+    height: calc(100%-500px);
+    overflow-y: scroll;
+
+}
+.main-events-bought .ticket-detail .r-date
+{
+    font-weight: normal;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #f1f4f6;
+}
+.main-events-bought .ticket-detail .r-line
+{
+    border-top: 1px solid #dcdcdc;
+    display: block;
+    position: relative;
+    top: -5px;
+    z-index: -1;
+    margin-bottom: 1em;
+}
+.main-events-bought .ticket-detail
+{
+    padding-bottom: 30px;
+}
+
+.main-events-bought .ticket-detail .event-detail
+{
+    display: flex;
+}
+    .event-info
+    {
+        padding: 0 20px 0;
+    }
+        .event-title
+        {
+            font-size: 1.3rem;
+        }
+
+
+.event-detail .logo-left
+{
+    width: 20%;
+    height: 90px;
+    padding: 0 1rem;
+}
+
+    .logo-left img
+    {
+        height: 90px;
+    }
+
+@media (max-width: 1200px)
+{
+    .logo-left
+    {
+        display: none;
+    }
+
+}

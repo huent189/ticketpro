@@ -15,6 +15,7 @@ class CreateOrganizers extends Migration
     {
         Schema::create('organizers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('userId')->unsigned();
             $table->string('name');
             $table->string('profileImage');
             $table->string('website');
@@ -23,7 +24,6 @@ class CreateOrganizers extends Migration
             $table->longText('description');
             $table->string('bankAccountNumber');
             $table->string('bankAccountName');
-
             $table->timestamps();
         });
     }

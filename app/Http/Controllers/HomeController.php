@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Location;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Attendee;
 use App\Event;
 class HomeController extends Controller
 {
@@ -16,58 +17,19 @@ class HomeController extends Controller
 
     public function getIndex()
     {
-        $slide = Event::where('isPopular','1')->take(4)->get();
-        $event=Event::get();
-        $sportListEvent=[];
-        $musicListEvent=[];
-        $conferenceListEvent=[];
-        foreach($event as $e)
-        {
-            if($e->categoryId==1 && $e->startTime > date("Y-m-d H:i:s") && sizeof($sportListEvent)<2)
-            {
-                array_push($sportListEvent,$e);                
-            }    
-            elseif($e->categoryId==2 && $e->startTime > date("Y-m-d H:i:s")&&sizeof($musicListEvent)<2)
-            {
-                array_push($musicListEvent,$e);                
-            }
-            elseif($e->categoryId==3 && $e->startTime > date("Y-m-d H:i:s")&&sizeof($conferenceListEvent)<2)
-            {
-                array_push($conferenceListEvent,$e);                
-            }
-            if(sizeof($sportListEvent)==2 &&sizeof($musicListEvent)==2 &&sizeof($conferenceListEvent)==2)
-            {
-                break;
-            }       
-        }
+        // $data=[];
+        // $data['slide'] = Event::where('isPopular','1')->where('isBroadcasting',1)->get();
+        // $event=Event::get()->first()->numOfAttendee();
+        $data = Event::where('isBroadcasting',1)->get();
+        dd($data);
+        return view('user.blade.index');
+    }
 
-        
-
-//         // Category::join('events','events.categoryId','=','categories.id')
-//         // ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-//         // ->join('locations','events.locationId','=','locations.id')
-//         // ->select('events.name','events.image','locations.place','ticketClasses.price')
-//         // ->where('categories.id','1')
-//         // ->paginate(2);
-
-//         $musicListEvent = Category::where('name', 'music')->first()->events->take(2);
-// //            Category::join('events','events.categoryId','=','categories.id')
-// //        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-// //        ->join('locations','events.locationId','=','locations.id')
-// //        ->select('events.name','events.image','locations.place','ticketClasses.price')
-// //        ->where('categories.id','2')
-// //        ->paginate(2);
-
-//         $conferenceListEvent = Category::where('name', 'conference')->first()->events->take(2);
-// //            Category::join('events','events.categoryId','=','categories.id')
-// //        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-// //        ->join('locations','events.locationId','=','locations.id')
-// //        ->select('events.name','events.image','locations.place','ticketClasses.price')
-// //        ->where('categories.id','3')
-// //        ->paginate(2);
-//         // dd($sportListEvent);
-
-        return view('front-end.home',compact('sportListEvent','musicListEvent','conferenceListEvent','slide'));
+    public function allEvent()
+    {
+        $data=[];
+        $data['allEvent'] = Event::where('isBroadcasting',1)->get();
+        return 1;
     }
 
     public function getSportEvent()

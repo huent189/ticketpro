@@ -15,13 +15,19 @@ class CreateBooking extends Migration
     {
         Schema::create('booking', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('customerId')->unsigned()->index();
-            // $table->bigInteger('eventId')->unsigned()->index();
-            // $table->enum('status', ['draft','holding','waiting_for_payment', 'paid', 'finished', 'canceled']);
+            $table->bigInteger('userId')->unsigned()->index();
+            $table->bigInteger('eventId')->unsigned()->index();
             $table->tinyInteger('status')->default('0');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('transactionId');
+            $table->string('totalQuantity');
+            $table->string('pdfTicketPath');
             $table->timestamps();
             $table->integer('totalPrice');
             $table->integer('discountPrice');
+            $table->string('firstName');
+            $table->string('lastName');
         });
     }
 

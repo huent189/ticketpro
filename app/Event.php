@@ -5,6 +5,7 @@ namespace App;
 use App\Enums\EventStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Attendee;
 
 /**
  * @property integer $id
@@ -92,6 +93,10 @@ class Event extends Model
         }
 
         return $minPrice;
+    }
+    public function numOfAttendee()
+    {
+        return Attendee::where('eventId',$this->id)->count();
     }
     public function updateStatus()
     {

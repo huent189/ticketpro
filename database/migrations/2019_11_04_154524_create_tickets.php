@@ -20,6 +20,10 @@ class CreateTickets extends Migration
             $table->integer('price');
             $table->integer('numberAvailable');
             $table->integer('total');
+            $table->integer('minPerPerson')->nullable();
+            $table->integer('maxPerPerson')->nullable();
+            $table->string('location')->nullable();
+            $table->longText('benefit')->nullable();
             $table->timestamps();
         });
     }

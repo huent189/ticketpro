@@ -1,0 +1,27 @@
+.title
+{
+    display: flex;
+}
+
+.event-time-title
+{
+    flex-grow: 1;
+}
+.ticket-body
+{
+    margin: 0!important;
+    padding: 7px!important;
+}
+    .row-header
+    {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+        .title-ticket {
+            padding: 00;
+            margin: 0;
+            align-items: center;
+            flex-grow: 1;
+            line-height: 0.6rem;
+        }

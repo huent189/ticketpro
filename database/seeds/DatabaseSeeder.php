@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Category;
 use App\TicketClass;
+use App\Model\User;
 use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        factory(User::class, 20)->create();
         DB::table('categories')->insert([
             'name' => 'sport',
             // 'events' => factory(App\Event::class, 5)->create()->each(function ($e){
@@ -30,7 +32,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Organizer::class, 15)->create()->each(function($organizer){
             factory(App\Event::class)->create([
                 'organizerId' => $organizer->id,
-                'image' => 'uploads/eventcovers/20191109_aaa_vietnam.jpg'
+                'coverImage' => '/uploads/eventcovers/Liquid_Buffet.jpg'
             ])->each(function ($e){
                 $e->ticketClasses()->saveMany(factory(App\TicketClass::class, 3)->make());
                 $e->location()->associate(factory(App\Location::class)->create());
@@ -42,7 +44,6 @@ class DatabaseSeeder extends Seeder
         //     $e->ticketClasses()->save(factory(App\TicketClass::class, 3)->make());
         //     $e->location()->save(factory(App\Location::class)->make());
         // });
-        factory(App\Customer::class, 20)->create();
         Category::where('name', 'music')->first()->events->each(function($e){
             $e->name = "Music ".$e->name;
             $e->save();

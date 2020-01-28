@@ -15,10 +15,10 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'categoryId' => App\Category::all()->random()->id,
         'endTime' => $faker->dateTimeBetween($startTime->format('Y-m-d H:i:s').' +1 hours', $startTime->format('Y-m-d H:i:s').' +5 hours'),
         'description' => $faker->paragraph,
-        'image' => $faker->word,
         'startSellingTime' => $startSellingTime,
         'endSellingTime' => $endSellingTime,
         'status' => EventStatus::Draft,
+        'isBroadcasting'=>1,
         'isPopular' => rand(0,1),
     ];
 });

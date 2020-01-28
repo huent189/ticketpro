@@ -16,15 +16,18 @@ class CreateEvents extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('coverImage');
+            $table->string('ticketMap')->nullable();
             $table->bigInteger('categoryId')->unsigned()->index();
             $table->bigInteger('organizerId')->unsigned()->index();
             $table->dateTime('startTime');
             $table->dateTime('endTime');
             $table->longText('description');
-            $table->string('image');
             $table->bigInteger('locationId')->unsigned()->index()->nullable();
             $table->dateTime('startSellingTime');
             $table->dateTime('endSellingTime');
+            $table->tinyInteger('isBroadcasting')->default(0);
+            $table->tinyInteger('isPopular')->default(0);
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });

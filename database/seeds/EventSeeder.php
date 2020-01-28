@@ -32,6 +32,6 @@ class EventSeeder extends Seeder
         //     $o->save();
         // });
         DB::table('organizers')->update(['profileImage' => 'uploads/organizer_avatars/dong_nam_media.jpg']);
-        DB::table('events')->update(['ticketMap' => 'uploads/ticket_maps/aaa_vietnam.jpg']);
+        DB::table('events')->update(['ticketMap' => '/uploads/eventcovers/aaa_vietnam.jpg']);
     }
 }

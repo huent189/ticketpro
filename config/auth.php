@@ -97,11 +97,6 @@ return [
             'model' => App\Model\AdminModel::class,
         ],
 
-        'organizers' => [
-            'driver' => 'eloquent',
-            'model' => App\Model\OrganizerAuthModel::class,
-        ],
-
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
