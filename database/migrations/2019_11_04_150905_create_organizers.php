@@ -15,7 +15,7 @@ class CreateOrganizers extends Migration
     {
         Schema::create('organizers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('userId')->unsigned();
+            $table->bigInteger('eventId')->unsigned();
             $table->string('name');
             $table->string('profileImage');
             $table->string('website');

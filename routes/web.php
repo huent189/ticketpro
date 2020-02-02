@@ -14,7 +14,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@getIndex')->name('home');
-// Route::get('/ticket-detail/{eventId}','HomeController@getTicketDetail')->name('ticket-detail');
+Route::get('/event-detail/{eventId}','HomeController@getEventDetail')->name('event_detail');
+Route::get('/booking/{eventId}','HomeController@bookingDetail')->name('booking');
 
 //TODO::group router
 Route::get('/sport','HomeController@getSportEvent')->name('sport');
@@ -101,13 +102,13 @@ Route::prefix('organizer')->group(function(){
 /**
  * Route cho user
  */
-Route::prefix('user')->group(function (){
-    Route::get('/create-event','UserController@getCreateEvent')->name('create-event');
-    Route::post('/store-event','UserController@storeEvent')->name('store-event');
-    Route::get('/profile','UserController@getProfile')->name('profile');
-    Route::get('/buy-history','UserController@getBuyHistory')->name('buyHistory');
-    Route::get('/event-list','UserController@getCreatedEventList')->name('eventList');
-    Route::post('/update-profile', 'UserController@updateProfile')->name('updateProfile');
+Route::prefix('account/')->group(function (){
+    Route::get('/','UserController@getProfile')->name('get_profile');
+    Route::get('/create-event','UserController@getCreateEvent')->name('get_create_event');
+    Route::post('/store-event','UserController@storeEvent')->name('store_event');
+    Route::get('/buy-history','UserController@getBuyHistory')->name('buy_history');
+    Route::get('/created-event-list','UserController@getCreatedEventList')->name('created_event_list');
+    Route::post('/update-profile', 'UserController@updateProfile')->name('update_profile');
     Route::get('/buy-history/{eventId}', 'UserController@buyEventDetail')->name('ticketByDetails');
     Route::get('/event-buy-detail/{eventId}','UserController@getEventBuyDetail')->name('eventBuyDetail');
 

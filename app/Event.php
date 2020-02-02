@@ -39,7 +39,7 @@ class Event extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'categoryId', 'organizerId', 'startTime', 'endTime', 'description', 'image', 'locationId', 'startSellingTime', 'endSellingTime', 'status', 'created_at', 'updated_at','ticketMap'];
+    protected $fillable = ['name', 'categoryId', 'organizerId', 'startTime', 'endTime', 'description', 'image', 'locationId', 'startSellingTime', 'endSellingTime', 'status', 'created_at', 'updated_at','ticketMap', 'userId'];
     protected $dates = ['startTime', 'endTime'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -48,6 +48,11 @@ class Event extends Model
     {
         return $this->belongsTo('App\Category', 'categoryId');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\Model\User','userId');
+    }
+    
     public function attendees()
     {
         return $this->hasMany('App\Attendee', 'bookingId');
@@ -56,8 +61,7 @@ class Event extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function location()
-    {
-        
+    {       
         return $this->belongsTo('App\Location', 'locationId');
     }
 
@@ -66,7 +70,7 @@ class Event extends Model
      */
     public function organizer()
     {
-        return $this->belongsTo('App\Organizer', 'organizerId');
+        return $this->hasOne('App\Organizer','eventId');
     }
 
     /**
@@ -75,24 +79,6 @@ class Event extends Model
     public function ticketClasses()
     {
         return $this->hasMany('App\TicketClass', 'eventId');
-    }
-    public function minPrice()
-    {
-//        dd($this->ticketClasses);
-        $minPrice=0;
-        if(count($this->ticketClasses)>0)
-        {
-            $minPrice=$this->ticketClasses[0]->price;
-        }
-        foreach($this->ticketClasses as $ticket)
-        {
-            if($ticket->price<$minPrice)
-            {
-                $minPrice=$ticket->price;
-            }
-        }
-
-        return $minPrice;
     }
     public function numOfAttendee()
     {
@@ -113,5 +99,23 @@ class Event extends Model
             }
             $this->save();
         }
+    }
+
+    public function minPrice()
+    {
+        $minPrice=0;
+        if(count($this->ticketClasses)>0)
+        {
+            $minPrice=$this->ticketClasses[0]->price;
+        }
+        foreach($this->ticketClasses as $ticket)
+        {
+            if($ticket->price<$minPrice)
+            {
+                $minPrice=$ticket->price;
+            }
+        }
+
+        return number_format($minPrice);
     }
 }

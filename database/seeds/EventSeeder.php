@@ -31,7 +31,7 @@ class EventSeeder extends Seeder
         //     $o->profileImage = "uploads/organizer_avatars/dong_nam_media.jpg";
         //     $o->save();
         // });
-        DB::table('organizers')->update(['profileImage' => 'uploads/organizer_avatars/dong_nam_media.jpg']);
-        DB::table('events')->update(['ticketMap' => '/uploads/eventcovers/aaa_vietnam.jpg']);
+        DB::table('organizers')->update(['profileImage' => 'uploads/organizer_avatars/4FF637.jpg']);
+        DB::table('events')->update(['ticketMap' => '/uploads/ticket_maps/aaa_vietnam.jpg']);
     }
 }

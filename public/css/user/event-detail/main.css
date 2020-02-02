@@ -1886,12 +1886,12 @@ Cover
 .cover_slider .cover_item {
   width: 100%;
   position: relative;
-  height: 100vh;
+  height: 80vh;
   min-height: 600px;
-  padding: 150px 0;
+  /* padding: 150px 0; */
   background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%);
   background-position: center center !important;
-  /* background-size: cover !important; */
+  background-size: contain !important;
   background-repeat: no-repeat !important;
 }
 .cover_slider .cover_item .slider_content {
@@ -1923,7 +1923,7 @@ Cover
 .cover_slider .cover_item .slider_content .slider-content-inner .cover-xl-text {
   opacity: 0;
   text-transform: uppercase;
-  font-size: 90px;
+  font-size: 50px;
   font-weight: 900;
   line-height: 1.1;
   color: #f50136;
@@ -2167,7 +2167,7 @@ Cover
     font-size: 18px;
   }
   .cover_slider .cover_item .slider_content .slider-content-inner .cover-xl-text {
-    font-size: 46px;
+    font-size: 20px;
   }
   .cover_slider .cover_item .slider_content .slider-content-inner .cover-date {
     font-size: 14px;
@@ -2388,7 +2388,7 @@ Cover
 -------------------------------------------------------- */
 .price_box {
   position: relative;
-  padding: 75px 30px;
+  padding: 12px 10px;
   margin-bottom: 30px;
   text-align: center;
   background-color: #f0f2f6;
@@ -2421,11 +2421,11 @@ Cover
   padding: 15px 0;
   text-transform: capitalize;
   color: #18181c;
-  font-size: 48px;
+  font-size: 30px;
   font-weight: 700;
 }
 .price_box .price_tag sup {
-  font-size: 24px;
+  font-size: 12px;
   font-weight: 400;
   top: -15px;
   left: -7px;

@@ -1,7 +1,7 @@
 @extends('user.blade.user-detail.layout.master')
 @section('pageTitle', 'TicketPro:Ticket bought')
 @push('css')
-<link href="css/user/user-detail/ticket-bought.css" rel="stylesheet">
+<link href="/css/user/user-detail/ticket-bought.css" rel="stylesheet">
 @endpush
 
 @push('scripts')

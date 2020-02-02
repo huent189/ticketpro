@@ -5,6 +5,9 @@
 
 .description {
     display: flex;
+    position: absolute;
+    width: calc(100% - 13px);
+    bottom: 2px;
 }
 
 .des-left {
@@ -18,6 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    bottom: 0;
 }
 
 .calendar_content {

@@ -536,8 +536,10 @@ figure {
 }
 
 img {
-	vertical-align: middle;
-	border-style: none
+	max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
+    max-height: 100%;
 }
 
 svg {
@@ -10297,8 +10299,12 @@ button,
 }
 
 .app-header__logo .logo-src {
-	height: 23px;
-	width: 97px;
+	height: 57px;
+    width: 109px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .app-header__menu,
@@ -11176,7 +11182,7 @@ button,
 }
 
 .app-page-title {
-	padding: 30px;
+	padding: 10px;
 	margin: -30px -30px 30px;
 	position: relative
 }
@@ -24608,4 +24614,12 @@ a.fc-more:hover {
 	height: 350px;
 	margin-bottom: 30px;
 	background-size: 100%
+}
+
+/* Custome */
+.title_logo
+{
+	font-size: 1.3rem;
+    color: #2071b1;
+    font-weight: 600;
 }

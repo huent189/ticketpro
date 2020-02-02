@@ -1,12 +1,23 @@
 @extends('user.layout.master')
 @section('pageTitle', 'TicketPro')
 @push('css')
+<link href="/css/library/et-line.css" rel="stylesheet">
+<link href="/css/library/ionicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/user/main_styles.css">
 <link rel="stylesheet" href="/css/user/custom_index.css">
 <link rel="stylesheet" href="/css/user/responsive.css">
 @endpush
 @push('scripts')
-<script src="js/user/custom.js"></script>
+<script src="/js/library/waypoints.min.js"></script>
+<!--Counter up -->
+<script src="/js/library/jquery.counterup.min.js"></script>
+<!--Counter down -->
+<script src="/js/library/jquery.countdown.min.js"></script>
+<!-- WOW JS -->
+<script src="/js/library/wow.min.js"></script>
+<!-- Custom js -->
+<script src="/js/user/custom.js"></script>
+<script src="/js/user/event-detail/main.js"></script>
 @endpush
 @section('content')
 <div class="container">
@@ -41,251 +52,37 @@
 </div>
 <!-- Intro -->
 
-<div class="intro">
-		<h1>Sự kiện nổi bật</h1>
+<div class="intro" id="buynow">
+		<h2 class = "title_intro" >Sự kiện nổi bật</h2>
 		<div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
-
+		@foreach($data['popularEvent'] as $event)
 			<!-- Intro Item -->
 			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
+				<div class="intro_image"><img src="{{$event->coverImage}}" alt=""></div>
 				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
+					<div class="intro_title"><a href="{{Route('event_detail',['eventId' => $event->id])}}">{{$event->name}}</a></div>
 					<div class="description">
 						<div class="des-left">
 							<div class="intro_subtitle">
 								<div class="price">
 									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
+									<span>Từ {{$event->minPrice()}} VNĐ</span>
 								</div>
 								<div class="location">
 									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
+									<span>{{$event->location()->get()->first()->city}}</span>
 								</div>
 							</div>
 						</div>
 						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
+							<div class="calendar_month">Tháng {{number_format(date_format($event->startTime,'m'))}}</div>
+							<div class="calendar_content">{{number_format(date_format($event->startTime,'d'))}}</div>
 						</div>	
 					</div>
 									
 				</div>
 			</div>
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
-
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
-
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
-
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
-
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
-
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
-
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
-
-			<!-- Intro Item -->
-			<div class="intro_item ">
-				<div class="intro_image"><img src="/images/CP_Street_Food_Festival.jpg" alt=""></div>
-				<div class="intro_body">
-					<div class="intro_title"><a href="#">The Speakers</a></div>
-					<div class="description">
-						<div class="des-left">
-							<div class="intro_subtitle">
-								<div class="price">
-									<span><i class="fas fa-money-bill-wave"></i></span>
-									<span>Từ 1 000 000 VNĐ</span>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-									<span>Hà Nội</span>
-								</div>
-							</div>
-						</div>
-						<div class="des_calendar">
-							<div class="calendar_month">Tháng 12</div>
-							<div class="calendar_content">20</div>
-						</div>	
-					</div>
-									
-				</div>
-			</div>
+		@endforeach
 		</div>
 	</div>
 	<!-- All event -->
@@ -309,7 +106,7 @@
 				<div class="col">
 					<div class="cta_content text-center">
 						<div class="cta_title">Tham gia cùng chúng tôi ngay!</div>
-						<div class="button cta_button"><a href="#">Tạo sự kiện ngay</a></div>
+						<div class="button cta_button"><a href="{{Route('get_create_event')}}">Tạo sự kiện ngay</a></div>
 					</div>
 				</div>
 			</div>

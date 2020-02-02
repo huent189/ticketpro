@@ -29,7 +29,7 @@ class Base
                     '<div class="col-md-3">\n'+
                         '<div class="position-relative form-group"><label  class="">Tổng số lượng vé</label><input name="ticket-sum[]"  type="number" class="form-control"></div>\n'+
                     '</div>\n'+ 
-                    '<div class="position-relative form-group col-md-12"><label for="exampleText" class="">Mô tả vé</label><textarea name="text" placeholder="Sử dụng <br> để xuống dòng" class="form-control"></textarea></div>\n'+
+                    '<div class="position-relative form-group col-md-12"><label for="exampleText" class="">Lợi ích</label><textarea name="benefit[]"  class="form-control" placeholder="Mỗi lợi ích trong một cặp <li> </li>"></textarea></div>\n'+
                     '</div>\n'+                           
                 '</div>\n'+
             '</div'

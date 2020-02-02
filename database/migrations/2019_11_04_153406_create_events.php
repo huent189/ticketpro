@@ -18,8 +18,8 @@ class CreateEvents extends Migration
             $table->string('name');
             $table->string('coverImage');
             $table->string('ticketMap')->nullable();
+            $table->bigInteger('userId')->unsigned()->index();
             $table->bigInteger('categoryId')->unsigned()->index();
-            $table->bigInteger('organizerId')->unsigned()->index();
             $table->dateTime('startTime');
             $table->dateTime('endTime');
             $table->longText('description');

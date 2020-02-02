@@ -7,8 +7,7 @@ use App\Model\User;
 $factory->define(App\Organizer::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
-        'userId'=>User::all()->random()->id,
-        'profileImage' => $faker->word,
+        'profileImage' => '/uploads/organizer_avatars/4FF637.jpg',
         'website' => $faker->domainName,
         'phone' => $faker->phoneNumber,
         'email' => $faker->companyEmail,

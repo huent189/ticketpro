@@ -135,7 +135,7 @@
 	}
 	.header.scrolled
 	{
-		top: 0;
+		top: -1px;
 	}
 	.hamburger
 	{

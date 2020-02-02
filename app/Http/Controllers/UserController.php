@@ -27,10 +27,7 @@ class UserController extends Controller
      */
     public function  getCreateEvent()
     {
-        $activeUser=Organizer::where('userId', Auth::user()->id)->first();
-        $existOrganizers= false;
-        if($activeUser) $existOrganizers=true;
-        return view('front-end.Event.create-event',compact('existOrganizers'));
+        return view('/user/blade/user-detail/create-event');
     }
 
     /**
@@ -117,22 +114,15 @@ class UserController extends Controller
     public function getProfile()
     {
 
-        return view('front-end.modules.userProfile');
+        return view('/user/blade/user-detail/user-detail');
     }
     public function getBuyHistory()
     {
-        $i=0;
-        $events = DB::table('events')
-            ->select('events.*')
-            ->join('booking', 'events.id', '=', 'booking.eventId')
-            ->where('booking.userId','=',Auth::user()->id)
-            ->orWhere('booking.email','=',Auth::user()->email)
-            ->orderByRaw('created_at DESC')
-            ->distinct()
-            ->get();
-//        dd($events);
+        $data=[];
+        $eventBought=User::where('id',Auth::user()->id+1)->first()->booking()->get();
+        dd($eventBought);
 
-        return view('front-end.modules.buyHistory',compact('events','i'));
+        return view('/user/blade/user-detail/ticket-bought');
     }
     public function buyEventDetail($eventid)
     {
@@ -160,15 +150,16 @@ class UserController extends Controller
     }
     public function getCreatedEventList()
     {
-        $i=0;
-        $events= DB::table('events')
-            ->select('events.*')
-            ->join('organizers','organizers.id','=', 'events.organizerId')
-            ->where('organizers.userId', '=', Auth::user()->id)
-            ->orderByRaw('created_at DESC')
-            ->get();
-//        dd($events);
-        return view('front-end.modules.eventList',compact('events','i'));
+        $data = [];
+        $data['eventList']=[];
+        // dd(Auth::user()->id);
+        $exitsUser=User::where('id',Auth::user()->id+5)->first();
+        if($exitsUser)
+        {
+            $data['eventList']=$exitsUser->events()->get();
+        }
+        // dd($data['eventList']->where('isBroadcasting',1));
+        return view('/user/blade/user-detail/event-created',compact('data'));
     }
 
     public  function getEventBuyDetail($eventid)

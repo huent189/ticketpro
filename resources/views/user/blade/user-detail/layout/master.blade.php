@@ -11,15 +11,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-    @stack('css')
-<link href="css/user/user-detail/main.css" rel="stylesheet">
-<link href="css/library/font-awesome.min.css" rel="stylesheet">
+<link href="/css/library/font-awesome.min.css" rel="stylesheet">
+<link href="/css/user/user-detail/main.css" rel="stylesheet">
+@stack('css')
+
 </head>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo-src"></div>
+                <a href="{{Route('home')}}">
+                    <div class="logo-src">
+                        <img src="/Images/271-2715869_ticket-svg-two-tickets-icon-png-transparent-png.png" alt="">
+                        <span class="title_logo">TicketPro</span>
+                    </div>
+                </a>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -64,30 +70,25 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                            <img width="42" class="rounded-circle" src="{{Auth::user()->avata}}" alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                            <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
-                                            <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                            <a href="{{Route('logout')}}">
+                                                <button type="button" tabindex="0" class="dropdown-item">Đăng xuất</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Alina Mclourd
-                                    </div>
-                                    <div class="widget-subheading">
-                                        VP People Manager
+                                        {{Auth::user()->name}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>        </div>
+                    </div>        
+                </div>
             </div>
         </div>       
         <div class="app-main">
@@ -126,33 +127,27 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Quản lí tài khoản</li>
                                 <li>
-                                <a href="#">
+                                <a href="{{Route('get_profile')}}">
                                     <i class="metismenu-icon pe-7s-user"></i>
                                     <span class="app-sidebar__heading">Tài khoản của tôi</span>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="#">
+                                <a href="{{Route('buy_history')}}">
                                     <i class="metismenu-icon pe-7s-ticket"></i>
                                     <span class="app-sidebar__heading">Các vé đã mua</span>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="#">
+                                <a href="{{Route('created_event_list')}}">
                                     <i class="metismenu-icon pe-7s-date"></i>
                                     <span class="app-sidebar__heading">Sự kiện đã tạo</span>
                                 </a>
                                 </li>
                                 <li>
-                                <a href="#">
+                                <a href="{{Route('get_profile')}}">
                                     <i class="metismenu-icon pe-7s-culture"></i>
                                     <span class="app-sidebar__heading">Tài khoản ngân hàng</span>
-                                </a>
-                                </li>
-                                <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i>
-                                    <span class="app-sidebar__heading">Tài khoản của tôi</span>
                                 </a>
                                 </li>
                             </ul>
@@ -167,8 +162,8 @@
                 </div>
         </div>
     </div>   
-    <script type="text/javascript" src="js/library/jquery.min.js"></script>
-    <script type="text/javascript" src="js/user/user-detail/main.js"></script>
+    <script type="text/javascript" src="/js/library/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/user/user-detail/main.js"></script>
     @stack('scripts')
 </body>
 </html>

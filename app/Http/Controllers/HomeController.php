@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Location;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Organizer;
 use App\Attendee;
 use App\Event;
 class HomeController extends Controller
@@ -17,12 +18,9 @@ class HomeController extends Controller
 
     public function getIndex()
     {
-        // $data=[];
-        // $data['slide'] = Event::where('isPopular','1')->where('isBroadcasting',1)->get();
-        // $event=Event::get()->first()->numOfAttendee();
-        $data = Event::where('isBroadcasting',1)->get();
-        dd($data);
-        return view('user.blade.index');
+        $data=[];
+        $data['popularEvent'] = Event::where('isPopular','1')->where('isBroadcasting',1)->where('startTime','<',date('Y-m-d H:i:s'))->first()->get();
+        return view('user.blade.index',compact('data'));
     }
 
     public function allEvent()
@@ -32,55 +30,41 @@ class HomeController extends Controller
         return 1;
     }
 
+    public function bookingDetail($eventId)
+    {
+        $data=[];
+        $data['event']=Event::where('id',$eventId)->get()->first();
+        // dd($data['event']->ticketClasses()->get()[0]->id);
+        return view('user.blade.booking',compact('data'));
+    }
+
     public function getSportEvent()
     {
         $eventList = Category::where('name', 'sport')->first()->events;
-
-//            Category::join('events','events.categoryId','=','categories.id')
-//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-//        ->join('locations','events.locationId','=','locations.id')
-//        ->select('events.name','events.image','locations.place','ticketClasses.price')
-//        ->where('categories.id','1')
-//        ->get();
-
         return view('front-end.modules.sport',compact('eventList'));
     }
     public function getMusicEvent()
     {
         $eventList = Category::where('name', 'music')->first()->events;
-//            Category::join('events','events.categoryId','=','categories.id')
-//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-//        ->join('locations','events.locationId','=','locations.id')
-//        ->select('events.name','events.image','locations.place','ticketClasses.price')
-//        ->where('categories.id','2')
-//        ->get();
-//        dd($eventList);
         return view('front-end.modules.music',compact('eventList'));
     }
 
     public function getConferenceEvent()
     {
         $eventList = Category::where('name', 'conference')->first()->events;
-//            Category::join('events','events.categoryId','=','categories.id')
-//        ->join('ticketClasses','ticketClasses.eventId','=','events.id')
-//        ->join('locations','events.locationId','=','locations.id')
-//        ->select('events.name','events.image','locations.place','ticketClasses.price')
-//        ->where('categories.id','3')
-//        ->get();
-
         return view('front-end.modules.conference',compact('eventList'));
     }
 
 
-    public function getTicketDetail($eventId)
+    public function getEventDetail($eventId)
     {
-        $event=Event::where('id',$eventId)->first();
-        $ticketClasses = Event::where('id',$eventId)->first()->ticketClasses()->orderBy('price', 'ASC')->get();
-        // $event = Event::findOrFail($eventId);
-        if($ticketClasses){
-            return view('front-end.modules.buyTicket', compact('ticketClasses','event'));
+        $data=[];
+        $data['event']=Event::where('id',$eventId)->first();
+        $data['ticketClasses'] = Event::where('id',$eventId)->first()->ticketClasses()->orderBy('price', 'ASC')->get();
+        if($data['event']){
+            return view('user.blade.event-detail', compact('data'));
         }
-        return "Xin loi su kien nay khong ton tai";
+        return "Xin lỗi!! Sự kiện này không còn tồn tại";
     }
 
     public function getSearch(Request $request)

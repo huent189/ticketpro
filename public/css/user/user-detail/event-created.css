@@ -15,3 +15,8 @@
 .app-page-title .page-title-heading {
     flex-grow: 1;
 }
+.over-flow
+{
+    overflow: auto;
+    height: 16rem;
+}

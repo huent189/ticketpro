@@ -33,8 +33,8 @@ class Organizer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function events()
+    public function event()
     {
-        return $this->hasMany('App\Event', 'organizerId');
+        return $this->belongsTo('App\Event', 'eventId');
     }
 }

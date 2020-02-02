@@ -17,7 +17,7 @@ class CreateRelationships extends Migration
         {
             $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('locationId')->references('id')->on('locations')->onDelete('set null');
-            $table->foreign('organizerId')->references('id')->on('organizers')->onDelete('cascade');
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
         });
         Schema::table('ticketClasses', function (Blueprint $table) {
             $table->foreign('eventId')->references('id')->on('events')->onDelete('cascade');
@@ -38,7 +38,7 @@ class CreateRelationships extends Migration
         });
         Schema::table('organizers',function(Blueprint $table)
         {
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('eventId')->references('id')->on('events')->onDelete('cascade');
         });
     }
 
