@@ -22,12 +22,10 @@ function changeTicket(self,ticket_class, val)
 {
     var display_field = $('#class_'+ticket_class + "_val");
     var current = parseInt(display_field.html());
-    console.log(current);
     current = current + val;
     if((current >= display_field.attr("min") && current <= display_field.attr("max"))){
         display_field.html(current);
         sum +=display_field.attr("price") * val;
-        console.log($("#number_of_"+ticket_class));
         if($("#number_of_"+ticket_class).length){
             $("#number_of_"+ticket_class).html(current);
             $("#sum_"+ticket_class).html(current * display_field.attr("price") + ' VNĐ');
@@ -40,6 +38,21 @@ function changeTicket(self,ticket_class, val)
             $("#ticket_info").html(tmp);
         }
         $("#sum_all").html(formatCurrency(sum) + " VND");
+    }
+    if($('#number_of_'+ticket_class).text()==0)
+    {
+        ($('#number_of_'+ticket_class).parent().remove());
+    }
+
+    //disable Booking button
+    if($('#sum_all').text() == '0 VND')
+    {
+        $('#btn_submit ').prop('disabled', true);
+    }
+    else
+    {
+        $('#btn_submit ').prop('disabled', false);
+
     }
 
 }

@@ -33,7 +33,30 @@
 				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
             </ul>
             <ul>
-                <div class="button header_hidden_button"><a href="#">Đăng nhập ngay</a></div>
+			@if(Auth::check())
+				<div class="header-btn-lg pr-0">
+					<div class="widget-content p-0">
+						<div class="widget-content-wrapper">
+							<div class="widget-content-left">
+								<div class="btn-group">
+									<a aria-haspopup="true" href="{{route('get_profile')}}" aria-expanded="false" class="p-0 btn">
+										<img width="42" class="rounded-circle" src="{{Auth::user()->avata}}" alt="">
+									</a>
+								</div>
+							</div>
+							<div class="widget-content-left  ml-3 header-user-info">
+								<div class="widget-heading">
+									{{Auth::user()->name}}
+								</div>
+								<div class="widget-subheading">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			@else
+				<div class="button header_button_login"><a href="{{ url('/auth/redirect/google') }}">Đăng nhập ngay</a></div>
+			@endif
             </ul>
 		</div>
     </div>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Location;
 use Illuminate\Http\Request;
 use App\Category;
@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function getIndex()
     {
         $data=[];
-        $data['popularEvent'] = Event::where('isPopular','1')->where('isBroadcasting',1)->where('startTime','<',date('Y-m-d H:i:s'))->first()->get();
+        $data['popularEvent'] = Event::where('isPopular','1')->where('isBroadcasting','1')->WhereDate('startTime', '>=', Carbon::now()->toDateString())->get();
         return view('user.blade.index',compact('data'));
     }
 

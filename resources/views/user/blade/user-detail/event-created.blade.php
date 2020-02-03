@@ -38,14 +38,16 @@
                 <span class= 'r-line'></span>
                 <div class="event-detail">
                     <div class="logo-left">
-                        <a href="#">
+                        <a href="{{$event->organizer()->first()->website}}">
                             <img src="{{$event->organizer()->first()->profileImage}}" alt="" class="logo">
                         </a>
                     </div>
                     <div class="event-info">
-                        <div class="event-title">
-                            {{$event->name}}
-                        </div>
+                        <a href="{{Route('event_detail',['eventId' => $event->id])}}">
+                            <div class="event-title">
+                                {{$event->name}}
+                            </div>
+                        </a>
                         <div class="event-time">
                             <i class="fas fa-clock"></i>
                             {{$event->startTime}}

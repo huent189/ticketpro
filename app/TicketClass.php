@@ -37,7 +37,7 @@ class TicketClass extends Model
     /**
      * @var array
      */
-    protected $fillable = ['eventId', 'type', 'price', 'numberAvailable', 'total', 'created_at', 'updated_at'];
+    protected $fillable = ['eventId', 'type', 'price', 'numberAvailable', 'total','minPerPerson','maxPerPerson','location', 'benefit', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -54,6 +54,7 @@ class TicketClass extends Model
     {
         return $this->hasMany('App\BookingDetail', 'ticketClassId');
     }
+
     public function getQuantityReservedAttribute()
     {
         $reserved_total = DB::table('reserved_tickets')
@@ -72,5 +73,15 @@ class TicketClass extends Model
     public function getMaxTicketAttribute()
     {
         return min($this->maxPerPerson, $this->getQuantityRemainingAttribute());
+    }
+
+    public function getMaxPerPerson()
+    {
+        if($this->numberAvailable <  $this->maxPerPerson)
+        {
+            return $this->numberAvailable;
+        }
+        
+        return $this->maxPerPerson;
     }
 }

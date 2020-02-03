@@ -58,11 +58,11 @@
                         @if($data['event']->ticketClasses()->get()[$i]->numberAvailable<=0)
                             Hết vé
                         @else
-                        <button class = "btn_change" onclick="changeTicket(this,'{{$data['event']->ticketClasses()->get()[$i]->id}}', -1)">
+                        <button id = "{{'btn_minus_'.$data['event']->ticketClasses()->get()[$i]->id}}" class = "btn_change" onclick="changeTicket(this,'{{$data['event']->ticketClasses()->get()[$i]->id}}', -1)">
                             <i class="fa fa-minus"></i>
                         </button>
-                        <span class="text_change_number" type="text" min="0" max="{{$data['event']->ticketClasses()->get()[$i]->maxTicket}}" value="0" id= "{{'class_'.$data['event']->ticketClasses()->get()[$i]->id. '_val'}}" price="{{$data['event']->ticketClasses()->get()[$i]->price}}">0</span>
-                        <button class = "btn_change" onclick="changeTicket(this,'{{$data['event']->ticketClasses()->get()[$i]->id}}', 1)">
+                        <span class="text_change_number" type="text" min="0" max="{{$data['event']->ticketClasses()->get()[$i]->getMaxPerPerson()}}" value="0" id= "{{'class_'.$data['event']->ticketClasses()->get()[$i]->id. '_val'}}" price="{{$data['event']->ticketClasses()->get()[$i]->price}}">0</span>
+                        <button id = "{{'btn_plus_'.$data['event']->ticketClasses()->get()[$i]->id}}" class = "btn_change" onclick="changeTicket(this,'{{$data['event']->ticketClasses()->get()[$i]->id}}', 1)">
                             <i class="fa fa-plus"></i>
                         </button>
                         @endif
