@@ -14,7 +14,18 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@getIndex')->name('home');
+Route::prefix('event')->group(function(){
+    Route::get('/all','HomeController@getAll')->name('all_event');
+    Route::get('/search','HomeController@getSearch')->name('search');
+    Route::get('/{eventId}','HomeController@getEventDetail')->name('event_detail');
+    Route::prefix('{eventId}')->group(function(){
+        Route::get('booking','HomeController@bookingDetail')->name('booking');
+    });
+    
+});
+
 Route::get('/event-detail/{eventId}','HomeController@getEventDetail')->name('event_detail');
+Route::get('/event/all','HomeController@getAll')->name('all-event');
 Route::get('/booking/{eventId}','HomeController@bookingDetail')->name('booking');
 
 //TODO::group router
@@ -22,6 +33,7 @@ Route::get('/sport','HomeController@getSportEvent')->name('sport');
 Route::get('/music','HomeController@getMusicEvent');
 Route::get('/conference','HomeController@getConferenceEvent');
 Route::get('/search','HomeController@getSearch')->name('search');
+
 
 //Auth
 /**

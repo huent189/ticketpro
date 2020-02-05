@@ -23,11 +23,11 @@ class HomeController extends Controller
         return view('user.blade.index',compact('data'));
     }
 
-    public function allEvent()
+    public function getAll()
     {
         $data=[];
-        $data['allEvent'] = Event::where('isBroadcasting',1)->get();
-        return 1;
+        $data['event'] = Event::where('isBroadcasting',1)->get();
+        return view('user.blade.all-event',compact('data'));
     }
 
     public function bookingDetail($eventId)

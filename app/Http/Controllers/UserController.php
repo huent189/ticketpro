@@ -35,7 +35,6 @@ class UserController extends Controller
      */
     public function storeEvent(Request $request)
     {
-        // dd(($request->ticketName));
         //Validate time
         $startSellingTime=$request->timeStartSelling;
         $startSellingDate=$request->dateStartSelling;
@@ -120,16 +119,6 @@ class UserController extends Controller
                 'location' => '',
                 'benefit' => $request->benefit[$i],
             ]);
-            // $ticket->eventId = $newEvent->id;
-            // $ticket->type = $request->ticketName[$i];
-            // $ticket->price = $request->ticketPrice[$i];
-            // $ticket->numberAvailable = $request->ticketNum[$i];
-            // $ticket->total = $request->ticketNum[$i];
-            // $ticket->minPerPerson = 0;
-            // $ticket->maxPerPerson = 10;
-            // $ticket->location = '';
-            // $ticket->benefit = $request->benefit[$i];
-            // $ticket->save();
         }
 
         // Move image to location
@@ -137,62 +126,6 @@ class UserController extends Controller
         $request->ticketMap->move(public_path('\uploads\ticket_maps'), $ticketMap);
         $request->organizerAvatar->move(public_path('\uploads\organizer_avatars'), $organizerAvatar);
 
-
-//         $activeUser=Organizer::where('userId', Auth::user()->id)->first();
-//         if(!$activeUser)
-//         {
-//             $activeUser=Organizer::create([
-//                 'userId'=> Auth::user()->id,
-//                 'profileImage'=>'được cập nhật',
-//                 'website'=>'chưa được cập nhật',
-//                 'description'=>'chưa có mô tả',
-//                 'name'=>Auth::user()->name,
-//                 'phone'=>$request->phoneNumber,
-//                 'email'=>Auth::user()->email,
-//                 'bankAccountNumber'=>$request->bankAccountNumber,
-//                 'bankAccountName'=>$request->bankAccountName,
-
-//             ]);
-//         }
-//         $location=Location::where('fullAddress',$request->fullAddress)->first();
-//         if(!$location)
-//         {
-//             $location=Location::create([
-//                 'place'=>$request->place,
-//                 'city'=>$request->city,
-//                 'fullAddress'=>$request->fullAddress,
-//             ]);
-//         }
-//         $category=Category::where('name',$request->categoryName)->first();
-
-//         $event=Event::create([
-//             'image'=>"images/event/cover/".$imageCover,
-//             'name'=>$request->eventName,
-//             'categoryId'=>$category->id,
-//             'organizerId'=>$activeUser->id,
-//             'startTime'=>date_create($request->startTime),
-//             'endTime'=>date_create($request->endTime),
-//             'description'=>$request->eventDescription,
-//             'locationId'=>$location->id,
-//             'startSellingTime'=>date_create($startSellingTime),
-//             'endSellingTime'=>date_create($endSellingTime),
-//             'status'=>'2',
-//             'ticketMap'=>"images/event/map/".$eventMap,
-//         ]);
-// //        dd($event);
-//         $request->image->move(public_path('images\event\cover'), $imageCover);
-//         $request->eventMap->move(public_path('images\event\map'), $eventMap);
-// //        dd(count($request->ticketClassName));
-//         for($i=0;$i<count($request->ticketClassName);$i++)
-//         {
-//             $ticket = TicketClass::create([
-//                 'eventId' => $event->id,
-//                 'type' => $request->ticketClassName[$i],
-//                 'price' => $request->price[$i],
-//                 'numberAvailable' => $request->numOfTicket[$i],
-//                 'total' => $request->numOfTicket[$i],
-//             ]);
-//         }
         Session::put('message','Tạo thành công');
         return redirect(route('get_create_event'));
     }

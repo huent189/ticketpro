@@ -9,7 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 @stack('css')
 <link rel="stylesheet" type="text/css" href="/css/library/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/library/font-awesome.min.css">
+<link href="/css/library/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/library/ionicons.min.css">
 <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">

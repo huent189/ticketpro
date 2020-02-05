@@ -55,8 +55,10 @@
                     <td id="{{'class_'.$data['event']->ticketClasses()->get()[$i]->id.'_type'}}">{{$data['event']->ticketClasses()->get()[$i]->type}}</td>
                     <td id="{{'class_'.$data['event']->ticketClasses()->get()[$i]->id.'_price'}}">{{number_format($data['event']->ticketClasses()->get()[$i]->price,0, ' ', ' ')}} vnđ</td>
                     <td>
-                        @if($data['event']->ticketClasses()->get()[$i]->numberAvailable<=0)
-                            Hết vé
+                        @if($data['event']->startTime <= date("Y-m-d H:i:s"))
+                            Ngừng bán vé
+                        @elseif($data['event']->ticketClasses()->get()[$i]->numberAvailable<=0)
+                        Hết vé
                         @else
                         <button id = "{{'btn_minus_'.$data['event']->ticketClasses()->get()[$i]->id}}" class = "btn_change" onclick="changeTicket(this,'{{$data['event']->ticketClasses()->get()[$i]->id}}', -1)">
                             <i class="fa fa-minus"></i>
@@ -80,10 +82,14 @@
                 <table class="table">
                     <thead>
                         <tr>
+                        @if($data['event']->startTime >= date("Y-m-d H:i:s"))
                         <th scope="col">Loại vé</th>
                         <th scope="col">Số lượng</th>
                         <th scope="col">Thành tiền</th>
+                        @else
+                        <th>Sự kiện đã kết thúc</th>
                         </tr>
+                        @endif
                     </thead>
                     <tbody id='ticket_info'>
                        

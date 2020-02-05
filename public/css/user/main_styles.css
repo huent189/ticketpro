@@ -852,7 +852,7 @@ section
 }
 .intro_item
 {
-	width: calc((100% - 60px) / 3);
+	width: calc((100% - 60px) / 2);
 	background: #f3f7f9;
 	margin-bottom: 48px;
 }
@@ -891,23 +891,29 @@ section
 }
 .intro_item:hover .intro_body::after
 {
-	opacity: 1;
+	opacity: 0;
 }
 .intro_title a
 {
+	text-transform: uppercase;
 	position: relative;
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: 500;
 	color: #4c4c4c;
 	z-index: 1;
 }
-.intro_item:hover .intro_title a,
-.intro_item:hover .intro_subtitle
+.intro_item:hover .intro_title a{
+	font-size: 17.5px;
+	color: #000000;
+}
+/* .intro_item:hover .intro_subtitle
 {
 	color: #FFFFFF;
-}
+} */
 .intro_subtitle
 {
+	position: absolute;
+    bottom: 6px;
 	font-size: 14px;
 	font-weight: 500;
 	color: #888888;

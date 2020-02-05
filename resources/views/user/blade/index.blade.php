@@ -54,7 +54,7 @@
 
 <div class="intro" id="buynow">
 		<h2 class = "title_intro" >Sự kiện nổi bật</h2>
-		<div class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
+		<div class="container intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
 		@foreach($data['popularEvent'] as $event)
 			<!-- Intro Item -->
 			<div class="intro_item ">
@@ -91,7 +91,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="cta_content text-center">
-						<div class="button cta_button"><a href="#">Tất cả sự kiện</a></div>
+						<div class="button cta_button"><a href="{{Route('all-event')}}">Tất cả sự kiện</a></div>
 					</div>
 				</div>
 			</div>
