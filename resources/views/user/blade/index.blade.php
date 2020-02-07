@@ -60,7 +60,7 @@
 			<div class="intro_item ">
 				<div class="intro_image"><img src="{{$event->coverImage}}" alt=""></div>
 				<div class="intro_body">
-					<div class="intro_title"><a href="{{Route('event_detail',['eventId' => $event->id])}}">{{$event->name}}</a></div>
+					<div class="intro_title"><a href="{{Route('event.detail',['eventId' => $event->id])}}">{{$event->name}}</a></div>
 					<div class="description">
 						<div class="des-left">
 							<div class="intro_subtitle">
@@ -91,7 +91,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="cta_content text-center">
-						<div class="button cta_button"><a href="{{Route('all-event')}}">Tất cả sự kiện</a></div>
+						<div class="button cta_button"><a href="{{Route('event.all')}}">Tất cả sự kiện</a></div>
 					</div>
 				</div>
 			</div>
@@ -106,7 +106,7 @@
 				<div class="col">
 					<div class="cta_content text-center">
 						<div class="cta_title">Tham gia cùng chúng tôi ngay!</div>
-						<div class="button cta_button"><a href="{{Route('get_create_event')}}">Tạo sự kiện ngay</a></div>
+						<div class="button cta_button"><a href="{{Route('event.create')}}">Tạo sự kiện ngay</a></div>
 					</div>
 				</div>
 			</div>

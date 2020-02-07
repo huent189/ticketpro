@@ -42,19 +42,20 @@ class BookingController extends Controller
         $event = Event::findorFail($eventId);
         if(!$request->has("tickets")){
             // return Redirect::back()->withErrors(['msg_alert', 'No tickets selected']);
-            
+    
             return response()->json([
                 'status' => 'error',
                 'message' => 'No tickets selected',
                 'new_token' => csrf_token(),
             ], 400);
         }
-        $tickets = $request->get("tickets");
+        // check lại trùng vs eventId
         ReservedTicket::where('session_id', session()->getId())->delete();
         $order_total = 0;
         $qty_total = 0;
         $quantity_available_validation_rules = [];
         $validator_fail = false;
+        $tickets = $request->get("tickets");
         foreach($tickets as $ticket_ordered){
             $current_quantity = $ticket_ordered["quantity"];
             if($current_quantity < 1){

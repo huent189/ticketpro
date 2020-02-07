@@ -31,17 +31,18 @@
 @section('content')
 <div class="container-fluid mgt-103 mgbt-20">
     <div class="container">
-        <form action="" method = "POST" >
+        <form action="{{route('event.search')}}" method = "POST" >
+            {{csrf_field()}}
             <div class=" menu-search col-sm-12">
                     <div class="row cs1-inp-group">
                         <div class="col-sm-3 filter-selector">
                             <div class="custome-select cs1-inp-select w-100">
                                 <div class="icon"><img class='icon-image' src="/Images/icon/location.svg" alt=""></div>
                                 <select name= 'location' data-location="true" tabindex="94">
-                                        <option value="">Tất cả địa điểm</option>
-                                        <option value="ho-chi-minh">Hồ Chí Minh</option>
-                                        <option value="ha-noi">Hà Nội</option>
-                                        <option value="other-locations">Các địa điểm khác</option>
+                                        <option value=""@if($data['request']['location']==null) selected @endif>Tất cả địa điểm</option>
+                                        <option value="Hồ Chí Minh"@if($data['request']['location']=='Hồ Chí Minh') selected @endif>Hồ Chí Minh</option>
+                                        <option value="Hà Nội"@if($data['request']['location']=='Hà Nội') selected @endif>Hà Nội</option>
+                                        <option value="3"@if($data['request']['location']=='3') selected @endif>Các địa điểm khác</option>
                                 </select>
                             </div>
                         </div>
@@ -52,10 +53,10 @@
                                         
                                         <div class="icon"><img class='icon-image' src="/Images/icon/menu.svg" alt=""></div>
                                         <select name = "eventType" data-location="true" tabindex="94">
-                                                <option value="" selected>Mọi sự kiện</option>
-                                                <option value="1">Âm nhạc</option>
-                                                <option value="2">Thể thao</option>
-                                                <option value="3">Hội nghị</option>
+                                                <option value="" @if($data['request']['eventType']==null) selected @endif>Mọi sự kiện</option>
+                                                <option value="music" @if($data['request']['eventType']=='music') selected @endif>Âm nhạc</option>
+                                                <option value="sport" @if($data['request']['eventType']=='sport') selected @endif>Thể thao</option>
+                                                <option value="conference"@if($data['request']['eventType']=='conference') selected @endif>Hội nghị</option>
                                         </select>
                                     </div>                   
                                 </div>
@@ -63,10 +64,10 @@
                                     <div class="custome-select cs1-inp-select w-100">
                                         <div class="icon"><img class='icon-image' src="/Images/icon/clock.svg" alt=""></div>
                                         <select name="timeStart" data-location="true" tabindex="94">
-                                                <option value="">Tất cả thời gian</option>
-                                                <option value="{{date('Y-m-d h:i:sa')}}">Hôm nay</option>
-                                                <option value="{{date('Y-m-d h:i:sa')}}">Tuần này</option>
-                                                <option value="{{date('Y-m-d h:i:sa')}}">Tháng này</option>
+                                                <option value="" @if($data['request']['timeStart']==null) selected @endif>Tất cả thời gian</option>
+                                                <option value="0" @if($data['request']['timeStart']=='0') selected @endif>Hôm nay</option>
+                                                <option value="7" @if($data['request']['timeStart']=='7') selected @endif>Trong vòng 7 ngày</option>
+                                                <option value="30" @if($data['request']['timeStart']=='30') selected @endif>Trong vòng 30 ngày</option>
                                         </select>
                                     </div>
                                 </div>
@@ -74,9 +75,9 @@
                                     <div class="custome-select cs1-inp-select w-100">
                                         <div class="icon"><img class='icon-image' src="/Images/icon/money.svg" alt=""></div>
                                         <select name="price" data-location="true" tabindex="94">
-                                                <option value="">Mọi giá</option>
-                                                <option value="0">Miễn Phí</option>
-                                                <option value="1">Có phí</option>
+                                                <option value="" @if($data['request']['price']==null) selected @endif>Mọi giá</option>
+                                                <option value="0" @if($data['request']['price']=='0') selected @endif>Miễn Phí</option>
+                                                <option value="1" @if($data['request']['price']=='1') selected @endif>Có phí</option>
                                         </select>
                                     </div>
                                 </div>
@@ -84,7 +85,7 @@
                         </div>
                     </div>
                     <div class="row search-contain">
-                        <button class="btn-search" onclick="loading()">
+                        <button type="submit" class="btn-search" onclick="loading()">
                             <img id="btn-search-image" src="/Images/icon/search.png" alt="">
                         </button>
                     </div>
@@ -94,34 +95,37 @@
     </div>
     <div class="container" >
         <div id="event-list" class="intro_content d-flex flex-row flex-wrap align-items-start justify-content-between">
-            @foreach($data['event'] as $event)
-                <!-- Intro Item -->
-                <div class=" intro_item_all intro_item ">
-                    <div class="intro_image"><img src="{{$event->coverImage}}" alt=""></div>
-                    <div class="intro_body">
-                        <div class="intro_title"><a href="{{Route('event_detail',['eventId' => $event->id])}}">{{$event->name}}</a></div>
-                        <div class="description">
-                            <div class="des-left">
-                                <div class="intro_subtitle">
-                                    <div class="price">
-                                        <span><i class="fas fa-money-bill-wave"></i></span>
-                                        <span>Từ {{$event->minPrice()}} VNĐ</span>
-                                    </div>
-                                    <div class="location">
-                                        <span><i class="fas fa-map-marker-alt"></i></span>
-                                        <span>{{$event->location()->get()->first()->city}}</span>
+            @if(count($data['event'])>0)
+                @foreach($data['event'] as $event)
+                    <!-- Intro Item -->
+                    <div class=" intro_item_all intro_item ">
+                        <div class="intro_image"><img src="{{$event->coverImage}}" alt=""></div>
+                        <div class="intro_body">
+                            <div class="intro_title"><a href="{{Route('event.detail',['eventId' => $event->id])}}">{{$event->name}}</a></div>
+                            <div class="description">
+                                <div class="des-left">
+                                    <div class="intro_subtitle">
+                                        <div class="price">
+                                            <span><i class="fas fa-money-bill-wave"></i></span>
+                                            <span>Từ {{$event->minPrice()}} VNĐ</span>
+                                        </div>
+                                        <div class="location">
+                                            <span><i class="fas fa-map-marker-alt"></i></span>
+                                            <span>{{$event->location()->get()->first()->city}}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="des_calendar">
-                                <div class="calendar_month">Tháng {{number_format(date_format($event->startTime,'m'))}}</div>
-                                <div class="calendar_content">{{number_format(date_format($event->startTime,'d'))}}</div>
-                            </div>	
+                                <div class="des_calendar">
+                                    <div class="calendar_month">Tháng {{number_format(date_format($event->startTime,'m'))}}</div>
+                                    <div class="calendar_content">{{number_format(date_format($event->startTime,'d'))}}</div>
+                                </div>	
+                            </div>                           
                         </div>
-                                        
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @else
+                <div class="text">Không có sự kiện nào phù hợp được tìm thấy</div>
+            @endif
             </div>
         </div>
     </div>

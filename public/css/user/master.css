@@ -846,8 +846,11 @@ section
 
 .footer
 {
-	width: 100%;
-	background: #0c081d;	
+	bottom: 0;
+    position: relative;
+    display: block;
+    width: 100%;
+    background: #0c081d;	
 }
 .footer_content
 {
@@ -977,4 +980,7 @@ section
 	color: #000000;
 	padding: 20px;
 	padding-top: 40px;
+}
+#event-list {
+    min-height: 500px;
 }

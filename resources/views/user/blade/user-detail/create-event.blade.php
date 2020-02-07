@@ -20,7 +20,7 @@
             </div>  
         </div>
     </div> 
-<form action="{{Route('store_event')}}" method="post" class="tab-content" enctype="multipart/form-data">
+<form action="{{Route('event.store')}}" method="post" class="tab-content" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="main-card mb-3 card">
             <div class="card-header"><i class="header-icon lnr-license icon-gradient bg-plum-plate"> </i>Thông tin tạo sự kiện mới
@@ -47,8 +47,8 @@
                                     <option value="Tp.Cần Thơ">Tp.Cần Thơ</option>
                                     <option value="Tp.Đà Nẵng">Tp.Đà Nẵng</option>
                                     <option value="Tp.Hải Phòng">Tp.Hải Phòng</option>
-                                    <option value="Tp.Hà Nội">Tp.Hà Nội</option>
-                                    <option value="TP  HCM">TP HCM</option>    
+                                    <option value="Hà Nội">Tp.Hà Nội</option>
+                                    <option value="Hồ Chí Minh">TP HCM</option>    
                                     <option value="An Giang">An Giang</option>
                                     <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
                                     <option value="Bắc Giang">Bắc Giang</option>

@@ -21,7 +21,7 @@
                 </div>
             </div>  
             <div class="mb-2 mr-2 btn btn-info">
-                <a href="{{Route('get_create_event')}}"><i class="fas fa-plus"></i></a>
+                <a href="{{Route('event.create')}}"><i class="fas fa-plus"></i></a>
             </div>
         </div>
     </div> 
@@ -43,7 +43,7 @@
                         </a>
                     </div>
                     <div class="event-info">
-                        <a href="{{Route('event_detail',['eventId' => $event->id])}}">
+                        <a href="{{Route('event.detail',['eventId' => $event->id])}}">
                             <div class="event-title">
                                 {{$event->name}}
                             </div>

@@ -15,17 +15,22 @@ class HomeController extends Controller
     {
 
     }
-
     public function getIndex()
     {
         $data=[];
-        $data['popularEvent'] = Event::where('isPopular','1')->where('isBroadcasting','1')->WhereDate('startTime', '>=', Carbon::now()->toDateString())->get();
+        $data['popularEvent'] = Event::where('isPopular','1')->where('isBroadcasting','1')->WhereDate('startTime', '>=', Carbon::now()->setTimezone('Asia/Phnom_Penh')->toDateString())->get();
         return view('user.blade.index',compact('data'));
     }
 
     public function getAll()
     {
         $data=[];
+        $data['request'] = ["location" => null,
+                            "eventType" => null,
+                            "timeStart" => null,
+                            "price" => null];
+        // dd($data['request']['location']);
+        // dd($data['request']);
         $data['event'] = Event::where('isBroadcasting',1)->get();
         return view('user.blade.all-event',compact('data'));
     }
@@ -69,12 +74,133 @@ class HomeController extends Controller
 
     public function getSearch(Request $request)
     {
-        $location=Location::where('city','like','%'.$request->key.'%')->first();
-//        dd($location);
-        $eventList = $eventList = Event::where('name','like', '%'.$request->key.'%')
-//                                        ->orWhere('locationId',$location->id)
-                                        ->get();
-//        dd($eventList);
-        return view('front-end.modules.search',compact('eventList'));
+        $allEvent = Event::where('isBroadcasting',1)->get();
+        $data = [];
+        $data['event']=[];
+        $data['request'] = array("location" => $request->location,
+                            "eventType" => $request->eventType,
+                            "timeStart" => $request->timeStart,
+                            "price" => $request->price);
+        $eventLocationR = [];
+        $eventPriceR = [];
+        $eventDateR = [];
+        $eventTypeR = [];
+
+    //handing location request
+        if($request->location == null)
+        {
+            foreach($allEvent as $event)
+            {
+                array_push($eventLocationR, $event->id);
+            }
+        }
+        elseif($request->location == '3')
+        {
+            $locations = Location::where([['city','not like', '%Hồ Chí Minh%'],['city','not like', '%Hà Nội%']])->get();
+            foreach($locations as $location)
+            {
+                if($location->event()->first() && $location->event()->first()->isBroadcasting==1)
+                {
+                    array_push($eventLocationR, $location->event()->first()->id);
+                } 
+            }
+        }
+        else
+        {
+            $locations = Location::where('city','like','%'.$request->location.'%')->get();
+            foreach($locations as $location)
+            { 
+                if($location->event()->first() && $location->event()->first()->isBroadcasting==1)
+                {
+                    array_push($eventLocationR, $location->event()->first()->id);
+                }  
+            }
+        }
+        // dd($eventLocationR);
+
+
+    //handing event type request
+        if($request->eventType==null)
+        {
+            foreach($allEvent as $event)
+            {
+                array_push($eventTypeR, $event->id);
+            }
+        }
+        else
+        {
+            $eventsType = Category::where('name', 'like', '%'.$request->eventType.'%')->first()->events()->where('isBroadcasting',1)->get();
+            foreach($eventsType as $event)
+            {
+                array_push($eventTypeR, $event->id);
+            }
+        }
+        // dd($eventTypeR);
+
+    //handing event date request
+        // dd(Carbon::now()->addDays($request->timeStart)->setTimezone('Asia/Phnom_Penh')->toDateString(). '----'.Carbon::now()->setTimezone('Asia/Phnom_Penh')->toDateString());
+        if($request->timeStart == null)
+        {
+            foreach($allEvent as $event)
+            {
+                array_push($eventDateR, $event->id);
+            }
+        }
+        else
+        {
+            $eventsDate = Event::where('isBroadcasting',1)->WhereDate('startTime', '>=', Carbon::now()->setTimezone('Asia/Phnom_Penh')->toDateString())
+                                ->WhereDate('startTime', '<=', Carbon::now()->setTimezone('Asia/Phnom_Penh')->addDays($request->timeStart)->toDateString())->get();
+            foreach($eventsDate as $event)
+            {
+                array_push($eventDateR, $event->id);
+            }
+        }
+        
+        // dd($eventDateR);
+
+    //handing event price request
+        if($request->price == null)
+        {
+            foreach($allEvent as $event)
+            {
+                array_push($eventPriceR, $event->id);
+            }        
+        }
+        elseif ($request->price == '0')
+        {
+            foreach(Event::where('isBroadcasting',1)->get() as $event)
+            {              
+                if($event->minPrice() == 0)
+                {
+                    array_push($eventPriceR, $event->id);
+                }
+            }
+        }
+        else
+        {
+            foreach(Event::where('isBroadcasting',1)->get() as $event)
+            {
+                if($event->minPrice() > 0)
+                {
+                    array_push($eventPriceR,$event->id);
+                }
+            }
+        }
+        // dd($eventPriceR);
+
+        //merge event
+        if(count($eventDateR) > 0 && count($eventLocationR) > 0 && count($eventTypeR) > 0 && count($eventPriceR) >0)
+        {
+            foreach($eventLocationR as $eventId)
+            {
+                // dd($this->isContained($event->first() , $eventTypeR ));
+                if(in_array($eventId , $eventDateR ) && in_array($eventId , $eventPriceR) && in_array($eventId , $eventTypeR))
+                {
+                    array_push($data['event'],Event::find($eventId));
+                }
+            }   
+        }
+        // dd($data);
+        return view('user.blade.all-event',compact('data'));
     }
 }
