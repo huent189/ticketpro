@@ -87,7 +87,7 @@
                         <th scope="col">Số lượng</th>
                         <th scope="col">Thành tiền</th>
                         @else
-                        <th>Sự kiện đã kết thúc</th>
+                        <th>Ngừng bán vé</th>
                         </tr>
                         @endif
                     </thead>
@@ -98,8 +98,8 @@
                 <div id="total_price">Tổng tiền: <span id="sum_all"> 0 VNĐ</span></div>
             </div>
         </div>       
-        <div id = "btn_submit" class=" submit button" disabled>
-            <a href="#">Tiếp tục</a>
+        <div id = "btn_submit" onclick="submitTicket()" class="submit button" >
+            <!-- <a href="{{Route('create_payment',['eventId' => $data['event']->id])}}">Tiếp tục</a>  -->
         </div>
     </div>
 </div>

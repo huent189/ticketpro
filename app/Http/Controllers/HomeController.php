@@ -138,7 +138,6 @@ class HomeController extends Controller
         // dd($eventTypeR);
 
     //handing event date request
-        // dd(Carbon::now()->addDays($request->timeStart)->setTimezone('Asia/Phnom_Penh')->toDateString(). '----'.Carbon::now()->setTimezone('Asia/Phnom_Penh')->toDateString());
         if($request->timeStart == null)
         {
             foreach($allEvent as $event)
@@ -188,7 +187,7 @@ class HomeController extends Controller
         }
         // dd($eventPriceR);
 
-        //merge event
+    //merge event
         if(count($eventDateR) > 0 && count($eventLocationR) > 0 && count($eventTypeR) > 0 && count($eventPriceR) >0)
         {
             foreach($eventLocationR as $eventId)

@@ -32,7 +32,7 @@ function changeTicket(self,ticket_class, val)
         } 
         else {
             var tmp = $("#ticket_info").html();
-            tmp += '<tr><td>'+$('#class_'+ticket_class + "_type").html()
+            tmp += '<tr><td name ="Thanhnh">'+$('#class_'+ticket_class + "_type").html()
             + '</td>\n<td id="number_of_'+ticket_class+'">'
             + current +'</td>\n<td id="sum_'+ticket_class+'">' + formatCurrency(current * display_field.attr("price")) +' VND</td>\n</tr>\n';
             $("#ticket_info").html(tmp);
@@ -59,4 +59,14 @@ function changeTicket(self,ticket_class, val)
 
 function formatCurrency(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-  }
+}
+
+
+function submitTicket()
+{
+    var data = [];
+    $("td[id*='number_of']").each(function (index) {
+        data.push({'ticket-class': $(this).attr('id').substring(5), 'quantity':$(this).html()})
+    });
+    console.log(data);
+}

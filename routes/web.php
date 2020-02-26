@@ -21,6 +21,7 @@ Route::prefix('event')->group(function(){
     Route::get('/{eventId}','HomeController@getEventDetail')->name('event.detail');
     Route::prefix('{eventId}')->group(function(){
         Route::get('booking','HomeController@bookingDetail')->name('booking');
+        Route::get('checkout','BookingController@showSelectedTicket')->name('create_payment');
     });
     
 });
